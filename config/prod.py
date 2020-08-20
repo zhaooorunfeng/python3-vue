@@ -32,17 +32,17 @@ LOG_LEVEL = "ERROR"
 # logging.getLogger('app').setLevel('INFO')
 
 
-# 正式环境数据库可以在这里配置
+# 正式环境数据库可以在这里修改，默认通过环境变量（DB_NAME、DB_USERNAME、DB_PASSWORD、DB_HOST、DB_PORT）获取
 
-DATABASES.update(  # noqa
-    {
-        "default": {
-            "ENGINE": "django.db.backends.mysql",
-            "NAME": "",  # 数据库名
-            "USER": "",  # 数据库用户
-            "PASSWORD": "",  # 数据库密码
-            "HOST": "",  # 数据库主机
-            "PORT": "3306",  # 数据库端口
-        },
-    }
-)
+# DATABASES.update(  # noqa
+#     {
+#         "default": {
+#             "ENGINE": "django.db.backends.mysql",
+#             "NAME": "",  # 数据库名
+#             "USER": "",  # 数据库用户
+#             "PASSWORD": "",  # 数据库密码
+#             "HOST": "",  # 数据库主机
+#             "PORT": "3306",  # 数据库端口
+#         },
+#     }
+# )
