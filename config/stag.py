@@ -11,6 +11,8 @@ an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express o
 specific language governing permissions and limitations under the License.
 """
 
+import os
+
 from config import RUN_VER
 
 if RUN_VER == "open":
@@ -32,15 +34,15 @@ RUN_MODE = "STAGING"
 
 # 预发布环境数据库可以在这里配置，默认通过环境变量（DB_NAME、DB_USERNAME、DB_PASSWORD、DB_HOST、DB_PORT）获取
 
-# DATABASES.update(  # noqa
-#     {
-#         "default": {
-#             "ENGINE": "django.db.backends.mysql",
-#             "NAME": "",  # 数据库名
-#             "USER": "",  # 数据库用户
-#             "PASSWORD": "",  # 数据库密码
-#             "HOST": "",  # 数据库主机
-#             "PORT": "3306",  # 数据库端口
-#         },
-#     }
-# )
+DATABASES.update(  # noqa
+    {
+        "default": {
+            "ENGINE": "django.db.backends.mysql",
+            "NAME": os.getenv("BKAPP_DB_NAME", ""),  # 数据库名
+            "USER": os.getenv("BKAPP_DB_USERNAME", ""),  # 数据库用户
+            "PASSWORD": os.getenv("BKAPP_DB_PASSWORD", ""),  # 数据库密码
+            "HOST": os.getenv("BKAPP_DB_HOST", ""),  # 数据库主机
+            "PORT": os.getenv("BKAPP_DB_PORT", "3306"),  # 数据库端口
+        },
+    }
+)
