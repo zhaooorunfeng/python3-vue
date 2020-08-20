@@ -1,0 +1,37 @@
+before_script:
+  - pwd
+  - whoami
+  - which python
+  - which node && node --version
+  - which npm && npm --version
+  - LANG="zh_CN.utf8"
+  - export LC_ALL=zh_CN.UTF-8
+  - pip list
+  - pyenv versions
+  # python3 项目创建专属虚拟环境，请把下方命令中 python3_vue_py3.6.7 改为你的项目虚拟环境名字
+  - pyenv virtualenv -p python3.6 3.6.7 python3_vue_py3.6.7 || echo "virtualenv exist"
+  # python2 项目创建专属虚拟环境，请把下方命令中 python3_vue_py3.6.7、python2_vue_py2.7.15 改为你的项目虚拟环境名字
+  #- pyenv virtualenv 2.7.15 python2_vue_py2.7.15 || echo "virtualenv exist"
+  - pyenv shell python3_vue_py3.6.7
+  - pip install -r requirements.txt
+  - pip install flake8
+  - pip install coverage
+
+stages:
+  - pep8
+  - unittest
+
+pep8:
+  stage: pep8
+  tags:
+    - canway-tag
+  script:
+    - flake8
+
+unittest:
+  stage: unittest
+  tags:
+    - canway-tag
+  script:
+    - source scripts/develop/envs.sh
+    - echo 'yes' | sh scripts/test/coverage_and_report.sh
