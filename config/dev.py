@@ -13,16 +13,16 @@ specific language governing permissions and limitations under the License.
 
 from config import RUN_VER
 
-if RUN_VER == 'open':
+if RUN_VER == "open":
     from blueapps.patch.settings_open_saas import *  # noqa
 else:
     from blueapps.patch.settings_paas_services import *  # noqa
 
 # 本地开发环境
-RUN_MODE = 'DEVELOP'
+RUN_MODE = "DEVELOP"
 
 # APP本地静态资源目录
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
 # APP静态资源目录url
 # REMOTE_STATIC_URL = '%sremote/' % STATIC_URL
@@ -30,7 +30,7 @@ STATIC_URL = '/static/'
 # Celery 消息队列设置 RabbitMQ
 # BROKER_URL = 'amqp://guest:guest@localhost:5672//'
 # Celery 消息队列设置 Redis
-BROKER_URL = 'redis://localhost:6379/0'
+BROKER_URL = "redis://localhost:6379/0"
 
 DEBUG = True
 
@@ -38,13 +38,15 @@ DEBUG = True
 # USE FOLLOWING SQL TO CREATE THE DATABASE NAMED APP_CODE
 # SQL: CREATE DATABASE `framework_py` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; # noqa: E501
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': APP_CODE,  # noqa
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": APP_CODE,  # noqa
+        "USER": "root",
+        "PASSWORD": "",
+        "HOST": "localhost",
+        "PORT": "3306",
+        # 单元测试 DB 配置，建议不改动
+        "TEST": {"NAME": "test_db", "CHARSET": "utf8", "COLLATION": "utf8_general_ci"},
     },
 }
 

@@ -1,0 +1,5 @@
+export APP_ID="framework"
+export APP_TOKEN="35770202-a1a1-4d45-807c-e7e27343d45a"
+export RUN_VER="open"
+export BK_URL="https://paas.cwbk.com"
+export BK_PAAS_HOST="https://paas.cwbk.com"
