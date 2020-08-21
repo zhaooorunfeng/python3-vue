@@ -11,27 +11,42 @@ an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express o
 specific language governing permissions and limitations under the License.
 """
 
+from django.conf import settings
 from django.shortcuts import render
+from django.http import JsonResponse
+from django.views.decorators.http import require_GET, require_POST
 
 
 # 开发框架中通过中间件默认是需要登录态的，如有不需要登录的，可添加装饰器login_exempt
 # 装饰器引入 from blueapps.account.decorators import login_exempt
+
+
 def home(request):
     """
     首页
     """
-    return render(request, 'home_application/index_home.html')
+    return render(request, "index.html")
 
 
-def dev_guide(request):
-    """
-    开发指引
-    """
-    return render(request, 'home_application/dev_guide.html')
+@require_GET
+def login_info(request):
+    return JsonResponse(
+        {
+            "result": True,
+            "data": {
+                "username": request.user.username,
+                "logout_url": settings.LOGOUT_URL,
+                "super": request.user.is_superuser,
+            },
+        }
+    )
 
 
-def contact(request):
-    """
-    联系页
-    """
-    return render(request, 'home_application/contact.html')
+@require_POST
+def test_post(request):
+    return JsonResponse({"result": True, "data": {}})
+
+
+@require_GET
+def test_get(request):
+    return JsonResponse({"result": True, "data": {}})

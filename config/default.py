@@ -33,8 +33,9 @@ from blueapps.conf.log import get_logging_config_dict
 
 # 请在这里加入你的自定义 APP
 INSTALLED_APPS += (  # noqa
-    'home_application',
-    'mako_application',
+    "home_application",
+    "mako_application",
+    "corsheaders",
 )
 
 # 这里是默认的中间件，大部分情况下，不需要改动
@@ -63,8 +64,9 @@ INSTALLED_APPS += (  # noqa
 # )
 
 # 自定义中间件
-MIDDLEWARE += (  # noqa
-)
+MIDDLEWARE += ("corsheaders.middleware.CorsMiddleware",)  # noqa
+
+LOGOUT_URL = "%saccount/logout/" % SITE_URL  # noqa
 
 # 所有环境的日志级别可以在这里配置
 # LOG_LEVEL = 'INFO'
@@ -76,11 +78,9 @@ MIDDLEWARE += (  # noqa
 # mako 模板中：<script src="/a.js?v=${ STATIC_VERSION }"></script>
 # 如果静态资源修改了以后，上线前改这个版本号即可
 # STATIC_VERSION_END
-STATIC_VERSION = '1.0'
+STATIC_VERSION = "1.0"
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')  # noqa
-]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]  # noqa
 
 # CELERY 开关，使用时请改为 True，修改项目目录下的 Procfile 文件，添加以下两行命令：
 # worker: python manage.py celery worker -l info
@@ -89,11 +89,10 @@ STATICFILES_DIRS = [
 IS_USE_CELERY = False
 
 # CELERY 并发数，默认为 2，可以通过环境变量或者 Procfile 设置
-CELERYD_CONCURRENCY = os.getenv('BK_CELERYD_CONCURRENCY', 2)  # noqa
+CELERYD_CONCURRENCY = os.getenv("BK_CELERYD_CONCURRENCY", 2)  # noqa
 
 # CELERY 配置，申明任务的文件路径，即包含有 @task 装饰器的函数文件
-CELERY_IMPORTS = (
-)
+CELERY_IMPORTS = ()
 
 # load logging settings
 LOGGING = get_logging_config_dict(locals())
@@ -104,7 +103,7 @@ INIT_SUPERUSER = []
 
 
 # 使用mako模板时，默认打开的过滤器：h(过滤html)
-MAKO_DEFAULT_FILTERS = ['h']
+MAKO_DEFAULT_FILTERS = ["h"]
 
 # BKUI是否使用了history模式
 IS_BKUI_HISTORY_MODE = False
@@ -113,14 +112,14 @@ IS_BKUI_HISTORY_MODE = False
 IS_AJAX_PLAIN_MODE = False
 
 # 国际化配置
-LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'),)  # noqa
+LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)  # noqa
 
-TIME_ZONE = 'Asia/Shanghai'
-LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = "Asia/Shanghai"
+LANGUAGE_CODE = "zh-hans"
 
 LANGUAGES = (
-    ('en', u'English'),
-    ('zh-hans', u'简体中文'),
+    ("en", u"English"),
+    ("zh-hans", u"简体中文"),
 )
 
 """
@@ -128,36 +127,35 @@ LANGUAGES = (
 """
 # celery settings
 if IS_USE_CELERY:
-    INSTALLED_APPS = locals().get('INSTALLED_APPS', [])
+    INSTALLED_APPS = locals().get("INSTALLED_APPS", [])
     import djcelery
-    INSTALLED_APPS += (
-        'djcelery',
-    )
+
+    INSTALLED_APPS += ("djcelery",)
     djcelery.setup_loader()
     CELERY_ENABLE_UTC = False
     CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 
 # remove disabled apps
-if locals().get('DISABLED_APPS'):
-    INSTALLED_APPS = locals().get('INSTALLED_APPS', [])
-    DISABLED_APPS = locals().get('DISABLED_APPS', [])
+if locals().get("DISABLED_APPS"):
+    INSTALLED_APPS = locals().get("INSTALLED_APPS", [])
+    DISABLED_APPS = locals().get("DISABLED_APPS", [])
 
-    INSTALLED_APPS = [_app for _app in INSTALLED_APPS
-                      if _app not in DISABLED_APPS]
+    INSTALLED_APPS = [_app for _app in INSTALLED_APPS if _app not in DISABLED_APPS]
 
-    _keys = ('AUTHENTICATION_BACKENDS',
-             'DATABASE_ROUTERS',
-             'FILE_UPLOAD_HANDLERS',
-             'MIDDLEWARE',
-             'PASSWORD_HASHERS',
-             'TEMPLATE_LOADERS',
-             'STATICFILES_FINDERS',
-             'TEMPLATE_CONTEXT_PROCESSORS')
+    _keys = (
+        "AUTHENTICATION_BACKENDS",
+        "DATABASE_ROUTERS",
+        "FILE_UPLOAD_HANDLERS",
+        "MIDDLEWARE",
+        "PASSWORD_HASHERS",
+        "TEMPLATE_LOADERS",
+        "STATICFILES_FINDERS",
+        "TEMPLATE_CONTEXT_PROCESSORS",
+    )
 
     import itertools
 
     for _app, _key in itertools.product(DISABLED_APPS, _keys):
         if locals().get(_key) is None:
             continue
-        locals()[_key] = tuple([_item for _item in locals()[_key]
-                                if not _item.startswith(_app + '.')])
+        locals()[_key] = tuple([_item for _item in locals()[_key] if not _item.startswith(_app + ".")])
