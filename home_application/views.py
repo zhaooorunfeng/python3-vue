@@ -11,7 +11,6 @@ an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express o
 specific language governing permissions and limitations under the License.
 """
 
-from django.conf import settings
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET, require_POST
@@ -31,14 +30,7 @@ def home(request):
 @require_GET
 def login_info(request):
     return JsonResponse(
-        {
-            "result": True,
-            "data": {
-                "username": request.user.username,
-                "logout_url": settings.LOGOUT_URL,
-                "super": request.user.is_superuser,
-            },
-        }
+        {"result": True, "data": {"username": request.user.username, "super": request.user.is_superuser}}
     )
 
 

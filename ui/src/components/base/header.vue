@@ -16,26 +16,9 @@
         </div>
         <div class="user">
             <ul>
-                <!--                <li><span class="username font-16"></span></li>-->
                 <li class="NameHover">
-                    <Dropdown placement="right-start">
-                        <span class="username Helvetica-Neue">{{userData.username}}</span>
-                        <a style="margin-left: 10px" href="javascript:void(0)">
-                            <Icon class="UserIcon" type="ios-arrow-down"></Icon>
-                        </a>
-                        <template slot="list">
-                            <div class="detail">
-                                <div @click="OutLogin" class="login-out-sty">
-                                    <div class="icon-Sty">
-                                        <Icon style="font-size:20px" type="ios-exit-outline"/>
-                                    </div>
-                                    <div class="font-Sty">退出登录</div>
-                                </div>
-                            </div>
-                        </template>
-                    </Dropdown>
+                    <span class="username Helvetica-Neue">{{userData.username}}</span>
                 </li>
-                <!--                <a :href="logout_url" title="注销登录" class="login-out"></a>-->
             </ul>
         </div>
     </div>
@@ -61,7 +44,6 @@
                 userData: {},
                 username: '123',
                 headerHeight: '60px',
-                logout_url: '',
                 src: whiteLogo,
                 cusChange: false,
                 showMenu: true
@@ -86,12 +68,8 @@
                 this.$api.User.homeInfo().then(res => {
                     if (res.result) {
                         this.userData = res.data;
-                        this.logout_url = res.data.logout_url;
                     }
                 });
-            },
-            OutLogin() {
-                window.location.href = this.logout_url
             },
             goHome() {
                 this.$router.push('/home')
