@@ -62,7 +62,7 @@ webpack:
     - git config --global user.name ci
     - git config --global user.email ci@email.com
     - git commit -m "auto commit [ci skip]"
-    - git push http://$GIT_USERNAME:$GIT_PASSWORD@CI_SERVER_HOST/$CI_PROJECT_PATH.git $CI_COMMIT_REF_NAME
+    - git push http://$GIT_USERNAME:$GIT_PASSWORD@$CI_SERVER_HOST/$CI_PROJECT_PATH.git $CI_COMMIT_REF_NAME
     - echo "end build"
   only:
     - release
