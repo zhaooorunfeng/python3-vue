@@ -66,8 +66,6 @@ INSTALLED_APPS += (  # noqa
 # 自定义中间件
 MIDDLEWARE += ("corsheaders.middleware.CorsMiddleware",)  # noqa
 
-LOGOUT_URL = "%saccount/logout/" % SITE_URL  # noqa
-
 # 所有环境的日志级别可以在这里配置
 # LOG_LEVEL = 'INFO'
 
