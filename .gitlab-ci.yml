@@ -20,6 +20,7 @@ before_script:
 stages:
   - pep8
   - unittest
+  - webpack
 
 pep8:
   stage: pep8
@@ -35,3 +36,32 @@ unittest:
   script:
     - source scripts/develop/envs.sh
     - echo 'yes' | sh scripts/test/coverage_and_report.sh
+
+webpack:
+  stage: webpack
+  tags:
+    - canway-tag
+  cache:
+    untracked: true
+    paths:
+      - ./ui/node_modules
+  script:
+    # pull newest code
+    - echo "start build"
+    - rm -rf $CI_PROJECT_NAME
+    - git clone http://$GIT_USERNAME:$GIT_PASSWORD@$CI_SERVER_HOST/$CI_PROJECT_PATH.git
+    - cd $CI_PROJECT_NAME && git checkout $CI_COMMIT_REF_NAME
+    - cd  ./ui/ && ls -al
+    # build
+    - npm install
+    - npm run build
+    # push code with static/dist
+    - date >> .ci_commit
+    - git add -f -A static/dist .ci_commit
+    - git config --global user.name ci
+    - git config --global user.email ci@email.com
+    - git commit -m "auto commit [ci skip]"
+    - git push http://$GIT_USERNAME:$GIT_PASSWORD@gitlab-paas.open.oa.com/$CI_PROJECT_PATH.git $CI_COMMIT_REF_NAME
+    - echo "end build"
+  only:
+    - release
