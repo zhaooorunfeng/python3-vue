@@ -56,6 +56,7 @@ webpack:
     - npm install
     - npm run build
     # push code with static/dist
+    - cd ../
     - date >> .ci_commit
     - git add -f -A static/dist .ci_commit
     - git config --global user.name ci
