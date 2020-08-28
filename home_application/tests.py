@@ -11,6 +11,11 @@ an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express o
 specific language governing permissions and limitations under the License.
 """
 
-# from django.test import TestCase
+from django.test import TestCase
 
 # Create your tests here.
+
+
+class HomeTest(TestCase):
+    def test_home(self):
+        self.assertIsNotNone(1)
