@@ -29,4 +29,10 @@ release 作为部署和发包分支，由 GitLab CI 自动从 master 获取，�
 
 ### pre-commit
 
+pre-commit 是基于 Git Hooks 的本地开发套件，支持通过插件扩展能力。目前支持 PEP8 规范检查、代码格式化、commit 信息检查、
+requirements.txt 包检查等功能。
+
 ### GitLab CI
+
+GitLab CI 是 GitLab 内置的进行持续集成的工具，只需要在仓库根目录下创建 .gitlab-ci.yml 文件，并配置 GitLab Runner；
+每次提交的时候，gitlab 将自动识别到 .gitlab-ci.yml 文件，并且使用 Gitlab Runner 执行该脚本。
