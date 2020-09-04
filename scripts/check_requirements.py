@@ -8,6 +8,7 @@ import os
 import sys
 import re
 from six.moves import range
+from io import open
 
 # 禁止安装的 SDK
 FORBIDDEN_SDK = ["request"]
@@ -66,7 +67,7 @@ def sdk_match_version(sdk_info):
 def read_requirements():
     req_path = os.path.join(BASE_DIR, "requirements.txt")
     requirements = []
-    with open(req_path, "r") as req_file:
+    with open(req_path, "r", encoding="utf-8") as req_file:
         for line in req_file:
             line = line.strip()
             # 空行 或 注释
