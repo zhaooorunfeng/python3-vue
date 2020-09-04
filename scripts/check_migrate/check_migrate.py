@@ -221,9 +221,9 @@ def main(argv=None):
                 print("if you still want to commit, try it again")
                 return 1
         return 0
-    except Exception:
-        print("Unexpected exception occurred")
-        return 0
+    except Exception as e:
+        print("Unexpected exception occurred: %s" % e)
+        return 1
 
 
 if __name__ == "__main__":

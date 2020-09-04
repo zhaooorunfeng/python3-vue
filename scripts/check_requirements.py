@@ -97,7 +97,7 @@ def main():
         return 0
     except Exception as e:
         print("Unexpected exception occurred: %s" % e)
-        return 0
+        return 1
 
 
 if __name__ == "__main__":
