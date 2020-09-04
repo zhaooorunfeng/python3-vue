@@ -23,4 +23,5 @@ exclude =
     *.pyc,
     *.egg-info,
     .cache,
-    .eggs
+    .eggs,
+    *migrations*,
