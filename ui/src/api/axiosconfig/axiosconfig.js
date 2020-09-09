@@ -15,7 +15,7 @@ if (VueEnv === 'production') {
 // axios.defaults.baseURL = ApiUrl;
 axios.interceptors.request.use((config) => {
     config.headers['X-Requested-With'] = 'XMLHttpRequest';
-    var name = 'csrftoken'
+    var name = window.CSRF_COOKIE_NAME || 'csrftoken';
     var cookieValue = 'NOTPROVIDED';
     if (document.cookie && document.cookie != '') {
         var cookies = document.cookie.split(';');
