@@ -14,6 +14,8 @@
     } else {
         window.siteUrl = '{{ BK_PLAT_HOST }}{{ SITE_URL }}'
     }
+    window.APP_CODE = '{{ APP_CODE }}';
+    window.CSRF_COOKIE_NAME = '{{ CSRF_COOKIE_NAME }}';
 </script>
 <div id="app"></div>
 <script type="text/javascript" src="{{ STATIC_URL }}dist/js/manifest.js"></script>
