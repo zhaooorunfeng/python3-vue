@@ -66,6 +66,16 @@ INSTALLED_APPS += (  # noqa
 # 自定义中间件
 MIDDLEWARE += ("corsheaders.middleware.CorsMiddleware",)  # noqa
 
+# 自定义上下文
+CUSTOM_CONTEXT_PROCESSORS = [
+    "config.template.context_processors.custom_settings",
+]
+for tmpl in TEMPLATES:  # noqa
+    tmpl["OPTIONS"]["context_processors"] += CUSTOM_CONTEXT_PROCESSORS
+
+# CSRF Config
+CSRF_COOKIE_NAME = "%s_csrftoken" % APP_CODE  # noqa
+
 # 所有环境的日志级别可以在这里配置
 # LOG_LEVEL = 'INFO'
 
