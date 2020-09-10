@@ -15,3 +15,8 @@ python-json-logger==0.1.7
 whitenoise==3.3.0
 six==1.11.0
 django-cors-middleware==1.5.0
+
+# drf requirement
+djangorestframework==3.8.1
+django-filter==2.0.0
+django-jsonfield==1.0.1

@@ -33,6 +33,7 @@ from blueapps.conf.log import get_logging_config_dict
 
 # 请在这里加入你的自定义 APP
 INSTALLED_APPS += (  # noqa
+    "rest_framework",
     "home_application",
     "mako_application",
     "corsheaders",
@@ -109,7 +110,6 @@ LOGGING = get_logging_config_dict(locals())
 # 注意：请在首次提测和上线前修改，之后的修改将不会生效
 INIT_SUPERUSER = []
 
-
 # 使用mako模板时，默认打开的过滤器：h(过滤html)
 MAKO_DEFAULT_FILTERS = ["h"]
 
@@ -167,3 +167,18 @@ if locals().get("DISABLED_APPS"):
         if locals().get(_key) is None:
             continue
         locals()[_key] = tuple([_item for _item in locals()[_key] if not _item.startswith(_app + ".")])
+
+# ==============================================================================
+# REST FRAMEWORK SETTING
+# ==============================================================================
+REST_FRAMEWORK = {
+    "EXCEPTION_HANDLER": "component.drf.generics.exception_handler",
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_PAGINATION_CLASS": "component.drf.pagination.CustomPageNumberPagination",
+    "PAGE_SIZE": 10,
+    "TEST_REQUEST_DEFAULT_FORMAT": "json",
+    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework.authentication.SessionAuthentication",),
+    "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
+    "DATETIME_FORMAT": "%Y-%m-%d %H:%M:%S",
+    "NON_FIELD_ERRORS_KEY": "params_error",
+}
