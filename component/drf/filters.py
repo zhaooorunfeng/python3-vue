@@ -31,7 +31,7 @@ class OrderingFilter(filters.OrderingFilter):
                 if order_func:
                     custom_order = order_func(reverse, request)
                     custom_order_name = order_name.lstrip("-")
-                    custom_ordering.update(**{custom_order_name: custom_order})
+                    custom_ordering.update({custom_order_name: custom_order})
                     orderings[index] = custom_order_name
 
         return custom_ordering

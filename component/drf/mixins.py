@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from component.constants import ResponseCodeStatus
 from rest_framework import status
 from rest_framework.response import Response
+
+from component.constants import ResponseCodeStatus
 
 
 class ApiGenericMixin(object):

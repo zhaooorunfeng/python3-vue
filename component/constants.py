@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# 返回状态码
 from component.utils import choices_to_namedtuple, tuple_choices
 
+# 返回状态码
 CODE_STATUS_TUPLE = (
     "OK",
     "UNAUTHORIZED",

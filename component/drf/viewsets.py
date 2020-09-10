@@ -2,9 +2,10 @@
 """
     views相关模块代码
 """
-from component.drf.mixins import ApiGenericMixin
 from rest_framework import viewsets
 from rest_framework.views import APIView as _APIView
+
+from component.drf.mixins import ApiGenericMixin
 
 
 class APIView(ApiGenericMixin, _APIView):
