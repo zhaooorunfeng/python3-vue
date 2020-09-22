@@ -14,6 +14,7 @@ specific language governing permissions and limitations under the License.
 from __future__ import absolute_import
 
 import os
+from urllib.parse import urlparse
 
 # This will make sure the app is always imported when
 # Django starts so that shared_task will use this app.
@@ -46,6 +47,7 @@ RUN_VER = "open"
 # 蓝鲸SaaS平台URL，例如 http://paas.bking.com
 BK_PAAS_HOST = os.getenv("BK_PAAS_HOST", "")
 BK_URL = os.getenv("BK_URL", BK_PAAS_HOST)
+BK_PAAS_DOMAIN = urlparse(BK_PAAS_HOST).hostname
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
