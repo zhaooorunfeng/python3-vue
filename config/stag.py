@@ -13,7 +13,7 @@ specific language governing permissions and limitations under the License.
 
 import os
 
-from config import RUN_VER
+from config import RUN_VER, BK_PAAS_DOMAIN
 
 if RUN_VER == "open":
     from blueapps.patch.settings_open_saas import *  # noqa
@@ -46,3 +46,11 @@ DATABASES.update(  # noqa
         },
     }
 )
+
+# 白名单, 域名请按照前段实际配置修改
+CORS_ORIGIN_WHITELIST = [
+    "http://appdev.%s:8080" % BK_PAAS_DOMAIN,
+    "http://dev.%s:8080" % BK_PAAS_DOMAIN,
+]
+# 允许跨域使用 cookie
+CORS_ALLOW_CREDENTIALS = True
