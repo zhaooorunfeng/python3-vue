@@ -49,3 +49,6 @@ celerybeat-schedule
 # node
 node_modules/
 dist/
+
+# dev files
+local_settings.py
