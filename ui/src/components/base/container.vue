@@ -2,12 +2,14 @@
     <div id="main-container">
         <LeftMenu v-if="showLeftMenu"
                   :style="{width: leftWidth}"
-                  @menuChange="menuChange"
                   @colChange="colChange"
                   :menu-list="menuList"></LeftMenu>
         <div :class="{'full-width':!showLeftMenu,'col-left':colState}" style="width: calc(100% - 216px);">
             <div class="top-menu" v-if="showLeftMenu&&IsFarme">
-                <span>{{coMenu}}</span><span style=" font-weight: bold;">{{nowTitle}}</span>
+                <Breadcrumb separator="<span class='menu-bread'>></span>">
+                    <BreadcrumbItem v-for="(item,index) in breadList" :key="index" :to="item.path">{{item.name}}
+                    </BreadcrumbItem>
+                </Breadcrumb>
             </div>
             <router-view
                 :class="{'router-style':true,'content-body':showLeftMenu&&IsFarme,'farme-style':!IsFarme}"/>
@@ -34,6 +36,7 @@
                 coMenu: '',
                 IsFarme: true,
                 appType: '',
+                breadList: [],
                 headerHeight: '60px',
                 leftWidth: '65px',
                 nowTitle: '',
@@ -43,8 +46,10 @@
         created() {
             this.isShowLeftMenu();
             this.judgeFarme()
+            this.getBreadcrumb()
         },
         methods: {
+            //判断是否是框架的页面 不用可以注释
             judgeFarme() {
                 for (let item in frameRouter) {
                     if (this.$route.name === frameRouter[item].name) {
@@ -55,6 +60,7 @@
                     }
                 }
             },
+            //是否展示左边导航栏
             isShowLeftMenu() {
                 if (this.$route.path === '/' || this.$route.path === '/home') {
                     this.showLeftMenu = false;
@@ -63,18 +69,32 @@
                     this.showLeftMenu = true;
                 }
             },
-            menuChange(data) {
-                this.coMenu = ''
-                this.nowTitle = ''
-                let titleDatas = data.split('>')
-                for (let item in titleDatas) {
-                    if (parseInt(item) + 1 !== titleDatas.length) {
-                        this.coMenu += titleDatas[item] + ' > '
-                    } else {
-                        this.nowTitle = titleDatas[item]
-                    }
-                }
+            /*
+            新开发时 建议在跳转页面的子页面时 路由里面增加children 页面里面增加 <route-view></route-view>
+            重新开发框架 就利用路由元信息 吧路径结构配置在Route meat属性中  自行更改：例如
+             meta: {
+                breadList: [{
+                    name: "首页",
+                    path: "/home"
+                }, {
+                    name: "系统设置",
+                    path: "/setting"
+                }, {
+                    name: "用户管理",
+                    path: "/setting/usermanage"
+                }]
+            }
+            可以参照公共组件：https://paas.cwbk.com/o/cw-public/#/activeDetail?id=581&operation=myActive
+             */
+            //获取路由路径
+            getBreadcrumb() {
+                // let matched = this.$route.matched; //获取路由记录 包含当前路由的所有嵌套路径片段的路由记录
+                this.breadList = this.$route.meta.breadList;
             },
+            isHome(route) {
+                return route.name === '/';
+            },
+            //左边导航栏是否伸缩
             colChange(data) {
                 if (this.showLeftMenu) {
                     this.colState = data
@@ -87,6 +107,7 @@
         watch: {
             $route: function () {
                 this.judgeFarme()
+                this.getBreadcrumb()
                 this.isShowLeftMenu()
             }
         },
@@ -117,13 +138,15 @@
         }
 
         .router-style {
-            background-color: #ffffff;
+            background-color: $background-color;
             height: calc(100% - 30px) !important;
             color: $font-second;
         }
 
         .farme-style {
             padding: 16px !important;
+            height: calc(100% - 0px) !important;
+            background-color: #fff!important;
         }
 
         .content-body {
@@ -140,6 +163,10 @@
             line-height: 32px;
             padding-left: 16px;
             vertical-align: bottom;
+
+            /deep/ .menu-bread {
+                color: $font-color;
+            }
         }
     }
 </style>

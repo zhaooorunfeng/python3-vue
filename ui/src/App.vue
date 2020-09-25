@@ -87,6 +87,12 @@
                         icon: 'ios-radio-button-off',
                         hasChild: false,
                     }, {
+                        name: 'Border',
+                        cnName: '边框',
+                        to: '/border',
+                        icon: 'ios-bookmark-outline',
+                        hasChild: false,
+                    }, {
                         name: 'InstancePage',
                         cnName: '示例',
                         to: '/instancePage',

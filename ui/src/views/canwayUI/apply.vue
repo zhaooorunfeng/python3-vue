@@ -119,6 +119,34 @@
                 </div>
             </div>
         </div>
+        <div class="apply-radio">
+            <p>单选框</p>
+            <div>
+                <div style="width: 30%;">
+                    <RadioGroup v-model="buttonSize" type="button">
+                        <Radio label="large">Large</Radio>
+                        <Radio label="default">Default</Radio>
+                        <Radio label="small">small</Radio>
+                    </RadioGroup>
+                </div>
+                <div style="width: 30%;">
+                    <RadioGroup v-model="phone">
+                        <Radio label="apple">
+                            <Icon type="logo-apple"></Icon>
+                            <span>Apple</span>
+                        </Radio>
+                        <Radio label="android">
+                            <Icon type="logo-android"></Icon>
+                            <span>Android</span>
+                        </Radio>
+                        <Radio label="windows">
+                            <Icon type="logo-windows"></Icon>
+                            <span>Windows</span>
+                        </Radio>
+                    </RadioGroup>
+                </div>
+            </div>
+        </div>
         <div class="apply-row">
             <p>抽屉</p>
             <div>
@@ -133,7 +161,8 @@
         <div class="apply-row">
             <p>表格</p>
             <div style="height: 400px;">
-                <CwTable style="width: 100%;"></CwTable>
+                <CwTable :columns="pro_table_titles"
+                         :data="tableList" style="width: 100%;"></CwTable>
             </div>
         </div>
         <div class="apply-row">
@@ -145,6 +174,8 @@
         <Modal v-model="show"
                width="420"
                title="我是弹窗"
+               draggable="true"
+               mask="true"
                :mask-closable="false">
             <Form ref="forms" :model="formItem" :label-width="80">
                 <FormItem label="输入框"
@@ -161,14 +192,14 @@
                     </Select>
                 </FormItem>
             </Form>
-<!--            <div slot="footer">-->
-<!--                <Button class="margin-left10">取消</Button>-->
-<!--                <Button type="primary"-->
-<!--                        @click="MountingOK()"-->
-<!--                >-->
-<!--                    确定-->
-<!--                </Button>-->
-<!--            </div>-->
+            <!--            <div slot="footer">-->
+            <!--                <Button class="margin-left10">取消</Button>-->
+            <!--                <Button type="primary"-->
+            <!--                        @click="MountingOK()"-->
+            <!--                >-->
+            <!--                    确定-->
+            <!--                </Button>-->
+            <!--            </div>-->
         </Modal>
         <Drawer title="Basic Drawer" :closable="false" v-model="value1" width="600">
             <p>Some contents...</p>
@@ -209,8 +240,183 @@
             return {
                 show: false,
                 value1: false,
+                buttonSize: 'large',
                 value2: false,
-                formItem: {}
+                formItem: {},
+                pro_table_titles: [
+                    {
+                        type: 'selection',
+                        key: 'log_type',
+                        width: 60,
+                        // fixed: 'left',
+                        // sortable: true
+                    },
+                    {
+                        title: '用户名',
+                        key: 'userName',
+                        align: 'left',
+                        sortable: true,
+                    },
+                    {
+                        title: '所属网络',
+                        key: 'Network',
+                        align: 'left',
+                        sortable: true,
+                    },
+                    {
+                        title: '身份',
+                        key: 'identity',
+                        align: 'left',
+                        sortable: true,
+                    },
+                    {
+                        title: 'IP',
+                        key: 'IP',
+                        align: 'left',
+                        sortable: true,
+                    },
+                    {
+                        title: '操作',
+                        // fixed: 'right',
+                        width: 250,
+                        align: 'left',
+                        render: (h, params) => {
+                            let check = false
+                            return h('div', [
+                                h('Button', {
+                                    class: 'detail-color',
+                                    props: {
+                                        type: 'text',
+                                    },
+                                    style: {
+                                        marginRight: '5px'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            this.update(params.index, params.row)
+                                        }
+                                    }
+                                }, '修改'),
+                                h('Button', {
+                                    class: 'detail-color',
+                                    props: {
+                                        type: 'text',
+                                    },
+                                    style: {
+                                        marginRight: '5px'
+                                    },
+                                    on: {
+                                        click: () => {
+                                            this.delete(params.index, params.row)
+                                        }
+                                    }
+                                }, '删除')
+                            ]);
+                        }
+                    }],
+                tableList: [
+                    {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {
+                        userName: 'instance-00412937',
+                        Network: '公有云',
+                        identity: '超级管理员',
+                        IP: '127.0.0.1'
+                    }, {userName: 'instance-00412937', Network: '公有云', identity: '超级管理员', IP: '127.0.0.1'}],
+                phone: 'apple',
             }
         },
         mounted() {
@@ -318,6 +524,23 @@
 
         .content {
             padding-left: 5px;
+        }
+
+        .apply-radio {
+            > > p {
+                font-size: 24px;
+                margin-bottom: 8px;
+                font-weight: bold;
+            }
+
+            > > div {
+                height: 120px;
+
+                > > div {
+                    width: 45%;
+                    margin-bottom: 24px;
+                }
+            }
         }
 
         .apply-row {
