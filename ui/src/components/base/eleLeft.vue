@@ -16,13 +16,13 @@
                               v-if="!item.hasChild"
                               :class="{'homeSe':item.to===defaultActive}">
                      <Tooltip v-if="isCollapse" :content="item.cnName" placement="right">
-               <Icon class="margin-4px" :type="item.icon"/>
-                         </Tooltip>
+                          <Icon class="margin-4px" :type="item.icon"/>
+                     </Tooltip>
                      <Icon v-if="!isCollapse" class="margin-4px" :type="item.icon"/>
-                            <span v-if="!isCollapse">{{item.cnName}}</span>
+                     <span v-if="!isCollapse">{{item.cnName}}</span>
                 </el-menu-item>
                 <el-submenu :index="item.to"
-                            :class="{'first-menu':isCollapse,'second-selected':item.name===seFather[0]}"
+                            :class="{'first-menu':isCollapse,'second-selected':item.to===seFather[0]}"
                             v-if="item.hasChild">
                     <template slot="title">
                         <Icon class="margin-4px" :type="item.icon"></Icon>
@@ -114,10 +114,7 @@
     }
 </script>
 
-<style scoped>
-</style>
-
-<style scoped>
+<style scoped lang="scss">
     .collapse-icon {
         position: absolute;
         bottom: 20px;
@@ -162,13 +159,18 @@
         margin-left: 4px;
     }
 
-    /*.el-menu-vertical-demo:not(.el-menu--collapse) {*/
-    /*width: 200px;*/
-    /*min-height: 400px;*/
-    /*}*/
-    /deep/ .el-submenu__title{
+    /deep/ .el-submenu__title {
         font-size: 14px;
     }
+
+    /deep/ .second-selected > .el-submenu__title {
+        color: $base-color !important;
+
+        > > span {
+            color: $base-color !important;
+        }
+    }
+
     /deep/ .first-menu > .el-submenu__title > .el-submenu__icon-arrow {
         display: none !important;
     }

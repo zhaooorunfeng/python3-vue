@@ -296,16 +296,23 @@
                 // <CwTable :cutHeight="40" :cwheight=0 :columns="pro_table_titles":data="Reserveplans"></CwTable>    引入格式：  cwheight可以自适应高度 也可以给高度 如果自适应 cwheight给0就ok
                 //初始值 页面加载就进行自适应 topdistance是距离顶部距离 -10是为了有些border占用1px
                 //*0.01 调节距离底部的距离 越小距离底部越近
-                let topdistance = parseInt($('#cw-table').offset().top)
-                console.log(topdistance)
-                if (this.cwheight == 0) {
-                    this.$refs.block.style.height = window.innerHeight - topdistance - 20 + 'px'
-                    this.tableHeight = window.innerHeight - topdistance - 56 - ((window.innerHeight - topdistance - 60) * 0.01)
-                    this.footerHeight = window.innerHeight - topdistance - 60 - this.tableHeight
-                } else {
-                    this.$refs.block.style.height = this.cwheight
-                    this.tableHeight = this.cwheight
-                }
+                this.$nextTick(() => {
+                    var nav = $('#cw-table');
+                    let topdistance = 0
+                    if (nav.length) {
+                        topdistance = parseInt(nav.offset().top)
+                    }
+                    if (this.cwheight === 0) {
+                        if (this.$refs.block) {
+                            this.$refs.block.style.height = window.innerHeight - topdistance - 20 + 'px'
+                            this.tableHeight = window.innerHeight - topdistance - 56 - ((window.innerHeight - topdistance - 60 - 10) * 0.01)
+                            this.footerHeight = window.innerHeight - topdistance - 60 - this.tableHeight
+                        }
+                    } else {
+                        this.$refs.block.style.height = this.cwheight
+                        this.tableHeight = this.cwheight
+                    }
+                })
                 if (storage.getItem('pagesize') != null) {
                     this.nowPageSize = parseInt(storage.pagesize)
                 }
@@ -329,7 +336,7 @@
                             }
                         } else {
                             this.$refs.block.style.height = this.cwheight
-                            this.tableHeight = this.cwheight
+                            this.tableHeight = this.cwheight - 56
                         }
                     })()
                 }
@@ -350,7 +357,7 @@
                 background: #fff;
                 width: 100%;
                 position: absolute;
-                /*bottom: 5px;*/
+                bottom: 5px;
                 z-index: 9;
                 text-align: right;
                 padding-right: 10px;
@@ -371,13 +378,17 @@
         /deep/ .ivu-table {
             overflow-x: hidden;
             color: #4d5669 !important;
-            font-size: 14px;
+            font-size: 13px;
             border-bottom: 1px solid $border-color;
 
             /deep/ .ivu-table-overflowY::-webkit-scrollbar {
                 /*滚动条整体样式*/
                 width: 7px; /*高宽分别对应横竖滚动条的尺寸*/
                 height: 4px;
+            }
+
+            /deep/ .btn-prev {
+                border: 1px solid $border-color;
             }
 
             /deep/ .ivu-table-overflowY::-webkit-scrollbar-thumb {
@@ -405,7 +416,8 @@
 
         /deep/ .ivu-table-wrapper {
             border: none !important;
-            height: calc(100% - 40px) !important;
+            width: 100%;
+            /*height: calc(100% - 40px) !important;*/
         }
 
         /deep/ .ivu-table:before {

@@ -1,25 +1,33 @@
 <template>
-    <div id="cw-table" style="height: 100%">
-        <div id="cw-table-box" class="cw-table-box" :style="{height: 'calc(100% - '+ cutHeight + 'px' +')' }">
-            <Table
-                :ellipsis="ellipsis"
-                :tooltip="tooltip"
-                :height="defaultTableHeight"
-                :columns="columnsNew"
-                :data="pageData"
-                @on-select-all-cancel="selectCancel"
-                @on-select-all="selectAll"
-                @on-select="select"></Table>
-            <div class="cw-table-footer">
+    <div id="cw-table"
+         ref="block">
+        <div id="cw-table-box"
+             class="cw-table-box"
+             style="height: 100%">
+            <Table ref="selection"
+                   :ellipsis="ellipsis"
+                   :tooltip="tooltip"
+                   :loading="loading"
+                   :border="false"
+                   :columns="columnsNew"
+                   :data="pageData"
+                   :stripe="stripe"
+                   :height="tableHeight"
+                   @on-row-click="rowClick"
+                   @on-selection-change="selectionChange">
+            </Table>
+            <div class="cw-table-footer"
+                 ref="table">
                 <Page
                     v-if="showFooter"
-                    :current="page.page_num"
-                    :total="page.page_num"
-                    :page-size="page.page_size"
+                    :current="page.pageNum"
+                    :total="page.total_num"
+                    :page-size="page.pageSize"
                     :page-size-opts="pageSizes"
                     @on-page-size-change="sizeChange"
                     @on-change="currentChange"
                     show-total
+                    show-sizer
                     show-elevator/>
             </div>
         </div>
@@ -29,12 +37,18 @@
 <script>
     import jquery from 'jquery'
 
+    var storage = window.localStorage;
     export default {
         name: 'cw-table',
         props: {
             popperClass: {
                 default: '条/个'
             },
+            loading: {
+                type: Boolean,
+                default: false
+            },
+            cwheight: {},
             cutHeight: {
                 default: 0
             },
@@ -60,81 +74,31 @@
                 default: function () {
                     return [
                         {
-                            type: 'selection',
-                            width: 60,
-                            align: 'center'
-                        },
-                        {
-                            title: '列一',
+                            title: '默认列',
                             key: 'cloud_name',
                             sortable: true,
                             width: 100
-                        }, {
-                            title: '列二',
-                            key: 'inner_ip',
-                            sortable: true
-                        }, {
-                            title: '列三',
-                            key: 'host_name',
-                            sortable: true
-                        }, {
-                            title: '列四',
-                            key: 'date',
-                            sortable: true
-                        }, {
-                            title: '操作',
-                            render: (h, param) => {
-                                return h('div', [
-                                        h('span', {
-                                            style: {
-                                                color: '#399CFF',
-                                                marginRight: '10px',
-                                                cursor: 'pointer'
-                                            }
-                                        }, '修改'),
-                                        h('span', {
-                                            style: {
-                                                color: '#399CFF',
-                                                cursor: 'pointer'
-                                            }
-                                        }, '删除')
-                                    ]
-                                )
-                            }
                         }
                     ]
                 }
             },
             data: {
                 default: function () {
-                    return [
-                        {
-                            cloud_name: '123123',
-                            inner_ip: '192.168.1.1',
-                            host_name: 'New York',
-                            date: '2016-10-03'
-                        }, {
-                            cloud_name: '华南区2',
-                            inner_ip: '192.168.1.2',
-                            host_name: 'New York',
-                            date: '2016-10-04'
-                        }, {
-                            cloud_name: '华南区3',
-                            inner_ip: '192.168.1.3',
-                            host_name: 'New York',
-                            date: '2016-10-05'
-                        }
-                    ]
-                }
+                    return []
+                },
+                type: Array
             },
             page: {
                 default: function () {
                     return {
-                        page_num: 1,
-                        page_size: 10,
+                        pageNum: 1,
+                        pageSize: 10,
                         total_num: 0
                     }
                 }
+            },
+            total: {
+                default: 1
             },
             pagerCount: {
                 default: 5
@@ -146,22 +110,33 @@
             },
             layout: {
                 default: 'total, sizes, prev, pager, next, jumper'
+            },
+            rightMenu: {
+                default: function () {
+                    return {
+                        title: '实例信息',
+                        status: false
+                    }
+                }
             }
         },
         components: {},
         data() {
             return {
-                defaultTableHeight: 100,
+                screenHeight: document.body.clientHeight,
+                defaultTableHeight: 500,
                 columnsNew: [],
-                pageData: []
+                tableHeight: 460,
+                footerHeight: 40,
+                pageData: [],
+                closable: false,
+                instObj: {},
+                pageTotal: 0,
+                nowPageSize: 10,
             }
         },
         mounted() {
-            this.defaultTableHeight = document.getElementById('cw-table-box').offsetHeight - 40;
-            // this.page.page_size = parseInt((document.getElementById('cw-table-box').offsetHeight - 80) / 40);
-            // this.pageSizes[0] = this.page.page_size;
-            this.initColumns();
-            this.initPage();
+            this.table_change()
         },
         watch: {
             columns: function () {
@@ -172,6 +147,22 @@
             },
             page: function () {
                 this.initPage();
+            },
+            total: function (total) {
+                this.total = total;
+                this.initPage();
+            },
+            screenHeight(val) {
+                // 为了避免频繁触发resize函数导致页面卡顿，使用定时器
+                if (!this.timer) {
+                    // 一旦监听到的screenWidth值改变，就将其重新赋给data里的screenWidth
+                    this.timer = true
+                    let that = this
+                    setTimeout(function () {
+                        // 打印screenWidth变化的值
+                        that.timer = false
+                    }, 400)
+                }
             }
         },
         methods: {
@@ -193,78 +184,137 @@
                         {
                             title: '列一',
                             key: 'cloud_name',
-                            sortable: true,
-                            width: 100
-                        }, {
-                            title: '列二',
-                            key: 'inner_ip',
-                            sortable: true
-                        }, {
-                            title: '列三',
-                            key: 'host_name',
-                            sortable: true
-                        }, {
-                            title: '列四',
-                            key: 'date',
                             sortable: true
                         }
                     ];
                 }
             },
             initPage() {
-                this.page.total_num = this.data.length;
-                this.switchTablePage();
-            },
-            switchTablePage() {
-                this.pageData = [];
-                this.data.forEach((item, index) => {
-                    let start = this.page.page_size * (this.page.page_num - 1);
-                    let end = this.page.page_size * this.page.page_num;
-                    if (start < (index + 1) && (index + 1) <= end) {
-                        this.pageData.push(item);
-                    }
-                });
+                if (!this.remote) {
+                    this.pageData = [];
+                    // this.pageTotal = this.data.length;
+                    this.page.total_num = this.data.length;
+                    this.data.forEach((item, index) => {
+                        let start = this.page.pageSize * (this.page.pageNum - 1);
+                        let end = this.page.pageSize * this.page.pageNum;
+                        if (start < (index + 1) && (index + 1) <= end) {
+                            this.pageData.push(item);
+                        }
+                    });
+                } else {
+                    this.pageTotal = this.total;
+                    this.pageData = this.data;
+                }
             },
             sizeChange(size) {
-                if (!this.remote) {
-                    this.page.page_size = size;
-                    this.switchTablePage();
+                storage.pagesize = size
+                this.page.pageSize = parseInt(storage.pagesize)
+                if (this.remote) {
+                    this.$emit('sizeChange', size);
+                    // this.$emit('pageChange', this.page);
                 } else {
-                    this.$emit('sizeChange', size)
+                    this.initPage();
                 }
             },
             currentChange(pageNum) {
-                if (!this.remote) {
-                    this.page.page_num = pageNum;
-                    this.switchTablePage();
+                this.page.pageNum = pageNum;
+                if (this.remote) {
+                    this.$emit('currentChange', pageNum);
+                    this.$emit('pageChange', this.page);
                 } else {
-                    this.$emit('currentChange', pageNum)
+                    this.initPage();
                 }
             },
             nextClick(pageNum) {
-                if (!this.remote) {
-                    this.page.page_num = pageNum;
-                    this.switchTablePage();
+                this.page.pageNum = pageNum;
+                if (this.remote) {
+                    this.$emit('nextClick', pageNum);
+                    this.$emit('pageChange', this.page);
                 } else {
-                    this.$emit('nextClick', pageNum)
+                    this.initPage();
                 }
             },
             prevClick(pageNum) {
-                if (!this.remote) {
-                    this.page.page_num = pageNum;
-                    this.switchTablePage();
+                this.page.pageNum = 2;
+                if (this.remote) {
+                    this.$emit('prevClick', pageNum);
+                    this.$emit('pageChange', this.page);
                 } else {
-                    this.$emit('prevClick', pageNum)
+                    this.initPage();
                 }
             },
-            selectCancel(selection) {
-                this.$emit('on-select-cancel', selection)
+            rowClick(row) {
+                if (this.rightMenu.status) {
+                    this.showDrawer(row, this.rightMenu.columns);
+                } else {
+                    this.$emit('rowClick', row)
+                }
             },
-            selectAll(selection) {
-                this.$emit('on-select-all', selection)
+            selectionChange(targetRows) {
+                this.$emit('on-selection-change', targetRows);
             },
-            select(row) {
-                this.$emit('on-select', row)
+            cancelSelectAll() {
+                this.$refs.selection.selectAll(false);
+            },
+            showDrawer(row, columns) {
+                this.closable = true;
+                let colObj = {};
+                if (columns) {
+                    columns.forEach((item, index) => {
+                        colObj[item.key] = item.title;
+                    });
+                } else {
+                    this.columnsNew.forEach((item, index) => {
+                        colObj[item.key] = item.title;
+                    });
+                }
+                Object.keys(row).forEach((key) => {
+                    if (colObj.hasOwnProperty(key)) {
+                        let title = colObj[key];
+                        this.instObj[title] = row[key];
+                    }
+                })
+            },
+            table_change() {
+                // <CwTable :cutHeight="40" :cwheight=0 :columns="pro_table_titles":data="Reserveplans"></CwTable>    引入格式：  cwheight可以自适应高度 也可以给高度 如果自适应 cwheight给0就ok
+                //初始值 页面加载就进行自适应 topdistance是距离顶部距离 -10是为了有些border占用1px
+                //*0.01 调节距离底部的距离 越小距离底部越近
+                let topdistance = parseInt($('#cw-table').offset().top)
+                if (this.cwheight == 0) {
+                    this.$refs.block.style.height = window.innerHeight - topdistance - 20 + 'px'
+                    this.tableHeight = window.innerHeight - topdistance - 56 - ((window.innerHeight - topdistance - 60) * 0.01)
+                    this.footerHeight = window.innerHeight - topdistance - 60 - this.tableHeight
+                } else {
+                    this.$refs.block.style.height = this.cwheight
+                    this.tableHeight = this.cwheight
+                }
+                if (storage.getItem('pagesize') != null) {
+                    this.nowPageSize = parseInt(storage.pagesize)
+                }
+                this.initColumns();
+                this.initPage();
+                this.$nextTick(() => {
+                })
+                const that = this
+                window.onresize = () => {
+                    return (() => {
+                        var nav = $('#cw-table');
+                        let topdistance = 0
+                        if (nav.length) {
+                            topdistance = parseInt(nav.offset().top)
+                        }
+                        if (this.cwheight == 0) {
+                            if (this.$refs.block) {
+                                this.$refs.block.style.height = window.innerHeight - topdistance - 20 + 'px'
+                                this.tableHeight = window.innerHeight - topdistance - 56 - ((window.innerHeight - topdistance - 60 - 10) * 0.01)
+                                this.footerHeight = window.innerHeight - topdistance - 60 - this.tableHeight
+                            }
+                        } else {
+                            this.$refs.block.style.height = this.cwheight
+                            this.tableHeight = this.cwheight
+                        }
+                    })()
+                }
             }
         }
     }
@@ -277,12 +327,9 @@
 
         .cw-table-box {
             position: relative;
-            border-right: none;
 
             .cw-table-footer {
-                border-top: 1px solid #dde4eb;
-                /*background: #fafbfd;*/
-                height: 40px;
+                background: #fff;
                 width: 100%;
                 position: absolute;
                 /*bottom: 5px;*/
@@ -290,109 +337,69 @@
                 text-align: right;
                 padding-right: 10px;
                 line-height: 40px;
-                padding-top: 8px;
+                padding-top: 4px;
             }
         }
     }
 </style>
 <!--iview表格样式-->
-<style lang="scss">
-    #cw-table {
-        .ivu-table {
-            color: #4d5669 !important;
+<style lang="scss" scoped>
+    html,
+    body {
+        height: 100%;
+    }
 
-            .ivu-table-overflowY::-webkit-scrollbar { /*滚动条整体样式*/
+    #cw-table {
+        /deep/ .ivu-table {
+            overflow-x: hidden;
+            overflow-y: auto;
+            color: #4d5669 !important;
+            font-size: 13px;
+            border-bottom: 1px solid $border-color;
+
+            /deep/ .ivu-table-overflowX {
+                overflow-x: hidden !important;
+            }
+
+            /deep/ .ivu-table-overflowY::-webkit-scrollbar {
+                /*滚动条整体样式*/
                 width: 7px; /*高宽分别对应横竖滚动条的尺寸*/
                 height: 4px;
             }
 
-            .ivu-table-overflowY::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+            /deep/ .ivu-table-overflowY::-webkit-scrollbar-thumb {
+                /*滚动条里面小方块*/
                 border-radius: 5px;
                 -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
                 background: #a5a5a5;
             }
+
         }
 
-        .ivu-table td {
-            height: 40px !important;
+        /deep/ .el-pagination.is-background .el-pager li:not(.disabled).active {
+            background-color: #fff !important;
+            color: $base-color !important;
+            border: 1px solid $base-color !important;
         }
 
-        .ivu-table th {
-            background: #fafbfd;
-            font-size: 14px !important;
-            font-weight: 200 !important;
-            height: 40px !important;
-            color: #282A2B;
+        /deep/ .ivu-table th {
+            background-color: #f7f8f9 !important;
         }
 
-        .ivu-table-header th:nth-last-child(2) {
-            border-right: none;
-        }
-
-        .ivu-table-body table {
-            width: 100% !important;
-        }
-
-        .ivu-table:before {
-            background: #fff;
-        }
-
-        .ivu-table:after {
+        /deep/ .ivu-table:after {
             width: 0;
         }
 
-        .ivu-table-border td {
-            border-right: none;
+        /deep/ .ivu-table-wrapper {
+            border: none !important;
+            height: calc(100% - 40px) !important;
         }
 
-        .ivu-table th .ivu-table-cell {
-            white-space: nowrap;
-            font-weight: bold;
+        /deep/ .ivu-table:before {
+            display: none;
         }
-
-        .ivu-table-stripe .ivu-table-body tr:nth-child(2n) td, .ivu-table-stripe .ivu-table-fixed-body tr:nth-child(2n) td {
-            background: #fafbfd !important;
+        /deep/ .ivu-table td, .ivu-table th {
+            height: 40px !important;
         }
-
-        .ivu-table-wrapper {
-            /*border-right: 1px solid #dde4eb;*/
-        }
-    }
-</style>
-<!--element分页样式-->
-<style lang="scss">
-    #cw-table .el-pagination {
-        color: #4d5669;
-        font-weight: 200;
-    }
-
-    #cw-table .btn-prev {
-        border: 1px solid #ddd !important;
-    }
-
-    #cw-table .btn-next {
-        border: 1px solid #ddd !important;
-    }
-
-    #cw-table .el-pager li:hover {
-        border: 1px solid $base-color !important;
-        border-right: none;
-    }
-
-    #cw-table .el-pager li {
-        border: 1px solid #ddd;
-        border-right: none;
-    }
-
-    #cw-table .el-pager .active {
-        background: $base-color;
-        border: 1px solid $base-color !important;
-        color: #fff !important;
-    }
-
-    #cw-table .el-select-dropdown {
-        box-shadow: none;
-        max-width: 100px;
-        min-width: 100px !important;
     }
 </style>
