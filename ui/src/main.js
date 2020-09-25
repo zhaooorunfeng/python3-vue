@@ -8,7 +8,6 @@ import 'element-ui/lib/theme-chalk/index.css'
 // import iViewUI from 'iview';
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
-import 'jquery'
 import axios from 'axios'
 // import 'iview/dist/styles/iview.css';
 // 几何图
@@ -30,7 +29,7 @@ import Dire from './directive/index.js'
 import Component from './components/index.js'
 //vuex
 import store from './store/index'
-
+import 'jquery'
 Vue.use(ElementUI);
 Vue.use(ViewUI);
 Vue.use(Echarts);

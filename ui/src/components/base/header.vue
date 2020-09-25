@@ -2,7 +2,7 @@
     <div id="cw-header" :style="{height: headerHeight}">
         <div class="logo">
             <router-link to="/">
-                <img :src="src" class="CW-Logo" alt="嘉为蓝鲸">
+                <img :src="require('../../assets/base/img/logo.png')" class="CW-Logo" alt="嘉为蓝鲸">
             </router-link>
         </div>
         <div class="title PingFang">
@@ -17,7 +17,22 @@
         <div class="user">
             <ul>
                 <li class="NameHover">
-                    <span class="username Helvetica-Neue">{{userData.username}}</span>
+                    <Dropdown placement="right-start">
+                        <span class="username Helvetica-Neue">{{userData.username}}</span>
+                        <a style="margin-left: 10px" href="javascript:void(0)">
+                            <Icon class="UserIcon" type="ios-arrow-down"></Icon>
+                        </a>
+                        <template slot="list">
+                            <div class="detail">
+                                <div @click="OutLogin" class="login-out-sty">
+                                    <div class="icon-Sty">
+                                        <Icon style="font-size:20px" type="ios-exit-outline"/>
+                                    </div>
+                                    <div class="font-Sty">退出登录</div>
+                                </div>
+                            </div>
+                        </template>
+                    </Dropdown>
                 </li>
             </ul>
         </div>
@@ -44,6 +59,7 @@
                 userData: {},
                 username: '123',
                 headerHeight: '60px',
+                logout_url: '',
                 src: whiteLogo,
                 cusChange: false,
                 showMenu: true
@@ -71,6 +87,9 @@
                     }
                 });
             },
+            OutLogin() {
+                window.location.href = this.logout_url
+            },
             goHome() {
                 this.$router.push('/home')
             }
@@ -81,7 +100,8 @@
 <style lang="scss" scoped>
     $headBackgroundColor: if($head-theme=='light', #fff, $base-color);
     $font-color: if($head-theme=='light', $base-color, #fff);
-
+    $name-hover: if($head-theme=='light', #f7f8f9, $base-color);
+    $header-font: if($head-theme=='light', $font-second, #D7EBFF);
     #cw-header {
         width: 100%;
         height: $headerHeight;
@@ -146,7 +166,13 @@
             margin-right: 20px;
 
             .NameHover:hover {
-                background-color: #f7f8f9;
+                background-color: if($head-theme=='light', #fff, $base-color);
+                border-bottom: 2px solid $font-color;
+
+                .username, .UserIcon {
+                    color: if($head-theme=='light', $base-color, #fff);
+                }
+
             }
 
             ul {
@@ -189,14 +215,14 @@
                     max-width: 100px;
                     white-space: nowrap;
                     text-overflow: ellipsis;
-                    color: $font-second;
+                    color: $header-font;
                     display: inline-block;
                     float: left;
                     overflow: hidden;
                 }
 
                 .UserIcon {
-                    color: $font-second;
+                    color: $header-font;
                 }
 
                 .detail {

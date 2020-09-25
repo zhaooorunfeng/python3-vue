@@ -40,11 +40,10 @@
                         <div class="itemType">Info</div>
                         <div class="itemRGB">#40C6EF</div>
                     </div>
-                    <div class="sccondfloor">
-                        <div class="sccondfloor-item radiusStyleft auxiliaryInfo-left"></div>
-                        <div class="sccondfloor-item auxiliaryInfo-left"></div>
-                        <div class="sccondfloor-item auxiliaryInfo-right"></div>
-                        <div class="sccondfloor-item radiusStyRight auxiliaryInfo-right"></div>
+                    <div class="sccondfloor" style="display: flex">
+                        <div class="dis-three radiusStyleft info-hover"></div>
+                        <div class="dis-three info-border"></div>
+                        <div class="dis-three radiusStyRight info-back"></div>
                     </div>
                 </div>
                 <div class="SecondSty width-25">
@@ -52,11 +51,10 @@
                         <div class="itemType">Success</div>
                         <div class="itemRGB">#3DE586</div>
                     </div>
-                    <div class="sccondfloor">
-                        <div class="sccondfloor-item radiusStyleft auxiliarySuccess-left"></div>
-                        <div class="sccondfloor-item auxiliarySuccess-left"></div>
-                        <div class="sccondfloor-item auxiliarySuccess-right"></div>
-                        <div class="sccondfloor-item radiusStyRight auxiliarySuccess-right"></div>
+                    <div class="sccondfloor" style="display: flex">
+                        <div class="dis-three radiusStyleft success-hover"></div>
+                        <div class="dis-three success-border"></div>
+                        <div class="dis-three radiusStyRight success-back"></div>
                     </div>
                 </div>
                 <div class="SecondSty width-25">
@@ -64,11 +62,10 @@
                         <div class="itemType">Warning</div>
                         <div class="itemRGB">#FEA30D</div>
                     </div>
-                    <div class="sccondfloor">
-                        <div class="sccondfloor-item radiusStyleft auxiliaryWarning-left"></div>
-                        <div class="sccondfloor-item auxiliaryWarning-left"></div>
-                        <div class="sccondfloor-item auxiliaryWarning-right"></div>
-                        <div class="sccondfloor-item radiusStyRight auxiliaryWarning-right"></div>
+                    <div class="sccondfloor" style="display: flex">
+                        <div class="dis-three radiusStyleft warn-hover"></div>
+                        <div class="dis-three warn-border"></div>
+                        <div class="dis-three radiusStyRight warn-back"></div>
                     </div>
                 </div>
                 <div class="SecondSty width-25">
@@ -76,11 +73,10 @@
                         <div class="itemType">Error</div>
                         <div class="itemRGB">#ED3F3F</div>
                     </div>
-                    <div class="sccondfloor">
-                        <div class="sccondfloor-item radiusStyleft auxiliaryError-left"></div>
-                        <div class="sccondfloor-item auxiliaryError-left"></div>
-                        <div class="sccondfloor-item auxiliaryError-right"></div>
-                        <div class="sccondfloor-item radiusStyRight auxiliaryError-right"></div>
+                    <div class="sccondfloor" style="display: flex">
+                        <div class="dis-three radiusStyleft error-hover"></div>
+                        <div class="dis-three error-border"></div>
+                        <div class="dis-three radiusStyRight error-back"></div>
                     </div>
                 </div>
             </div>
@@ -156,6 +152,55 @@
         height: 100%;
         overflow-y: auto;
 
+        .info-hover {
+            background-color: $info-hover;
+        }
+
+        .info-border {
+            background-color: $info-border;
+        }
+
+        .info-back {
+            background-color: $info-back;
+        }
+
+        .success-hover {
+            background-color: $success-hover;
+        }
+
+        .success-border {
+            background-color: $success-border;
+        }
+
+        .success-back {
+            background-color: $success-back;
+        }
+
+        .warn-hover {
+            background-color: $warn-hover;
+        }
+
+        .warn-border {
+            background-color: $warn-border;
+        }
+
+        .warn-back {
+            background-color: $warn-back;
+        }
+
+        .error-hover {
+            background-color: $error-hover;
+        }
+
+        .error-border {
+            background-color: $error-border;
+        }
+
+        .error-back {
+            background-color: $error-back;
+        }
+
+
         .Titles {
             height: 40px;
             width: 100%;
@@ -214,6 +259,11 @@
                             width: 25%;
                             height: calc(100% - 10px);
                             float: left;
+                        }
+
+                        .dis-three {
+                            flex: 1;
+                            height: calc(100% - 10px);
                         }
                     }
 
@@ -303,6 +353,7 @@
     .auxiliaryInfo-left {
         background-color: #d8f4ff;
     }
+
 
     .auxiliaryInfo-right {
         background-color: #ebf9ff;

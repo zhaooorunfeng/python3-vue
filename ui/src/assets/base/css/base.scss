@@ -28,11 +28,19 @@ body ul {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    //min-width: 1280px;
     width: 100%;
     position: relative;
     height: 100%;
     color: $font-second !important;
+}
+
+@media screen and (min-width: 1368px) {
+    body {
+        font-size: 14px;
+    }
+    .ivu-table {
+        font-size: 14px !important;
+    }
 }
 
 

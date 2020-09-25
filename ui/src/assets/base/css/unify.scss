@@ -3,14 +3,13 @@
 //按钮样式
 .ivu-btn {
     height: 32px !important;
-    font-size: 12px !important;
-    padding: 0 16px !important;
+    font-size: 13px !important;
 }
 
 .ivu-btn-small {
     height: 24px !important;
     line-height: 22px;
-    font-size: 10px !important;
+    font-size: 13px !important;
     border-radius: 2px !important;
 }
 
@@ -60,7 +59,7 @@
 
 .ivu-btn-success:hover {
     color: $white-color;
-    background-color: $success-hover !important;
+    background-color: #77ECAA !important;
     border: none;
 }
 
@@ -159,6 +158,7 @@
 .ivu-btn.disabled, .ivu-btn.disabled.active, .ivu-btn.disabled:active, .ivu-btn.disabled:focus, .ivu-btn.disabled:hover, .ivu-btn[disabled], .ivu-btn[disabled].active, .ivu-btn[disabled]:active, .ivu-btn[disabled]:focus, .ivu-btn[disabled]:hover, fieldset[disabled] .ivu-btn, fieldset[disabled] .ivu-btn.active, fieldset[disabled] .ivu-btn:active, fieldset[disabled] .ivu-btn:focus, fieldset[disabled] .ivu-btn:hover {
     color: #ccc !important;
     border-color: $border-color !important;
+    background-color: transparent !important;
 }
 
 .ivu-btn-info.disabled, .ivu-btn-info.disabled.active, .ivu-btn-info.disabled:active, .ivu-btn-info.disabled:focus, .ivu-btn-info.disabled:hover, .ivu-btn-info[disabled], .ivu-btn-info[disabled].active, .ivu-btn-info[disabled]:active, .ivu-btn-info[disabled]:focus, .ivu-btn-info[disabled]:hover, fieldset[disabled] .ivu-btn-info, fieldset[disabled] .ivu-btn-info.active, fieldset[disabled] .ivu-btn-info:active, fieldset[disabled] .ivu-btn-info:focus, fieldset[disabled] .ivu-btn-info:hover {
@@ -188,7 +188,8 @@
 }
 
 .ivu-btn-icon-only {
-    padding: 5px 10px !important;
+    text-align: center;
+    padding: 5px 0!important;
 }
 
 .ivu-dropdown-item:hover {
@@ -599,4 +600,8 @@
 
 .ivu-upload-list {
     display: none;
+}
+
+.ivu-table {
+    font-size: 13px;
 }
