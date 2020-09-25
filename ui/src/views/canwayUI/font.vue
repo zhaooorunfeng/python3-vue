@@ -259,28 +259,4 @@
         font-size: 14px;
         color: #ffffff;
     }
-
-    .PingFang {
-        font-family: PingFang SC;
-    }
-
-    .Source {
-        font-family: Source Han Sanns;
-    }
-
-    .Microsoft {
-        font-family: Microsoft YaHei;
-    }
-
-    .HelveticaNeue {
-        font-family: Helvetica Neue;
-    }
-
-    .Helvetica {
-        font-family: Helvetica;
-    }
-
-    .Arial {
-        font-family: Arial;
-    }
 </style>

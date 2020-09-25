@@ -82,11 +82,4 @@
             line-height: 63px !important;
         }
     }
-
-    .elMenu-Sty:hover {
-        background-color: #fff !important;
-        border-bottom-color: $base-color !important;
-        border-bottom: 2px solid !important;
-    }
 </style>
-

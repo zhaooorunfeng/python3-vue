@@ -50,5 +50,5 @@ celerybeat-schedule
 node_modules/
 dist/
 
-# local diff
+# dev files
 local_settings.py

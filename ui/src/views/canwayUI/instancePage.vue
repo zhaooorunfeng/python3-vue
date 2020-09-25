@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="search-content">
-            <CwTable :columns="pro_table_titles"
+            <CwTable :columns="pro_table_titles" :cwheight="0"
                      :data="tableList" ref="cwTable"></CwTable>
         </div>
     </div>
@@ -62,7 +62,7 @@
                         title: '操作',
                         // fixed: 'right',
                         width: 250,
-                        align: 'center',
+                        align: 'left',
                         render: (h, params) => {
                             let check = false
                             return h('div', [
@@ -70,7 +70,6 @@
                                     class: 'detail-color',
                                     props: {
                                         type: 'text',
-                                        size: 'small',
                                     },
                                     style: {
                                         marginRight: '5px'
@@ -85,7 +84,6 @@
                                     class: 'detail-color',
                                     props: {
                                         type: 'text',
-                                        size: 'small',
                                     },
                                     style: {
                                         marginRight: '5px'
@@ -99,7 +97,8 @@
                             ]);
                         }
                     }],
-                tableList: [{
+                tableList: [
+                    {
                     userName: 'instance-00412937',
                     Network: '公有云',
                     identity: '超级管理员',

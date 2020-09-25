@@ -61,12 +61,10 @@
             this.defaultActive = this.$route.name;
             this.getParent();
             let data = this.$route.meta.title;
-            this.$emit('menuChange', data)
         },
         watch: {
             $route: function () {
                 let data = this.$route.meta.title;
-                this.$emit('menuChange', data)
             }
         },
         methods: {
