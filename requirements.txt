@@ -15,6 +15,7 @@ python-json-logger==0.1.7
 whitenoise==3.3.0
 six==1.11.0
 django-cors-middleware==1.5.0
+django-cors-headers==3.2.1
 
 # drf requirement
 djangorestframework==3.8.1

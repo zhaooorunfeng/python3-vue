@@ -78,6 +78,29 @@
                 </div>
             </Card>
         </div>
+        <div class="transverse">
+            <Card style="width:100%;height:100%">
+                <div slot="title">
+                    <div style="font-size:16px">加载中状态</div>
+                    <div class="margin-top10">
+                        通过添加loading属性可以让按钮处于加载中状态，后两个按钮在点击时进入加载状态。
+                    </div>
+                </div>
+                <div>
+                    <Button type="primary" loading>Loading...</Button>
+                    <Button type="primary" :loading="loading" @click="toLoading">
+                        <span v-if="!loading">Click me!</span>
+                        <span v-else>Loading...</span>
+                    </Button>
+                    <Button type="primary" :loading="loading2" icon="ios-power" @click="toLoading2">
+                        <span v-if="!loading2">Click me!</span>
+                        <span v-else>Loading...</span>
+                    </Button>
+                    <Button loading shape="circle"></Button>
+                    <Button loading shape="circle" type="primary"></Button>
+                </div>
+            </Card>
+        </div>
         <div class="transverse" style="height:60%">
             <Card style="width:100%;height:100%">
                 <div slot="title">
@@ -165,7 +188,21 @@
 
 <script>
     export default {
-        name: 'button'
+        name: 'button',
+        data() {
+            return {
+                loading: false,
+                loading2: false
+            }
+        },
+        methods: {
+            toLoading() {
+                this.loading = true;
+            },
+            toLoading2() {
+                this.loading2 = true;
+            }
+        }
     }
 </script>
 
@@ -214,7 +251,7 @@
         .transverse {
             width: 100%;
             margin-bottom: 32px;
-            height: 30%;
+            /*height: 30%;*/
 
             .ghost-Style {
                 background: rgb(190, 200, 200);

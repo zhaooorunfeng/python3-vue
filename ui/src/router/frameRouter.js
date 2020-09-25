@@ -12,6 +12,7 @@ import Button from '@/views/canwayUI/button'
 import Apply from '@/views/canwayUI/apply'
 import Border from '@/views/canwayUI/border'
 import InstancePage from '@/views/canwayUI/instancePage'
+
 export let frameRouter = [
     {
         path: '/',
@@ -98,7 +99,13 @@ export let frameRouter = [
         name: 'InstancePage',
         component: InstancePage,
         meta: {
-            title: '一级菜单 > 二级菜单 > 三级菜单',
+            breadList: [{
+                name: '示例',
+                path: '/instancePage'
+            }, {
+                name: '示例页面',
+                path: '/instancePage'
+            }]
         }
     }
 ]
