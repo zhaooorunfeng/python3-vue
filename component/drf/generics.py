@@ -2,103 +2,66 @@
 """
 框架补充相关代码
 """
-import traceback
 
-from django.conf import settings
 from django.http import Http404
-from django.utils.translation import ugettext as _
-from rest_framework import status
-from rest_framework.exceptions import (
-    AuthenticationFailed,
-    MethodNotAllowed,
-    NotAuthenticated,
-    PermissionDenied,
-    ValidationError,
-)
+from rest_framework import exceptions
+from rest_framework.exceptions import PermissionDenied
 from rest_framework.response import Response
+from rest_framework.settings import api_settings
+from rest_framework.views import set_rollback
 
-from blueapps.core.exceptions import BlueException
-from blueapps.utils.logger import logger
-from component.constants import ResponseCodeStatus
-from component.utils import format_validation_message
+from component.drf.mapping import exception_mapping
 
 
 def exception_handler(exc, context):
     """
-    分类：
-        rest_framework框架内异常
-        app自定义异常
+    Returns the response that should be used for any given exception.
+
+    By default we handle the REST framework `APIException`, and also
+    Django's built-in `Http404` and `PermissionDenied` exceptions.
+
+    Any unhandled exceptions may return `None`, which will cause a 500 error
+    to be raised.
+    (Rewrite default method exception_handler)
     """
-    data = {"result": False, "data": None}
-
-    if isinstance(exc, (NotAuthenticated, AuthenticationFailed)):
-        data = {
-            "result": False,
-            "code": ResponseCodeStatus.UNAUTHORIZED,
-            "message": _("用户未登录或登录态失效，请使用登录链接重新登录"),
-            "login_url": "",
-        }
-        return Response(data, status=status.HTTP_403_FORBIDDEN)
-
-    if isinstance(exc, PermissionDenied):
-        data = {
-            "result": False,
-            "code": ResponseCodeStatus.PERMISSION_DENIED,
-            "message": exc.detail,
-        }
-        return Response(data, status=status.HTTP_403_FORBIDDEN)
-
-    if isinstance(exc, ValidationError):
-        data.update(
-            {
-                "code": ResponseCodeStatus.VALIDATE_ERROR,
-                "message": format_validation_message(exc),
-            }
-        )
-
-    elif isinstance(exc, MethodNotAllowed):
-        data.update(
-            {
-                "code": ResponseCodeStatus.METHOD_NOT_ALLOWED,
-                "message": exc.detail,
-            }
-        )
+    if isinstance(exc, Http404):
+        exc = exceptions.NotFound()
     elif isinstance(exc, PermissionDenied):
-        data.update(
-            {
-                "code": ResponseCodeStatus.PERMISSION_DENIED,
-                "message": exc.detail,
-            }
-        )
+        exc = exceptions.PermissionDenied()
 
-    elif isinstance(exc, BlueException):
-        # 更改返回的状态为为自定义错误类型的状态码
-        data.update(
-            {
-                "code": exc.STATUS_CODE,
-                "message": exc.message,
-            }
-        )
-    elif isinstance(exc, Http404):
-        # 更改返回的状态为为自定义错误类型的状态码
-        data.update(
-            {
-                "code": ResponseCodeStatus.OBJECT_NOT_EXIST,
-                "message": _("当前操作的对象不存在"),
-            }
-        )
-    else:
-        # 调试模式
-        logger.error(traceback.format_exc())
-        print(traceback.format_exc())
-        if settings.RUN_MODE != "PRODUCT":
-            raise exc
-        # 正式环境，屏蔽500
-        data.update(
-            {
-                "code": ResponseCodeStatus.SERVER_500_ERROR,
-                "message": exc.message,
-            }
-        )
+    if isinstance(exc, exceptions.APIException):
+        headers = {}
+        if getattr(exc, 'auth_header', None):
+            headers['WWW-Authenticate'] = exc.auth_header
+        if getattr(exc, 'wait', None):
+            headers['Retry-After'] = '%d' % exc.wait
 
-    return Response(data, status=status.HTTP_200_OK)
+        if isinstance(exc.detail, (list, dict)):
+            data = exc.detail
+        else:
+            data = {'detail': exc.detail}
+
+        set_rollback()
+        # code is added blow
+        exc_class_name = exc.__class__.__name__
+        if exc_class_name in exception_mapping:
+            message_list = []
+            # data type is in (list, dict)
+            if isinstance(data, dict):
+                for (k, v) in data.items():
+                    if isinstance(v, list):
+                        # remove 'non_field_errors' key name
+                        if k in (api_settings.NON_FIELD_ERRORS_KEY, "detail"):
+                            message_list.extend([str(i) for i in v])
+                        else:
+                            message_list.extend(["{0}: {1}".format(str(k), str(i)) for i in v])
+                    else:
+                        message_list.append(str(v))
+            elif isinstance(data, list):
+                message_list.extend([str(item) for item in data])
+            # let blueapps exceptions to handle this error
+            raise exception_mapping[exc_class_name](";".join(message_list))
+        else:
+            return Response(data, status=exc.status_code, headers=headers)
+
+    return None
