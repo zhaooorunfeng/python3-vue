@@ -2,6 +2,9 @@
 chcp 65001 >nul
 setlocal enabledelayedexpansion
 
+set BATCH_PATH=%~dp0
+call %BATCH_PATH%..\develop\envs.bat
+
 :: 清理历史数据
 if exist .cover (rd /S /Q .cover)
 
