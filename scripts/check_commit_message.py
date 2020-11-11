@@ -4,8 +4,11 @@
 """
 from __future__ import absolute_import, print_function, unicode_literals
 
+import io
 import sys
 from io import open
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 try:
     reload(sys)
@@ -13,7 +16,6 @@ try:
 except NameError:
     # py3
     pass
-
 
 ALLOWED_COMMIT_MSG_PREFIX = [
     ("feature", "新特性"),
@@ -32,7 +34,7 @@ def get_commit_message():
     args = sys.argv
     if len(args) <= 1:
         print("Warning: The path of file `COMMIT_EDITMSG` not given, skipped!")
-        return 0
+        return '0'
     commit_message_filepath = args[1]
     with open(commit_message_filepath, "r", encoding="utf-8") as fd:
         content = fd.read()
