@@ -5,10 +5,11 @@
 from __future__ import absolute_import, print_function, unicode_literals
 
 import os
-import sys
 import re
+import sys
+import traceback
+
 from six.moves import range
-from io import open
 
 # 禁止安装的 SDK
 FORBIDDEN_SDK = ["request"]
@@ -18,12 +19,14 @@ MIN_VERSION = {"Django": "1.8.1"}
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OPERATOR_REG = re.compile(r"[=><]+")
 
+coding = None
 try:
+    # py2
     reload(sys)
     sys.setdefaultencoding("utf-8")
 except NameError:
     # py3
-    pass
+    coding = "utf-8"
 
 
 def not_less_version(version, min_version):
@@ -66,8 +69,11 @@ def sdk_match_version(sdk_info):
 
 def read_requirements():
     req_path = os.path.join(BASE_DIR, "requirements.txt")
+    if not os.path.exists(req_path):
+        return []
+
     requirements = []
-    with open(req_path, "r", encoding="utf-8") as req_file:
+    with open(req_path, "r", encoding=coding) as req_file:
         for line in req_file:
             line = line.strip()
             # 空行 或 注释
@@ -96,6 +102,7 @@ def main():
 
         return 0
     except Exception as e:
+        traceback.print_exc()
         print("Unexpected exception occurred: %s" % e)
         return 1
 
