@@ -67,7 +67,7 @@ class UserViewSet(viewsets.ModelViewSet):
     ordering = ["-date_joined"]
 
     @action(methods=["get"], detail=False)
-    def bk_user(self, request=None):
+    def get_all_bk_users(self, request=None):
         """获取蓝鲸所有的用户"""
         client = get_client_by_user(request.user.username)
         result_dict = client.bk_login.get_all_users()
@@ -101,21 +101,23 @@ class UserViewSet(viewsets.ModelViewSet):
             u.username: u for u in User.objects.filter(username__in=username_userinfo_mapping.keys())
         }
 
+        # 现有框架中设置的用户property, 可根据项目需要自行添加
+        property_list = ["qq", "language", "time_zone", "bk_role", "phone", "email", "wx_userid", "chname"]
         user_property_create_list = []
         for username, userinstance in username_userinstance_mapping.items():
-            userinfo = username_userinfo_mapping.get(username, {})
-            user_property_create_list.append(
-                UserProperty(user_id=userinstance.id, key="phone", value=userinfo.get("phone", ""))
-            )  # noqa
-            user_property_create_list.append(
-                UserProperty(user_id=userinstance.id, key="email", value=userinfo.get("email", ""))
-            )  # noqa
-            user_property_create_list.append(
-                UserProperty(user_id=userinstance.id, key="chname", value=userinfo.get("chname", username))
-            )  # noqa
 
+            # 添加用户&用户组关系
             if group_id_list:
                 userinstance.groups.add(*group_id_list)
+
+            # 添加用户property
+            userinfo = username_userinfo_mapping.get(username, {})
+            if not userinfo:
+                continue
+            for _property in property_list:
+                user_property_create_list.append(
+                    UserProperty(user_id=userinstance.id, key=_property, value=userinfo.get(_property, ""))
+                )
 
         UserProperty.objects.bulk_create(user_property_create_list)
 
