@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.utils.translation import ugettext as _
 
-from blueapps.core.exceptions import ServerBlueException, ClientBlueException
+from blueapps.core.exceptions import ClientBlueException, ServerBlueException
 
 
 class AuthenticationError(ClientBlueException):

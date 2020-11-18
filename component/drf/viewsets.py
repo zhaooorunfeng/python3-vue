@@ -2,18 +2,17 @@
 """
 views相关模块代码
 """
-from rest_framework import viewsets, status
-from rest_framework.response import Response
-from rest_framework.decorators import action
-from rest_framework.views import APIView as _APIView
-from django.db import transaction
 from django.contrib.auth.models import Group
+from django.db import transaction
+from rest_framework import status, viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
+from rest_framework.views import APIView as _APIView
 
 from blueapps.account.models import User, UserProperty
 from blueking.component.shortcuts import get_client_by_user
-
 from component.drf.mixins import ApiGenericMixin
-from component.drf.serializers import UserSerializer, GroupSerializer
+from component.drf.serializers import GroupSerializer, UserSerializer
 from component.utils.exceptions import BkEsbReturnError
 
 
@@ -101,8 +100,6 @@ class UserViewSet(viewsets.ModelViewSet):
             u.username: u for u in User.objects.filter(username__in=username_userinfo_mapping.keys())
         }
 
-        # 现有框架中设置的用户property, 可根据项目需要自行添加
-        property_list = ["qq", "language", "time_zone", "bk_role", "phone", "email", "wx_userid", "chname"]
         user_property_create_list = []
         for username, userinstance in username_userinstance_mapping.items():
 
@@ -112,11 +109,13 @@ class UserViewSet(viewsets.ModelViewSet):
 
             # 添加用户property
             userinfo = username_userinfo_mapping.get(username, {})
+            userinfo.pop("bk_username", None)
+            userinfo.pop("username", None)
             if not userinfo:
                 continue
-            for _property in property_list:
+            for property_key, property_value in userinfo.items():
                 user_property_create_list.append(
-                    UserProperty(user_id=userinstance.id, key=_property, value=userinfo.get(_property, ""))
+                    UserProperty(user_id=userinstance.id, key=property_key, value=property_value)
                 )
 
         UserProperty.objects.bulk_create(user_property_create_list)
