@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.utils.translation import ugettext as _
 
-from blueapps.core.exceptions import ServerBlueException, ClientBlueException
+from blueapps.core.exceptions import ClientBlueException, ServerBlueException
 
 
 class AuthenticationError(ClientBlueException):
@@ -65,3 +65,10 @@ class UpdateError(ServerBlueException):
     MESSAGE = _("数据更新失败")
     ERROR_CODE = "50002"
     STATUS_CODE = 500
+
+
+class BkEsbReturnError(ServerBlueException):
+
+    MESSAGE = _("ESB调用返回错误")
+    ERROR_CODE = "50302"
+    STATUS_CODE = 503
