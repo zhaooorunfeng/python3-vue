@@ -11,10 +11,12 @@ import json
 import os
 import sys
 import traceback
+from io import open
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 coding = None
+py = 2
 try:
     # py2
     reload(sys)
@@ -22,6 +24,7 @@ try:
 except NameError:
     # py3
     coding = "utf-8"
+    py = 3
 
 
 def read_csv():
@@ -43,8 +46,12 @@ def read_csv():
 def save(content):
     if content:
         json_path = os.path.join(BASE_DIR, "field_library.json")
-        with open(json_path, "w", encoding=coding) as fp:
-            json.dump(content, fp)
+        if py == 3:
+            with open(json_path, "w") as fp:
+                json.dump(content, fp)
+        else:
+            with open(json_path, "wb") as fp:
+                json.dump(content, fp)
 
 
 def get_field_library():
@@ -194,7 +201,11 @@ def get_new_field(result):
         if get_str_md5(line) not in exist_field:
             new_field.append(get_str_md5(line))
     with open("field_error_detail.log", "w", encoding=coding) as fp:
-        fp.write(str(exist_field + new_field))
+        if py == 3:
+            all_fields = str(exist_field + new_field)
+        else:
+            all_fields = str(exist_field + new_field).decode("gbk")
+        fp.write(all_fields)
     return new_field
 
 
@@ -220,6 +231,7 @@ def main(argv=None):
             new_field = get_new_field(result)
             if new_field:
                 print("Some field not standard, please check.")
+                print(result)
                 print("if you still want to commit, try it again")
                 return 1
         return 0

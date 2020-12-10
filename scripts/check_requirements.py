@@ -8,6 +8,7 @@ import os
 import re
 import sys
 import traceback
+from io import open
 
 from six.moves import range
 
