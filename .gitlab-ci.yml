@@ -55,6 +55,7 @@ webpack:
     - git clone http://$GIT_USERNAME:$GIT_PASSWORD@$CI_SERVER_HOST/$CI_PROJECT_PATH.git
     - cd $CI_PROJECT_NAME && git checkout $CI_COMMIT_REF_NAME
     # loads node_modules cache
+    - pwd
     - mv ../cache/$APP_ENV/node_modules ./ui/ || echo "cache/node_modules does not exist"
     - cd  ./ui/ && ls -al
     # build
@@ -62,6 +63,7 @@ webpack:
     - npm run build
     # push code with static/dist
     - cd ../
+    - pwd
     - date >> .ci_commit
     - git add -f -A static/dist .ci_commit
     - git config --global user.name ci
@@ -69,6 +71,7 @@ webpack:
     - git commit -m "auto commit [ci skip]"
     - git push http://$GIT_USERNAME:$GIT_PASSWORD@$CI_SERVER_HOST/$CI_PROJECT_PATH.git $CI_COMMIT_REF_NAME
     # cache npm node_modules
+    - pwd
     - mkdir -p ../cache/$APP_ENV/
     - rm -rf ../cache/$APP_ENV/ && mv ./ui/node_modules ../cache/$APP_ENV/
     - echo "end build"
