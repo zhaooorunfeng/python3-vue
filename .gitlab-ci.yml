@@ -8,13 +8,14 @@ before_script:
   - export LC_ALL=zh_CN.UTF-8
   - pip list
   - pyenv versions
-  # 请把下方命令中 python3_vue_py3.6.7 改为你的项目虚拟环境名字
-  - export APP_ENV=python3_vue_py3.6.7
+  # 请把下方命令中 python3_vue 改为你的项目APP_ID
+  - export APP_ID=python3_vue
   # python3 项目创建专属虚拟环境
-  - pyenv virtualenv -p python3.6 3.6.7 $APP_ENV || echo "virtualenv exist"
+  - pyenv virtualenv -p python3.6 3.6.7 ${APP_ID}_py3.6.7 || echo "virtualenv exist"
+  - pyenv shell ${APP_ID}_py3.6.7
   # python2 项目创建专属虚拟环境
-  #- pyenv virtualenv 2.7.15 $APP_ENV || echo "virtualenv exist"
-  - pyenv shell $APP_ENV
+  #- pyenv virtualenv 2.7.15 ${APP_ID}_py2.7.15 || echo "virtualenv exist
+  #- pyenv shell ${APP_ID}_py2.7.15
   - pip install -r requirements.txt
   - pip install flake8
   - pip install coverage
@@ -55,8 +56,7 @@ webpack:
     - git clone http://$GIT_USERNAME:$GIT_PASSWORD@$CI_SERVER_HOST/$CI_PROJECT_PATH.git
     - cd $CI_PROJECT_NAME && git checkout $CI_COMMIT_REF_NAME
     # loads node_modules cache
-    - pwd
-    - mv ../cache/$APP_ENV/node_modules ./ui/ || echo "cache/node_modules does not exist"
+    - mv /home/gitlab-runner/cache/$CI_PROJECT_PATH/node_modules ./ui/ || echo "cache/node_modules does not exist"
     - cd  ./ui/ && ls -al
     # build
     - npm install
@@ -72,8 +72,7 @@ webpack:
     - git push http://$GIT_USERNAME:$GIT_PASSWORD@$CI_SERVER_HOST/$CI_PROJECT_PATH.git $CI_COMMIT_REF_NAME
     # cache npm node_modules
     - pwd
-    - mkdir -p ../cache/$APP_ENV/
-    - rm -rf ../cache/$APP_ENV/ && mv ./ui/node_modules ../cache/$APP_ENV/
+    - rm -rf /home/gitlab-runner/cache/$CI_PROJECT_PATH/node_modules && mv ./ui/node_modules /home/gitlab-runner/cache/$CI_PROJECT_PATH/
     - echo "end build"
   only:
     - release
