@@ -53,6 +53,8 @@ webpack:
     - git clone http://$GIT_USERNAME:$GIT_PASSWORD@$CI_SERVER_HOST/$CI_PROJECT_PATH.git
     - cd $CI_PROJECT_NAME && git checkout $CI_COMMIT_REF_NAME
     - cd  ./ui/ && ls -al
+    # loads node_modules cache
+    - mv -r $CI_PROJECT_NAME/cache/node_modules ./ui/
     # build
     - npm install
     - npm run build
@@ -64,6 +66,8 @@ webpack:
     - git config --global user.email ci@email.com
     - git commit -m "auto commit [ci skip]"
     - git push http://$GIT_USERNAME:$GIT_PASSWORD@$CI_SERVER_HOST/$CI_PROJECT_PATH.git $CI_COMMIT_REF_NAME
+    # cache npm node_modules
+    - mv -r ./ui/node_modules $CI_PROJECT_NAME/cache/
     - echo "end build"
   only:
     - release
