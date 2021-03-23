@@ -2,9 +2,10 @@
 """
 自定义drf renderers 使返回格式和ESB接口返回格式相同
 使用方法:
-django settings 中添加 rest_framework配置
+config/default  REST_FRAMEWORK 中添加 如下配置
+
 REST_FRAMEWORK = {
-    "DEFAULT_RENDERER_CLASSES": ("component.drf.renderers.CustomRenderer",),
+    "DEFAULT_RENDERER_CLASSES": ("packages.drf.renderers.CustomRenderer",),
 }
 
 """

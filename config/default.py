@@ -33,10 +33,11 @@ from blueapps.conf.log import get_logging_config_dict
 
 # 请在这里加入你的自定义 APP
 INSTALLED_APPS += (  # noqa
-    "rest_framework",
     "home_application",
     "mako_application",
     "corsheaders",
+    "rest_framework",
+    "rest_framework_swagger",
 )
 
 # 这里是默认的中间件，大部分情况下，不需要改动
@@ -172,13 +173,18 @@ if locals().get("DISABLED_APPS"):
 # REST FRAMEWORK SETTING
 # ==============================================================================
 REST_FRAMEWORK = {
-    "EXCEPTION_HANDLER": "component.drf.generics.exception_handler",
     "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
-    "DEFAULT_PAGINATION_CLASS": "component.drf.pagination.CustomPageNumberPagination",
+    "DEFAULT_PAGINATION_CLASS": "packages.drf.pagination.CustomPageNumberPagination",
     "PAGE_SIZE": 10,
     "TEST_REQUEST_DEFAULT_FORMAT": "json",
     "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework.authentication.SessionAuthentication",),
-    "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
+    "DEFAULT_FILTER_BACKENDS": (
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.SearchFilter",
+        "rest_framework.filters.OrderingFilter",
+    ),
     "DATETIME_FORMAT": "%Y-%m-%d %H:%M:%S",
     "NON_FIELD_ERRORS_KEY": "params_error",
+    "DEFAULT_RENDERER_CLASSES": ("packages.drf.renderers.CustomRenderer",),
+    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
 }
