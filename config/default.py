@@ -36,6 +36,8 @@ INSTALLED_APPS += (  # noqa
     "home_application",
     "mako_application",
     "corsheaders",
+    "rest_framework",
+    "rest_framework_swagger",
 )
 
 # 这里是默认的中间件，大部分情况下，不需要改动
@@ -109,7 +111,6 @@ LOGGING = get_logging_config_dict(locals())
 # 注意：请在首次提测和上线前修改，之后的修改将不会生效
 INIT_SUPERUSER = []
 
-
 # 使用mako模板时，默认打开的过滤器：h(过滤html)
 MAKO_DEFAULT_FILTERS = ["h"]
 
@@ -167,3 +168,23 @@ if locals().get("DISABLED_APPS"):
         if locals().get(_key) is None:
             continue
         locals()[_key] = tuple([_item for _item in locals()[_key] if not _item.startswith(_app + ".")])
+
+# ==============================================================================
+# REST FRAMEWORK SETTING
+# ==============================================================================
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_PAGINATION_CLASS": "packages.drf.pagination.CustomPageNumberPagination",
+    "PAGE_SIZE": 10,
+    "TEST_REQUEST_DEFAULT_FORMAT": "json",
+    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework.authentication.SessionAuthentication",),
+    "DEFAULT_FILTER_BACKENDS": (
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.SearchFilter",
+        "rest_framework.filters.OrderingFilter",
+    ),
+    "DATETIME_FORMAT": "%Y-%m-%d %H:%M:%S",
+    "NON_FIELD_ERRORS_KEY": "params_error",
+    "DEFAULT_RENDERER_CLASSES": ("packages.drf.renderers.CustomRenderer",),
+    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
+}
