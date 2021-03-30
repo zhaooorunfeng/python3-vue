@@ -30,9 +30,9 @@ urlpatterns = [
 if settings.RUN_MODE == "DEVELOP":
     """
     开发时添加SWAGGER API DOC
-    访问地址: http://dev.cwbk.com:8000/docs
+    访问地址: http://dev.cwbk.com:8000/docs/
     """
     from rest_framework_swagger.views import get_swagger_view
 
     schema_view = get_swagger_view(title="%s API" % settings.APP_ID.upper())
-    urlpatterns += [url(r"^docs$", schema_view)]
+    urlpatterns += [url(r"^docs/$", schema_view)]
