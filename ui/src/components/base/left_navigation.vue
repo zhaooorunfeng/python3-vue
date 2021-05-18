@@ -10,7 +10,7 @@
             <!--            导航头部图标-->
             <template slot="side-icon">
                 <div class="monitor-logo" @click="goHome">
-                    <img :src="'data:image/png;base64,' + nav.logo" height="32" width="32">
+                    <img :src="'data:image/png;base64,' + nav.logo" height="32" width="32" :alt="'logo图片'">
                 </div>
             </template>
             <!--            头部-->
@@ -63,7 +63,7 @@
             Header,
             Container
         },
-        data() {
+        data () {
             return {
                 nav: {
                     list: [],
@@ -93,26 +93,25 @@
                 }
             }
         },
-        created() {
+        created () {
             this.confirmUserIdentity()
         },
-        mounted() {
-        },
         methods: {
-            confirmUserIdentity() {
+            confirmUserIdentity () {
                 this.nav.list = createAdminRouteConfig()
                 this.nav.name = this.$route.meta.title
             },
-            handleSelect(id, item) {
+            handleSelect (id, item) {
                 this.nav.id = id
+                let a = 1
             },
-            handleToggle(v) {
+            handleToggle (v) {
                 this.nav.toggle = v
             },
-            beforeNavChange(newId, oldId) {
+            beforeNavChange (newId, oldId) {
                 return true
             },
-            handleNavItemClick(item) {
+            handleNavItemClick (item) {
                 if (this.$route.name !== item.id) {
                     this.nav.name = item.name
                     this.$router.push({
@@ -120,7 +119,7 @@
                     })
                 }
             },
-            goHome() {
+            goHome () {
                 this.$router.push('/home')
                 this.nav.name = this.$route.meta.title
             }
@@ -169,30 +168,30 @@
         flex-direction: column;
         background: #FFFFFF;
         border: 1px solid #E2E2E2;
-        -webkit-box-shadow: 0px 3px 4px 0px rgba(64, 112, 203, 0.06);
-        box-shadow: 0px 3px 4px 0px rgba(64, 112, 203, 0.06);
+        -webkit-box-shadow: 0 3px 4px 0 rgba(64, 112, 203, 0.06);
+        box-shadow: 0 3px 4px 0 rgba(64, 112, 203, 0.06);
         padding: 6px 0;
         margin: 0;
         color: #63656E;
-    }
 
-    .monitor-navigation-nav .nav-item {
-        -webkit-box-flex: 0;
-        -ms-flex: 0 0 32px;
-        flex: 0 0 32px;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        padding: 0 20px;
-        list-style: none
-    }
+        .nav-item {
+            -webkit-box-flex: 0;
+            -ms-flex: 0 0 32px;
+            flex: 0 0 32px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 0 20px;
+            list-style: none
+        }
 
-    .monitor-navigation-nav .nav-item:hover {
-        color: #3A84FF;
-        cursor: pointer;
-        background-color: #F0F1F5;
+        .nav-item:hover {
+            color: #3A84FF;
+            cursor: pointer;
+            background-color: #F0F1F5;
+        }
     }
 </style>

@@ -33,9 +33,9 @@ module.exports = {
         // 强制在注释中 // 或 /* 使用一致的空格
         'spaced-comment': 0,
         // 关键字后面使用一致的空格
-        'keyword-spacing': 0,
+        'keyword-spacing': 2,
         // 强制在 function的左括号之前使用一致的空格
-        'space-before-function-paren': 0,
+        'space-before-function-paren': [1,"always"],
         // 引号类型
         // "quotes": [0, "single"],
         // 禁止出现未使用过的变量
@@ -47,11 +47,11 @@ module.exports = {
         'vue/no-parsing-error': [2, {
             'x-invalid-end-tag': false
         }],
-        "camelcase": [0, {
-            "properties": "never"
+        "camelcase": [2, {
+            "properties": "always"
         }], //强制驼峰命名规则
         "no-multiple-empty-lines": [0, {
             "max": 100
-        }],
+        }]
     }
 }

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import {
-    bkButton, bkCard, bkUpload, bkAlert, bkCheckbox, bkCheckboxGroup, bkCollapse, bkCollapseItem, bkContainer, bkDatePicker,
+    bkButton, bkCard, bkUpload, bkAlert, bkCheckbox, bkCheckboxGroup, bkCollapse, bkCollapseItem, bkContainer, bkCol, bkRow, bkDatePicker,
     bkDialog, bkDropdownMenu, bkException, bkForm, bkFormItem, bkInput, bkInfoBox, bkLoading, bkMessage,
     bkNavigation, bkNavigationMenu, bkNavigationMenuItem, bkNotify, bkOption, bkOptionGroup, bkPagination,
     bkPopover, bkProcess, bkProgress, bkRadio, bkRadioGroup, bkSearchSelect, bkSelect, bkTableSettingContent,
@@ -24,7 +24,7 @@ Vue.use(bkPopconfirm)
 Vue.use(bkRadioButton)
 Vue.use(bkTag)
 Vue.use(bkTableSettingContent)
-// Vue.use(bkCol)
+Vue.use(bkCol)
 Vue.use(bkCollapse)
 Vue.use(bkCollapseItem)
 Vue.use(bkContainer)
@@ -48,7 +48,7 @@ Vue.use(bkProgress)
 Vue.use(bkRadio)
 Vue.use(bkRadioGroup)
 // Vue.use(bkRoundProgress)
-// Vue.use(bkRow)
+Vue.use(bkRow)
 Vue.use(bkSearchSelect)
 Vue.use(bkSelect)
 Vue.use(bkSideslider)

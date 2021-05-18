@@ -11,7 +11,6 @@ import '@/assets/componentLibrary/demand-import';
 // import '@/assets/componentLibrary/fully-import';
 // 几何图
 import Echarts from 'echarts'
-import G2 from '@antv/g2';
 // 引用API文件
 import api from './api/index'
 //公共方法
@@ -27,11 +26,9 @@ import store from './store/index'
 import 'jquery'
 
 Vue.use(Echarts);
-Vue.use(G2);
 Vue.use(Dire);
 Vue.use(Component);
 Vue.prototype.$echarts = Echarts;
-Vue.prototype.$G2 = G2;
 // 将API方法绑定到全局
 Vue.prototype.$http = axios;
 Vue.prototype.$api = api;

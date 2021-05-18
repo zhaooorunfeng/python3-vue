@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import leftNavigation from '@/components/base/leftNavigation'
+    import leftNavigation from '@/components/base/left_navigation'
 
     export default {
         name: 'App',
@@ -26,6 +26,7 @@
     html, body {
         height: 100%;
         min-width: 1280px;
+        font-size: 14px;
     }
 
     ::-webkit-scrollbar-thumb:window-inactive {
