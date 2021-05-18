@@ -47,8 +47,8 @@ module.exports = {
         'vue/no-parsing-error': [2, {
             'x-invalid-end-tag': false
         }],
-        "camelcase": [2, {
-            "properties": "always"
+        "camelcase": [0, {
+            "properties": "never"
         }], //强制驼峰命名规则
         "no-multiple-empty-lines": [0, {
             "max": 100
