@@ -1,6 +1,6 @@
 <template>
-    <div id="home_first">
-        <bk-container :col="8" :gutter="16" ext-cls="home_container">
+    <div id="home-first">
+        <bk-container :col="8" :gutter="16" ext-cls="home-container">
             <bk-row>
                 <bk-col :span="0">
                     <Card
@@ -236,7 +236,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .home_container {
+    .home-container {
         padding: 0 0 !important;
 
         .bk-grid-row + .bk-grid-row {
