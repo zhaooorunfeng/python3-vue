@@ -12,11 +12,11 @@
         components: {
             leftNavigation
         },
-        mounted() {
+        mounted () {
         },
-        created() {
+        created () {
         },
-        data() {
+        data () {
             return {}
         },
         methods: {}

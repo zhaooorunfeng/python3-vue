@@ -6,7 +6,7 @@
             :default-open="false"
             :need-menu="true"
             ext-cls="main-navigation"
-            @toggle="handleToggle">
+            @toggle-click="handleToggle">
             <!--            导航头部图标-->
             <template slot="side-icon">
                 <div class="monitor-logo" @click="goHome">
@@ -47,7 +47,7 @@
                 </bk-navigation-menu>
             </template>
             <!--            容器-->
-            <Container></Container>
+            <Container :nav-toggle="this.nav.toggle"></Container>
         </bk-navigation>
     </div>
 </template>

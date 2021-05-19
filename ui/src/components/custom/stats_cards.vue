@@ -5,11 +5,11 @@
                 <div class="card-text-num" :title="card.num">{{ card.num }}</div>
                 <div class="card-text-name">
                     <div class="card-name" :title="card.name">{{ card.name }}</div>
-                    <span v-if="card.info.length > 0 && displayInfo" style="margin-left: 9px">
-                        <bk-popover :content="card.info" placement="bottom-start">
+                    <div v-if="card.info.length > 0 && displayInfo" style="margin-left: 9px">
+                        <bk-popover :content="card.info" placement="bottom-start" style="margin-top: 2px">
                             <i class="iconfont icon-xianxingtubiao-tishi"></i>
                         </bk-popover>
-                    </span>
+                    </div>
                 </div>
             </div>
             <div class="card-icon">
@@ -44,7 +44,7 @@
                 default: () => ([])
             }
         },
-        data () {
+        data() {
             return {
                 cards: []
             }
@@ -65,7 +65,7 @@
         },
         watch: {
             cardList: {
-                handler (val) {
+                handler(val) {
                     this.cards = val
                 },
                 immediate: true
