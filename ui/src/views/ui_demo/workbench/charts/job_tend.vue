@@ -1,14 +1,14 @@
 <template>
-    <div id="job-bars"></div>
+    <div id="job-tend"></div>
 </template>
 
 <script>
     import {Chart} from '@antv/g2'
 
     export default {
-        name: 'job_bars',
+        name: 'job_tend',
         props: {
-            barData: {
+            tendData: {
                 type: Object,
                 default: () => ({})
             },
@@ -28,6 +28,7 @@
         },
         mounted() {
             this.initChart()
+            // this.initEcharts()
         },
         watch: {
             navToggle: {
@@ -45,25 +46,41 @@
             initChart() {
                 const that = this
                 const chart = new Chart({
-                    container: 'job-bars',
+                    container: 'job-tend',
                     autoFit: true,
                     height: that.height
                 });
                 this.chart = chart
-                const legend = this.barData.legend ? this.barData.legend : ''
-                chart.data(this.barData.data);
-                chart.scale(this.barData.metric, {
-                    nice: true
-                });
-
-                chart.tooltip({
-                    showMarkers: false
-                });
-                chart.legend(legend, {
-                    itemHeight: 30
+                chart.data(this.tendData.data);
+                chart.scale(this.tendData.metric, {
+                    nice: true,
+                    sync: true,
+                    min: 0
                 })
+                chart.scale(this.tendData.line, {
+                    nice: true,
+                    sync: this.tendData.metric,
+                    min: 0
+                })
+                chart.axis(this.tendData.line, false)
+                chart.tooltip({
+                    shared: true,
+                });
+                chart.interval()
+                    .position([this.tendData.dimension, this.tendData.metric])
+                    .color(this.tendData.legend)
+                    .adjust('stack')
+                chart.line()
+                    .position([this.tendData.dimension, this.tendData.line])
+                    .color('#FFDCA5')
+                chart.point()
+                    .position([this.tendData.dimension, this.tendData.line])
+                    .color('#FFDCA5')
+                    .size(3)
+                    .shape('circle');
+
                 chart.interaction('active-region');
-                chart.interval().position([this.barData.dimension, this.barData.metric]).color(legend);
+                // chart.removeInteraction('legend-filter'); // 自定义图例，移除默认的分类图例筛选交互
                 chart.render();
             }
         }

@@ -2,7 +2,7 @@
     <div class="stats-card" :style="{height: `${height}px`}">
         <div class="card-body" v-for="(card,index) in cards" :key="index">
             <div class="card-icon">
-                <div class="card-icon-background" :style="{ background: card.background }">
+                <div class="card-icon-background">
                     <i :class="card.icon" :style="{ color: card.color }"></i>
                 </div>
             </div>
@@ -11,7 +11,7 @@
                 <div class="card-text-name">
                     <div class="card-name" :title="card.name">{{ card.name }}</div>
                     <span v-if="card.info.length > 0 && displayInfo" style="margin-left: 9px">
-                        <bk-popover :content="card.info" placement="bottom-start">
+                        <bk-popover :content="card.info" placement="bottom-start" style="margin-top: 3px">
                             <i class="iconfont icon-xianxingtubiao-tishi"></i>
                         </bk-popover>
                     </span>
@@ -40,14 +40,15 @@
                 default: () => ([])
             }
         },
-        data () {
+        data() {
             return {
-                cards: []
+                cards: [],
+                // backgroundImg: require('../../static/img/background-hexagon.svg')
             }
         },
         watch: {
             cardList: {
-                handler (val) {
+                handler(val) {
                     this.cards = val
                 },
                 immediate: true
@@ -129,7 +130,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        border-radius: 50%;
+        background: url("../../assets/svg/background-hexagon.svg") 3px 0 no-repeat;
     }
 
 </style>
