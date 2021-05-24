@@ -202,7 +202,20 @@
                     metric: 'value'
                 },
                 lineData: {
-                    data: [
+                    data: [],
+                    dimension: 'date',
+                    metric: 'value',
+                    legend: 'name',
+                    type: 'line'
+                },
+                stepList: [
+                    {title: '吴昊（总经理）审批通过，并附“同意”', description: '2019-12-12 11:23'},
+                    {title: '王坤（组长）审批通过，并附“同意”', description: '2019-12-12 11:23'},
+                    {title: '李想（总监）审批通过，并附“同意”', description: '2019-12-12 11:23'},
+                    {title: '张晓丽（管理员）审批通过，并附“同意”', description: '2019-12-12 11:23'}
+                ],
+                tendData: {
+                    year: [
                         {date: 'Jan', name: '指标一', value: 550},
                         {date: 'Jan', name: '指标二', value: 560},
                         {date: 'Feb', name: '指标一', value: 240},
@@ -214,17 +227,30 @@
                         {date: 'May', name: '指标一', value: 690},
                         {date: 'May', name: '指标二', value: 180}
                     ],
-                    dimension: 'date',
-                    metric: 'value',
-                    legend: 'name',
-                    type: 'line'
+                    day: [
+                        {date: '1st', name: '指标一', value: 450},
+                        {date: '1st', name: '指标二', value: 660},
+                        {date: '2nd', name: '指标一', value: 340},
+                        {date: '2nd', name: '指标二', value: 640},
+                        {date: '3rd', name: '指标一', value: 150},
+                        {date: '3rd', name: '指标二', value: 660},
+                        {date: '4th', name: '指标一', value: 500},
+                        {date: '4th', name: '指标二', value: 800},
+                        {date: '5th', name: '指标一', value: 590},
+                        {date: '5th', name: '指标二', value: 280}
+                    ]
+                }
+            }
+        },
+        created() {
+            this.lineData.data.splice(0, this.lineData.data.length, ...this.tendData[this.btnGroupSelected])
+        },
+        watch: {
+            btnGroupSelected: {
+                handler(val) {
+                    this.lineData.data.splice(0, this.lineData.data.length, ...this.tendData[val])
                 },
-                stepList: [
-                    {title: '吴昊（总经理）审批通过，并附“同意”', description: '2019-12-12 11:23'},
-                    {title: '王坤（组长）审批通过，并附“同意”', description: '2019-12-12 11:23'},
-                    {title: '李想（总监）审批通过，并附“同意”', description: '2019-12-12 11:23'},
-                    {title: '张晓丽（管理员）审批通过，并附“同意”', description: '2019-12-12 11:23'}
-                ]
+                immediate: true
             }
         },
         methods: {

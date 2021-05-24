@@ -1,13 +1,13 @@
 <template>
     <div class="stats-card" :style="{height: `${height}px`}">
         <div class="card-body" v-for="(card,index) in cards" :key="index">
-            <div class="card-icon">
+            <div class="card-icon" v-if="showIcon">
                 <div class="card-icon-background">
-                    <i :class="card.icon" :style="{ color: card.color }"></i>
+                    <i :class="card.icon"></i>
                 </div>
             </div>
-            <div class="card-text">
-                <div class="card-text-num" :title="card.num">{{ card.num }}</div>
+            <div class="card-text" :class="objClass">
+                <div class="card-text-num" :title="card.num" :style="{ color: card.color }">{{ card.num }}</div>
                 <div class="card-text-name">
                     <div class="card-name" :title="card.name">{{ card.name }}</div>
                     <span v-if="card.info.length > 0 && displayInfo" style="margin-left: 9px">
@@ -34,6 +34,10 @@
                 type: Number,
                 default: 66
             },
+            showIcon: {
+                type: Boolean,
+                default: true
+            },
             // data
             cardList: {
                 type: Array,
@@ -43,7 +47,13 @@
         data() {
             return {
                 cards: [],
-                // backgroundImg: require('../../static/img/background-hexagon.svg')
+            }
+        },
+        computed: {
+            objClass: function () {
+                return {
+                    'no-icon': !this.showIcon
+                }
             }
         },
         watch: {
@@ -111,6 +121,8 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        width: 100%;
+        text-align: center;
     }
 
     .card-icon {
@@ -125,12 +137,17 @@
     }
 
     .card-icon-background {
+        color: #3A84FF;
         width: 100%;
         height: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         background: url("../../assets/svg/background-hexagon.svg") 3px 0 no-repeat;
+    }
+
+    .no-icon {
+        margin: 0 auto !important;
     }
 
 </style>

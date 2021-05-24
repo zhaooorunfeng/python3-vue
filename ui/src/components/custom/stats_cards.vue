@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="card-icon">
-                <div class="card-icon-background" :style="{ background: card.background }">
+                <div class="card-icon-background" :class="shapeClass" :style="{ background: card.background }">
                     <i :class="card.icon" :style="{ color: card.color }"></i>
                 </div>
             </div>
@@ -29,6 +29,10 @@
             displayDirection: {
                 type: String,
                 default: 'horizontal'
+            },
+            shape: {
+                type: String,
+                default: 'circle'
             },
             displayInfo: {
                 type: Boolean,
@@ -60,6 +64,12 @@
                     'card-body': true,
                     'horizontal-body': this.displayDirection === 'horizontal',
                     'vertical-body': this.displayDirection === 'vertical'
+                }
+            },
+            shapeClass: function () {
+                return {
+                    'card-icon-hexagon': this.shape === 'hexagon',
+                    'card-icon-circle': this.shape === 'circle'
                 }
             }
         },
@@ -166,7 +176,15 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+
+    }
+
+    .card-icon-circle {
         border-radius: 50%;
+    }
+
+    .card-icon-hexagon {
+        background: url("../../assets/svg/background-hexagon.svg") 3px -1px no-repeat !important;
     }
 
 </style>

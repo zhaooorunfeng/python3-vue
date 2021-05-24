@@ -28,7 +28,6 @@
         },
         mounted() {
             this.initChart()
-            // this.initEcharts()
         },
         watch: {
             navToggle: {
@@ -40,6 +39,16 @@
                     }
                 },
                 immediate: true
+            },
+            tendData: {
+                handler(val, old) {
+                    if (this.chart) {
+                        this.chart.destroy()
+                        this.initChart()
+                    }
+                },
+                immediate: true,
+                deep: true
             }
         },
         methods: {
@@ -80,7 +89,6 @@
                     .shape('circle');
 
                 chart.interaction('active-region');
-                // chart.removeInteraction('legend-filter'); // 自定义图例，移除默认的分类图例筛选交互
                 chart.render();
             }
         }

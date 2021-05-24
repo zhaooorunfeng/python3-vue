@@ -76,39 +76,35 @@
         },
         data() {
             return {
-                btnDays: '15',
+                btnDays: '7',
                 cardList: [
                     {
                         'num': 2014,
                         'name': '作业名称',
                         'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
                         'info': '作业名称解释，tooltips位置视情况调试',
-                        'color': 'rgba(58, 132, 255, 0.8)',
-                        'background': 'rgba(58, 132, 255, 0.3)'
+                        'color': '#63656E'
                     },
                     {
                         'num': 2046,
                         'name': '业务名称',
                         'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
                         'info': '',
-                        'color': 'rgba(58, 132, 255, 0.8)',
-                        'background': 'rgba(58, 132, 255, 0.3)'
+                        'color': '#63656E'
                     },
                     {
                         'num': 1024,
                         'name': '实例名称',
                         'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
-                        'info': '试',
-                        'color': 'rgba(58, 132, 255, 0.8)',
-                        'background': 'rgba(58, 132, 255, 0.3)'
+                        'info': '',
+                        'color': '#63656E'
                     },
                     {
                         'num': 4068,
                         'name': '模型名称',
                         'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
                         'info': '',
-                        'color': 'rgba(58, 132, 255, 0.8)',
-                        'background': 'rgba(58, 132, 255, 0.3)'
+                        'color': '#63656E'
                     }
                 ],
                 barData: {
@@ -135,88 +131,95 @@
                     dimension: 'name',
                     metric: 'value'
                 },
-                // tendData: {
-                //     data: [
-                //         {name: '作业一', month: 'Jan.', value: 1300},
-                //         {name: '作业一', month: 'Feb.', value: 200},
-                //         {name: '作业一', month: 'Mar.', value: 600},
-                //         {name: '作业一', month: 'Apr.', value: 500},
-                //         {name: '作业一', month: 'May', value: 400},
-                //         {name: '作业一', month: 'Jun.', value: 600},
-                //         {name: '作业一', month: 'Jul.', value: 500},
-                //         {name: '作业一', month: 'Aug', value: 400},
-                //         {name: '作业二', month: 'Jan.', value: 800},
-                //         {name: '作业二', month: 'Feb.', value: 600},
-                //         {name: '作业二', month: 'Mar.', value: 1100},
-                //         {name: '作业二', month: 'Apr.', value: 300},
-                //         {name: '作业二', month: 'May', value: 1000},
-                //         {name: '作业二', month: 'Jun.', value: 1100},
-                //         {name: '作业二', month: 'Jul.', value: 300},
-                //         {name: '作业二', month: 'Aug', value: 1000},
-                //         {name: '作业三', month: 'Jan.', value: 1400},
-                //         {name: '作业三', month: 'Feb.', value: 100},
-                //         {name: '作业三', month: 'Mar.', value: 300},
-                //         {name: '作业三', month: 'Apr.', value: 600},
-                //         {name: '作业三', month: 'May', value: 700},
-                //         {name: '作业三', month: 'Jun.', value: 300},
-                //         {name: '作业三', month: 'Jul.', value: 600},
-                //         {name: '作业三', month: 'Aug', value: 700},
-                //         //
-                //         {limit: '300', month: 'Jan.'},
-                //         {limit: '400', month: 'Feb.'},
-                //         {limit: '400', month: 'Mar.'},
-                //         {limit: '400', month: 'Apr.'},
-                //         {limit: '400', month: 'May'},
-                //         {limit: '400', month: 'Jun.'},
-                //         {limit: '500', month: 'Jul.'},
-                //         {limit: '600', month: 'Aug'}
-                //     ],
-                //     dimension: 'month',
-                //     metric: 'value',
-                //     legend: 'name',
-                //     line: 'limit'
-                // }
                 tendData: {
-                    data: [
-                        {name: '作业一', month: 'Jan.', value: 1300},
-                        {name: '作业一', month: 'Feb.', value: 200},
-                        {name: '作业一', month: 'Mar.', value: 600},
-                        {name: '作业一', month: 'Apr.', value: 500},
-                        {name: '作业一', month: 'May', value: 400},
-                        {name: '作业一', month: 'Jun.', value: 600},
-                        {name: '作业一', month: 'Jul.', value: 500},
-                        {name: '作业一', month: 'Aug', value: 400},
-                        {name: '作业二', month: 'Jan.', value: 800},
-                        {name: '作业二', month: 'Feb.', value: 600},
-                        {name: '作业二', month: 'Mar.', value: 1100},
-                        {name: '作业二', month: 'Apr.', value: 300},
-                        {name: '作业二', month: 'May', value: 1000},
-                        {name: '作业二', month: 'Jun.', value: 1100},
-                        {name: '作业二', month: 'Jul.', value: 300},
-                        {name: '作业二', month: 'Aug', value: 1000},
-                        {name: '作业三', month: 'Jan.', value: 1400},
-                        {name: '作业三', month: 'Feb.', value: 100},
-                        {name: '作业三', month: 'Mar.', value: 300},
-                        {name: '作业三', month: 'Apr.', value: 600},
-                        {name: '作业三', month: 'May', value: 700},
-                        {name: '作业三', month: 'Jun.', value: 300},
-                        {name: '作业三', month: 'Jul.', value: 600},
-                        {name: '作业三', month: 'Aug', value: 700},
-                        //
-                        {limit: '300', month: 'Jan.'},
-                        {limit: '400', month: 'Feb.'},
-                        {limit: '400', month: 'Mar.'},
-                        {limit: '400', month: 'Apr.'},
-                        {limit: '400', month: 'May'},
-                        {limit: '400', month: 'Jun.'},
-                        {limit: '500', month: 'Jul.'},
-                        {limit: '600', month: 'Aug'}
-                    ],
+                    data: [],
                     dimension: 'month',
                     metric: 'value',
                     legend: 'name',
                     line: 'limit'
+                },
+                data: {
+                    '7': [
+                        {name: '作业一', month: '1st', value: 1300},
+                        {name: '作业一', month: '2nd', value: 200},
+                        {name: '作业一', month: '3rd', value: 600},
+                        {name: '作业一', month: '4th', value: 500},
+                        {name: '作业一', month: '5th', value: 400},
+                        {name: '作业二', month: '1st', value: 800},
+                        {name: '作业二', month: '2nd', value: 600},
+                        {name: '作业二', month: '3rd', value: 1100},
+                        {name: '作业二', month: '4th', value: 300},
+                        {name: '作业二', month: '5th', value: 1000},
+                        {name: '作业三', month: '1st', value: 1400},
+                        {name: '作业三', month: '2nd', value: 100},
+                        {name: '作业三', month: '3rd', value: 300},
+                        {name: '作业三', month: '4th', value: 600},
+                        {name: '作业三', month: '5th', value: 700},
+                        //
+                        {limit: '300', month: '1st'},
+                        {limit: '400', month: '2nd'},
+                        {limit: '400', month: '3rd'},
+                        {limit: '400', month: '4th'},
+                        {limit: '400', month: '5th'}
+                    ],
+                    '15': [
+                        {name: '作业一', month: '6th', value: 200},
+                        {name: '作业一', month: '8th', value: 200},
+                        {name: '作业一', month: '12th', value: 600},
+                        {name: '作业一', month: '13th', value: 500},
+                        {name: '作业一', month: '15th', value: 1200},
+                        {name: '作业二', month: '6th', value: 800},
+                        {name: '作业二', month: '8th', value: 600},
+                        {name: '作业二', month: '12th', value: 1100},
+                        {name: '作业二', month: '13th', value: 300},
+                        {name: '作业二', month: '15th', value: 1000},
+                        {name: '作业三', month: '6th', value: 400},
+                        {name: '作业三', month: '8th', value: 100},
+                        {name: '作业三', month: '12th', value: 1300},
+                        {name: '作业三', month: '13th', value: 600},
+                        {name: '作业三', month: '15th', value: 700},
+                        //
+                        {limit: '300', month: '6th'},
+                        {limit: '400', month: '8th'},
+                        {limit: '400', month: '12th'},
+                        {limit: '400', month: '13th'},
+                        {limit: '400', month: '15th'}
+                    ],
+                    '30': [
+                        {name: '作业一', month: '12th', value: 300},
+                        {name: '作业一', month: '15th', value: 200},
+                        {name: '作业一', month: '17th', value: 600},
+                        {name: '作业一', month: '20th', value: 500},
+                        {name: '作业一', month: '28th', value: 400},
+                        {name: '作业二', month: '12th', value: 500},
+                        {name: '作业二', month: '15th', value: 600},
+                        {name: '作业二', month: '17th', value: 1100},
+                        {name: '作业二', month: '20th', value: 300},
+                        {name: '作业二', month: '28th', value: 1000},
+                        {name: '作业三', month: '12th', value: 1400},
+                        {name: '作业三', month: '15th', value: 1100},
+                        {name: '作业三', month: '17th', value: 300},
+                        {name: '作业三', month: '20th', value: 600},
+                        {name: '作业三', month: '28th', value: 200},
+                        //
+                        {limit: '300', month: '12th'},
+                        {limit: '400', month: '15th'},
+                        {limit: '400', month: '17th'},
+                        {limit: '400', month: '20th'},
+                        {limit: '400', month: '28th'}
+                    ]
                 }
+            }
+        },
+        created() {
+            this.tendData.data.splice(0, this.tendData.data.length, ...this.data[this.btnDays])
+        },
+        watch: {
+            btnDays: {
+                handler(val) {
+                    this.tendData.data.splice(0, this.tendData.data.length, ...this.data[val])
+                },
+                immediate: true
             }
         },
         methods: {

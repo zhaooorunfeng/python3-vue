@@ -35,6 +35,16 @@
                     }
                 },
                 immediate: true
+            },
+            lineData: {
+                handler(val, old) {
+                    if (this.chart) {
+                        this.chart.destroy()
+                        this.initChart()
+                    }
+                },
+                immediate: true,
+                deep: true
             }
         },
         methods: {
@@ -61,11 +71,17 @@
                     showCrosshairs: true,
                     shared: true,
                 });
-
                 chart
                     .line()
                     .position([this.lineData.dimension, this.lineData.metric])
                     .color(this.lineData.legend);
+
+                if (this.lineData.type === 'area') {
+                    chart
+                        .area()
+                        .position([this.lineData.dimension, this.lineData.metric])
+                        .color(this.lineData.legend);
+                }
 
                 chart
                     .point()
