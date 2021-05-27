@@ -16,6 +16,7 @@ before_script:
   # python2 项目创建专属虚拟环境
   #- pyenv virtualenv 2.7.15 ${APP_ID}_py2.7.15 || echo "virtualenv exist
   #- pyenv shell ${APP_ID}_py2.7.15
+  - sed -i.bak "s#git+https://#git+https://$GIT_USERNAME:$GIT_PASSWORD@#g" requirements.txt && rm requirements.txt.bak
   - pip install -r requirements.txt
   - pip install flake8
   - pip install coverage

@@ -16,3 +16,8 @@ whitenoise==3.3.0
 six==1.11.0
 django-cors-middleware==1.5.0
 django-cors-headers==3.2.1
+
+# drf requirement
+djangorestframework==3.11.1
+django-rest-swagger==2.2.0
+django-filter==2.3.0
