@@ -1,25 +1,5 @@
 import Vue from 'vue';
-//loading显示
-Vue.prototype.$showLoading = function () {
-    this.$Spin.show({
-        render: (h) => {
-            return h('div', [
-                h('Icon', {
-                    'class': 'demo-spin-icon-load',
-                    props: {
-                        type: 'ios-loading',
-                        size: 18
-                    }
-                }),
-                h('div', 'Loading')
-            ])
-        }
-    });
-};
-//loading关闭
-Vue.prototype.$CloseLoading = function () {
-    this.$Spin.hide();
-};
+
 //去重
 Vue.prototype.$DupRem = function (list) {
     let newArr = [];
@@ -60,5 +40,109 @@ Vue.prototype.$DateDisplay = function (days, type, startDate) {
     return {
         endTime: type === 'time' ? end : Vue.prototype.$TransTime(end),
         startTime: type === 'time' ? start : Vue.prototype.$TransTime(start)
+    }
+}
+
+// 时间戳与时间互相转换
+Vue.prototype.stampToTime = (timeStamp) => {
+    let date = new Date(timeStamp)
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let clockTime = date.toString().split(' ')[4]
+    return year + '/' + (month < 10 ? '0' + month : month) + '/' + (day < 10 ? '0' + day : day) + ' ' + clockTime
+}
+export const deepClone = (obj, hash = new WeakMap()) => {
+    if (Object(obj) !== obj) return obj
+    if (obj instanceof Set) return new Set(obj)
+    if (hash.has(obj)) return hash.get(obj)
+    const result = obj instanceof Date ? new Date(obj)
+        : obj instanceof RegExp ? new RegExp(obj.source, obj.flags)
+            : obj.constructor ? new obj.constructor()
+                : Object.create(null)
+    hash.set(obj, result)
+    if (obj instanceof Map) {
+        Array.from(obj, ([key, val]) => result.set(key, deepClone(val, hash)))
+    }
+    return Object.assign(result, ...Object.keys(obj).map(key => ({[key]: deepClone(obj[key], hash)})))
+}
+export const transformDataKey = (data = {}, flag = false) => {
+    if (!['[object Array]', '[object Object]'].includes(Object.prototype.toString.call(data))) return data
+    const result = {}
+    if (Array.isArray(data)) {
+        return data.map(item => transformDataKey(item, flag))
+    }
+    Object.keys(data).forEach((key) => {
+        const matchList = flag ? key.match(/([a-z][A-Z])/g) : key.match(/(_[a-zA-Z])/g)
+        let newKey = key
+        const item = data[key]
+        if (matchList) {
+            matchList.forEach((set) => {
+                if (flag) {
+                    newKey = newKey.replace(set, set.split('').join('_')
+                        .toLocaleLowerCase())
+                } else {
+                    newKey = newKey.replace(set, set.replace('_', '').toLocaleUpperCase())
+                }
+            })
+        }
+        if (item && typeof item === 'object' && Object.keys(item).length) {
+            result[newKey] = transformDataKey(item, flag)
+        } else {
+            result[newKey] = item
+        }
+    })
+
+    return result
+}
+export const random = (n) => { // 生成n位长度的字符串
+    const str = 'abcdefghijklmnopqrstuvwxyz0123456789' // 可以作为常量放到random外面
+    let result = ''
+    for (let i = 0; i < n; i++) {
+        result += str[parseInt(Math.random() * str.length)]
+    }
+    return result
+}
+
+export const isPostiveInt = val => /^[1-9][0-9]*$/.test(`${val}`)
+
+Vue.prototype.GMTToStr = (time) => {
+    let date = new Date(time)
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    const clockTime = date.toString().split(' ')[4]
+    return year + '-' + (month < 10 ? ('0' + month) : month) + '-' + (day < 10 ? ('0' + day) : day) + ' ' + clockTime
+}
+
+// 暂时解决删除分页最后一页的唯一数据后，再次获取列表时因为当前页码数没有数据而返回404的问题
+Vue.prototype.rollbackPageNum = (pageNum, pageSize, totalNum) => {
+    if (totalNum === 0) {
+        return pageNum
+    } else {
+        return totalNum % pageSize === 0 ? Math.floor(totalNum / pageSize) : pageNum
+    }
+}
+
+
+Vue.prototype.formatDate = function(nowday) {
+    let year = nowday.getFullYear();
+    let month = nowday.getMonth() + 1;
+    let date = nowday.getDate();
+    let hour = nowday.getHours();
+    let minute = nowday.getMinutes();
+    let second = nowday.getSeconds();
+    return year + '-' + (month < 10 ? '0' + month : month) + '-' + (date < 10 ? '0' + date : date) +
+        ' ' + (hour < 10 ? '0' + hour : hour) + ':' + (minute < 10 ? '0' + minute : minute) + ':' +
+        (second < 10 ? '0' + second : second)
+}
+
+
+// 暂时解决删除分页最后一页的唯一数据后，再次获取列表时因为当前页码数没有数据而返回404的问题
+Vue.prototype.rollbackPageNum = (pageNum, pageSize, totalNum) => {
+    if (totalNum === 0) {
+        return pageNum
+    } else {
+        return totalNum % pageSize === 0 ? Math.floor(totalNum / pageSize) : pageNum
     }
 }
