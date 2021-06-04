@@ -10,7 +10,7 @@ import '@/assets/componentLibrary/demand-import';
 // bk-magic-vue全引入
 // import '@/assets/componentLibrary/fully-import';
 // 几何图
-import Echarts from 'echarts'
+import * as Echarts from 'echarts'
 // 引用API文件
 import api from './api/index'
 //公共方法

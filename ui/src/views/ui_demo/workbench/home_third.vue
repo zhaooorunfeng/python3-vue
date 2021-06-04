@@ -9,8 +9,11 @@
                         :background-color="'inherit'"
                         :show-header="false">
                         <template slot="content">
-                            <stats-card :card-list="cardList1" :display-direction="'vertical'"
-                                        :shape="'hexagon'"></stats-card>
+                            <stats-card :card-list="cardList1"
+                                        :display-direction="'vertical'"
+                                        :shape="'hexagon'"
+                                        @card-click="cardClick"
+                            ></stats-card>
                         </template>
                     </Card>
                 </bk-col>
@@ -77,16 +80,19 @@
                         <template slot="header">
                             <div class="bk-button-group">
                                 <bk-button
+                                    size="small"
                                     @click="btnDays = '7'"
                                     :class="btnDays === '7' ? 'is-selected' : ''">
                                     近7天
                                 </bk-button>
                                 <bk-button
+                                    size="small"
                                     @click="btnDays = '15'"
                                     :class="btnDays === '15' ? 'is-selected' : ''">
                                     近15天
                                 </bk-button>
                                 <bk-button
+                                    size="small"
                                     @click="btnDays = '30'"
                                     :class="btnDays === '30' ? 'is-selected' : ''">
                                     近30天
@@ -173,7 +179,7 @@
                     dimension: 'month',
                     metric: 'value',
                     legend: 'name',
-                    type: 'area'
+                    isArea: true,
                 },
                 tendData: {
                     '7': [
@@ -273,6 +279,9 @@
             },
             handleAddJob() {
                 console.log('作业模块添加')
+            },
+            cardClick() {
+                console.log('card click')
             }
         }
     }

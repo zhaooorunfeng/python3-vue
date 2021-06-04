@@ -1,6 +1,6 @@
 <template>
     <div class="stats-card" :class="bodyClass">
-        <div :class="cardClass" v-for="(card,index) in cards" :key="index">
+        <div :class="cardClass" v-for="(card,index) in cards" :key="index" @click="handleClick">
             <div class="card-text">
                 <div class="card-text-num" :title="card.num">{{ card.num }}</div>
                 <div class="card-text-name">
@@ -80,6 +80,11 @@
                 },
                 immediate: true
             }
+        },
+        methods: {
+            handleClick() {
+                this.$emit('card-click')
+            }
         }
     }
 </script>
@@ -107,6 +112,16 @@
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
         margin-left: 16px;
         background: #ffffff;
+    }
+
+    .card-body:hover {
+        cursor: pointer;
+        box-shadow: 0 1px 5px 0 rgba(25, 40, 60, 0.2);
+        /*卡片动效*/
+        /*.card-icon {*/
+        /*    animation: enlarge 100ms linear;*/
+        /*    animation-fill-mode: forwards;*/
+        /*}*/
     }
 
     .vertical-body {
@@ -185,6 +200,15 @@
 
     .card-icon-hexagon {
         background: url("../../assets/svg/background-hexagon.svg") 3px -1px no-repeat !important;
+    }
+
+    @keyframes enlarge {
+        0% {
+            transform: scale(0);
+        }
+        100% {
+            transform: scale(1.2);
+        }
     }
 
 </style>

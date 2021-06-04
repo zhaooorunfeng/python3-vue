@@ -1,10 +1,8 @@
 <template>
-    <div id="job-tend"></div>
+    <div :id="tendId" :style="{height: height+ 'px'}"></div>
 </template>
 
 <script>
-    import {Chart} from '@antv/g2'
-
     export default {
         name: 'job_tend',
         props: {
@@ -29,12 +27,17 @@
         mounted() {
             this.initChart()
         },
+        computed: {
+            tendId() {
+                return 'tend' + this._uid
+            }
+        },
         watch: {
             navToggle: {
                 handler(val, old) {
                     if (this.chart) {
                         setTimeout(() => {
-                            this.chart.forceFit()
+                            this.chart.resize()
                         }, 200);
                     }
                 },
@@ -43,7 +46,7 @@
             tendData: {
                 handler(val, old) {
                     if (this.chart) {
-                        this.chart.destroy()
+                        this.chart.dispose()
                         this.initChart()
                     }
                 },
@@ -53,43 +56,136 @@
         },
         methods: {
             initChart() {
-                const that = this
-                const chart = new Chart({
-                    container: 'job-tend',
-                    autoFit: true,
-                    height: that.height
-                });
-                this.chart = chart
-                chart.data(this.tendData.data);
-                chart.scale(this.tendData.metric, {
-                    nice: true,
-                    sync: true,
-                    min: 0
-                })
-                chart.scale(this.tendData.line, {
-                    nice: true,
-                    sync: this.tendData.metric,
-                    min: 0
-                })
-                chart.axis(this.tendData.line, false)
-                chart.tooltip({
-                    shared: true,
-                });
-                chart.interval()
-                    .position([this.tendData.dimension, this.tendData.metric])
-                    .color(this.tendData.legend)
-                    .adjust('stack')
-                chart.line()
-                    .position([this.tendData.dimension, this.tendData.line])
-                    .color('#FFDCA5')
-                chart.point()
-                    .position([this.tendData.dimension, this.tendData.line])
-                    .color('#FFDCA5')
-                    .size(3)
-                    .shape('circle');
+                const chartDom = document.getElementById(this.tendId);
+                const myChart = this.$echarts.init(chartDom);
+                this.chart = myChart
 
-                chart.interaction('active-region');
-                chart.render();
+                //  数据格式化，json转二维数组
+                const that = this
+                let data = [[that.tendData.dimension]];
+                this.tendData.data.barData.forEach(function (item) {
+                    let colIndex = data[0].indexOf(item[that.tendData.legend])
+                    if (colIndex < 1) {
+                        data[0].push(item[that.tendData.legend])
+                        colIndex = data[0].length - 1
+                    }
+                    let rowIndex = 0
+                    for (let i = 1; i < data.length; i++) {
+                        if (data[i][0] === item[that.tendData.dimension]) {
+                            rowIndex = i
+                            break
+                        }
+                    }
+                    if (rowIndex === 0) {
+                        data.push([item[that.tendData.dimension]])
+                        rowIndex = data.length - 1
+                    }
+                    data[rowIndex][colIndex] = item[that.tendData.metric]
+                })
+                let lineData = []
+                this.tendData.data.lineData.forEach(function (item) {
+                    lineData.push(item[that.tendData.line])
+                })
+
+
+                //  配置设置
+                let option;
+                option = {
+                    dataset: [
+                        {
+                            source: data
+                        }
+                    ],
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'shadow'
+                        },
+                        textStyle: {
+                            color: '#63656E'
+                        }
+                    },
+                    legend: {
+                        bottom: 'bottom'
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '15%',
+                        top: '5%',
+                        containLabel: true
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            axisTick: {
+                                alignWithLabel: true
+                            },
+                            axisLabel: {
+                                color: '#979BA5'
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#F0F1F5'
+                                }
+                            }
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            axisLabel: {
+                                color: '#979BA5'
+                            },
+                            splitLine: {
+                                lineStyle: {
+                                    color: '#F0F1F5'
+                                }
+                            }
+                        }
+                    ],
+                    series: [
+                        {
+                            type: 'bar',
+                            barWidth: '60%',
+                            barMaxWidth: 35,
+                            stack: 'tend',
+                            itemStyle: {
+                                color: '#5D7092'
+                            }
+                        },
+                        {
+                            type: 'bar',
+                            barWidth: '60%',
+                            barMaxWidth: 35,
+                            stack: 'tend',
+                            itemStyle: {
+                                color: '#5AD8A6'
+                            }
+                        },
+                        {
+                            type: 'bar',
+                            barWidth: '60%',
+                            barMaxWidth: 35,
+                            stack: 'tend',
+                            itemStyle: {
+                                color: '#699DF4'
+                            }
+                        },
+                        {
+                            type: 'line',
+                            name: '阈值',
+                            data: lineData,
+                            itemStyle: {
+                                color: '#FFCD7E'
+                            },
+                        }
+                    ]
+                };
+                window.addEventListener('resize', () => {
+                    myChart.resize()
+                })
+                option && myChart.setOption(option);
             }
         }
     }
