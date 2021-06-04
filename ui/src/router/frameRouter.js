@@ -1,19 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HomeFirst from '@/views/ui_demo/workbench/home_first'
-import HomeSecond from '@/views/ui_demo/workbench/home_second'
-import HomeThird from '@/views/ui_demo/workbench/home_third'
-import SystemSettings from '@/views/ui_demo/workbench/system_settings'
-import DefaultForm from '@/views/ui_demo/forms/default_form'
-import DrawerForm from '@/views/ui_demo/forms/drawer_form'
-import TreeForm from '@/views/ui_demo/forms/tree_form'
-import CategoryList from '@/views/ui_demo/lists/category_list'
-import CustomList from '@/views/ui_demo/lists/custom_list'
-import BusinessNode from '@/views/ui_demo/details/business_node'
-import OperationLog from '@/views/ui_demo/details/operation_log'
-import ResultPage from '@/views/ui_demo/results/index'
-import ExceptionPage from '@/views/ui_demo/exceptions/index'
-import ChartPages from '@/views/ui_demo/charts/index'
+
+const HomeFirst = () => import('@/views/ui_demo/workbench/home_first')
+const HomeSecond = () => import('@/views/ui_demo/workbench/home_second')
+const HomeThird = () => import('@/views/ui_demo/workbench/home_third')
+const SystemSettings = () => import('@/views/ui_demo/workbench/system_settings')
+const DefaultForm = () => import('@/views/ui_demo/forms/default_form')
+const DrawerForm = () => import('@/views/ui_demo/forms/drawer_form')
+const TreeForm = () => import('@/views/ui_demo/forms/tree_form')
+const CategoryList = () => import('@/views/ui_demo/lists/category_list')
+const CustomList = () => import('@/views/ui_demo/lists/custom_list')
+const BusinessNode = () => import('@/views/ui_demo/details/business_node')
+const OperationLog = () => import('@/views/ui_demo/details/operation_log')
+const ResultPage = () => import('@/views/ui_demo/results/index')
+const ExceptionPage = () => import('@/views/ui_demo/exceptions/index')
+const ChartPages = () => import('@/views/ui_demo/charts/index')
 
 
 export let frameRouter = [

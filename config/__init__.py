@@ -27,8 +27,7 @@ __all__ = ["celery_app", "RUN_VER", "APP_CODE", "SECRET_KEY", "BK_URL", "BASE_DI
 
 
 def get_env_or_raise(key):
-    """Get an environment variable, if it does not exist, raise an exception
-    """
+    """Get an environment variable, if it does not exist, raise an exception"""
     value = os.environ.get(key)
     if not value:
         raise RuntimeError(

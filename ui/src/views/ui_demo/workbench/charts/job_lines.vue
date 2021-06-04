@@ -1,9 +1,8 @@
 <template>
-    <div id="job-lines"></div>
+    <div :id="lineId" :style="{height: height+ 'px'}"></div>
 </template>
 
 <script>
-    import {Chart} from '@antv/g2'
 
     export default {
         name: 'job_lines',
@@ -11,6 +10,10 @@
             lineData: {
                 type: Object,
                 default: () => ({})
+            },
+            height: {
+                type: Number,
+                default: 240
             },
             navToggle: {
                 type: Boolean,
@@ -25,12 +28,17 @@
         mounted() {
             this.initChart()
         },
+        computed: {
+            lineId() {
+                return 'line' + this._uid
+            }
+        },
         watch: {
             navToggle: {
                 handler(val, old) {
                     if (this.chart) {
                         setTimeout(() => {
-                            this.chart.forceFit()
+                            this.chart.resize()
                         }, 200);
                     }
                 },
@@ -39,57 +47,124 @@
             lineData: {
                 handler(val, old) {
                     if (this.chart) {
-                        this.chart.destroy()
+                        this.chart.dispose()
                         this.initChart()
                     }
                 },
                 immediate: true,
                 deep: true
             }
+
         },
         methods: {
             initChart() {
-                const chart = new Chart({
-                    container: 'job-lines',
-                    autoFit: true,
-                    height: 240
-                });
-                this.chart = chart
-                chart.data(this.lineData.data);
-                chart.scale(this.lineData.dimension, {
-                    range: [0.02, 0.98],
+                const chartDom = document.getElementById(this.lineId);
+                const myChart = this.$echarts.init(chartDom);
+                this.chart = myChart
+
+                //  数据格式化，json转二维数组
+                const that = this
+                let data = [[that.lineData.dimension]];
+                this.lineData.data.forEach(function (item) {
+                    let colIndex = data[0].indexOf(item[that.lineData.legend])
+                    if (colIndex < 1) {
+                        data[0].push(item[that.lineData.legend])
+                        colIndex = data[0].length - 1
+                    }
+                    let rowIndex = 0
+                    for (let i = 1; i < data.length; i++) {
+                        if (data[i][0] === item[that.lineData.dimension]) {
+                            rowIndex = i
+                            break
+                        }
+                    }
+                    if (rowIndex === 0) {
+                        data.push([item[that.lineData.dimension]])
+                        rowIndex = data.length - 1
+                    }
+                    data[rowIndex][colIndex] = item[that.lineData.metric]
                 })
-                chart.scale(this.lineData.metric, {
-                    nice: true
-                })
 
-                chart.legend({
-                    position: 'top-left',
-                });
-
-                chart.tooltip({
-                    showCrosshairs: true,
-                    shared: true,
-                });
-                chart
-                    .line()
-                    .position([this.lineData.dimension, this.lineData.metric])
-                    .color(this.lineData.legend);
-
-                if (this.lineData.type === 'area') {
-                    chart
-                        .area()
-                        .position([this.lineData.dimension, this.lineData.metric])
-                        .color(this.lineData.legend);
+                //  配置设置
+                let option;
+                option = {
+                    dataset: {
+                        source: data
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'shadow'
+                        },
+                        textStyle: {
+                            color: '#63656E'
+                        }
+                    },
+                    legend: {
+                        left: 'left'
+                    },
+                    grid: {
+                        left: '2%',
+                        right: '2%',
+                        bottom: '3%',
+                        top: '20%',
+                        containLabel: true
+                    },
+                    xAxis: [
+                        {
+                            type: 'category',
+                            axisTick: {
+                                alignWithLabel: true
+                            },
+                            axisLabel: {
+                                color: '#979BA5'
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: '#F0F1F5'
+                                }
+                            }
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            axisLabel: {
+                                color: '#979BA5'
+                            },
+                            splitLine: {
+                                lineStyle: {
+                                    color: '#F0F1F5'
+                                }
+                            }
+                        }
+                    ],
+                    series: [
+                        {
+                            type: 'line',
+                            itemStyle: {
+                                color: '#97BAF6'
+                            },
+                        },
+                        {
+                            type: 'line',
+                            itemStyle: {
+                                color: '#FFCD7E'
+                            },
+                        }
+                    ]
+                };
+                if (this.lineData.isArea) {
+                    option.series.forEach(function (item) {
+                        item['areaStyle'] = {
+                            opacity: 0.3
+                        }
+                    })
                 }
-
-                chart
-                    .point()
-                    .position([this.lineData.dimension, this.lineData.metric])
-                    .color(this.lineData.legend)
-                    .shape('circle');
-
-                chart.render();
+                window.addEventListener('resize', () => {
+                    myChart.resize()
+                })
+                option && myChart.setOption(option);
             }
         }
     }

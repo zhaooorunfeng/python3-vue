@@ -3,21 +3,30 @@
         <bk-form :label-width="150" :model="formData">
             <bk-form-item label="系统配置第一项" :property="'first'">
                 <bk-input v-model="formData.first"
-                          :right-icon="'iconfont icon-xianxingtubiao-tishi'"
-                          :input-style="{'background': '#FAFBFD'}"></bk-input>
+                          style="max-width: 1056px; width: 97%"
+                          :input-style="{background: '#FAFBFD'}"></bk-input>
+                <bk-popover placement="bottom-start" content="这里是提示文字">
+                    <i class="sys-popover-icon iconfont icon-xianxingtubiao-tishi"></i>
+                </bk-popover>
             </bk-form-item>
             <bk-form-item label="系统配置第二项" :property="'second'">
                 <bk-input v-model="formData.second"
-                          :right-icon="'iconfont icon-xianxingtubiao-tishi'"
+                          style="max-width: 1056px; width: 97%"
                           :input-style="{'background': '#FAFBFD'}"></bk-input>
+                <bk-popover placement="bottom-start" content="这里是提示文字">
+                    <i class="sys-popover-icon iconfont icon-xianxingtubiao-tishi"></i>
+                </bk-popover>
             </bk-form-item>
             <bk-form-item label="系统配置控制开关" :property="'switch'">
                 <bk-switcher v-model="formData.switch" theme="primary"></bk-switcher>
             </bk-form-item>
             <bk-form-item label="系统配置第N项" :property="'nth'">
                 <bk-input v-model="formData.nth"
-                          :right-icon="'iconfont icon-xianxingtubiao-tishi'"
+                          style="max-width: 1056px; width: 97%"
                           :input-style="{'background': '#FAFBFD'}"></bk-input>
+                <bk-popover placement="bottom-start" content="这里是提示文字">
+                    <i class="sys-popover-icon iconfont icon-xianxingtubiao-tishi"></i>
+                </bk-popover>
             </bk-form-item>
             <bk-form-item label="系统配置单选" :property="'radio'">
                 <bk-radio-group v-model="formData.radio">
@@ -65,6 +74,16 @@
 
         .sys-input {
             background: #DCDEE5;
+        }
+
+        /deep/ .bk-tooltip .bk-tooltip-ref {
+            left: -30px;
+            top: 2px;
+        }
+
+        .sys-popover-icon {
+            font-size: 16px;
+            color: #979BA5;
         }
 
         .bk-form-radio {

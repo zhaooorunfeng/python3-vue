@@ -24,7 +24,7 @@
                     @select="handleSelect"
                     :default-active="$route.meta.hasOwnProperty('fatherName') ? $route.meta.fatherName : $route.name"
                     :before-nav-change="beforeNavChange"
-                    :toggle-active="nav.toggle">
+                    :toggle-active="true">
                     <bk-navigation-menu-item
                         v-for="item in nav.list"
                         :key="item.name"
