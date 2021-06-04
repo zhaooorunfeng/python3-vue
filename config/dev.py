@@ -11,7 +11,7 @@ an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express o
 specific language governing permissions and limitations under the License.
 """
 
-from config import RUN_VER, BK_PAAS_DOMAIN
+from config import BK_PAAS_DOMAIN, RUN_VER
 
 if RUN_VER == "open":
     from blueapps.patch.settings_open_saas import *  # noqa
@@ -40,9 +40,9 @@ DEBUG = True
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": APP_CODE,  # noqa
+        "NAME": "ops-vision-test",  # noqa
         "USER": "root",
-        "PASSWORD": "",
+        "PASSWORD": "724320257",
         "HOST": "localhost",
         "PORT": "3306",
         # 单元测试 DB 配置，建议不改动
