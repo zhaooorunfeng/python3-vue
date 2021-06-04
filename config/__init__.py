@@ -37,14 +37,14 @@ def get_env_or_raise(key):
 
 
 # 应用 ID
-APP_ID = APP_CODE = os.getenv("APP_ID", "ops-vision")
+APP_ID = APP_CODE = os.getenv("APP_ID", "")
 # 应用用于调用云 API 的 Secret
-APP_TOKEN = SECRET_KEY = os.getenv("APP_TOKEN", "d446cc01-895f-43d5-8a48-71c3c7994f1b")
+APP_TOKEN = SECRET_KEY = os.getenv("APP_TOKEN", "")
 
 # SaaS运行版本，如非必要请勿修改
 RUN_VER = "open"
 # 蓝鲸SaaS平台URL，例如 http://paas.bking.com
-BK_PAAS_HOST = os.getenv("BK_PAAS_HOST", "https://paas.cwbk.com")
+BK_PAAS_HOST = os.getenv("BK_PAAS_HOST", "")
 BK_URL = os.getenv("BK_URL", BK_PAAS_HOST)
 BK_PAAS_DOMAIN = urlparse(BK_PAAS_HOST).hostname
 

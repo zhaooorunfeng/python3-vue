@@ -202,6 +202,7 @@
         background: url("../../assets/svg/background-hexagon.svg") 3px -1px no-repeat !important;
     }
 
+    /*放大特效*/
     @keyframes enlarge {
         0% {
             transform: scale(0);

@@ -40,9 +40,9 @@ DEBUG = True
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "ops-vision-test",  # noqa
+        "NAME": APP_CODE,  # noqa
         "USER": "root",
-        "PASSWORD": "724320257",
+        "PASSWORD": "",
         "HOST": "localhost",
         "PORT": "3306",
         # 单元测试 DB 配置，建议不改动
