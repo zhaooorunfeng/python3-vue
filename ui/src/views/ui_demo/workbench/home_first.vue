@@ -27,11 +27,13 @@
                         <template slot="header">
                             <div class="bk-button-group">
                                 <bk-button
+                                    :size="'small'"
                                     @click="btnGroupSelected = 'year'"
                                     :class="btnGroupSelected === 'year' ? 'is-selected' : ''">
                                     近1年
                                 </bk-button>
                                 <bk-button
+                                    :size="'small'"
                                     @click="btnGroupSelected = 'day'"
                                     :class="btnGroupSelected === 'day' ? 'is-selected' : ''">
                                     近30天
@@ -39,7 +41,7 @@
                             </div>
                         </template>
                         <template slot="content">
-                            <job-line :line-data="lineData" v-bind="$attrs" style="margin-top: -12px"></job-line>
+                            <job-line :line-data="lineData" v-bind="$attrs" style="margin-top: -8px"></job-line>
                         </template>
                     </Card>
                 </bk-col>
@@ -199,20 +201,22 @@
                         {name: '指标5', value: 88},
                     ],
                     dimension: 'name',
-                    metric: 'value'
+                    metric: 'value',
+                    name: '指标值'
                 },
                 lineData: {
                     data: [],
                     dimension: 'date',
                     metric: 'value',
                     legend: 'name',
-                    type: 'line'
+                    isArea: false,
+                    name: '指标值'
                 },
                 stepList: [
                     {title: '吴昊（总经理）审批通过，并附“同意”', description: '2019-12-12 11:23'},
                     {title: '王坤（组长）审批通过，并附“同意”', description: '2019-12-12 11:23'},
                     {title: '李想（总监）审批通过，并附“同意”', description: '2019-12-12 11:23'},
-                    {title: '张晓丽（管理员）审批通过，并附“同意”', description: '2019-12-12 11:23'}
+                    {title: '张晓丽（管理员）审批不通过', description: '2019-12-12 11:23'}
                 ],
                 tendData: {
                     year: [

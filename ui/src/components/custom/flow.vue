@@ -7,6 +7,7 @@
                 :direction="direction"
                 size="small"
                 line-type="solid"
+                :status="status"
                 :cur-step.sync="curStep"
                 :steps="objectSteps"
                 :controllable="controllable"
@@ -28,7 +29,7 @@
             },
             curStep: {
                 type: Number,
-                default: 2
+                default: 4
             },
             stepCount: {
                 type: Number,
@@ -37,6 +38,10 @@
             theme: {
                 type: String,
                 default: 'success'
+            },
+            status: {
+                type: String,
+                default: 'error'
             },
             controllable: {
                 type: Boolean,
@@ -116,6 +121,7 @@
         }
 
         /deep/ .bk-step {
+            overflow: unset;
 
             .bk-step-indicator {
                 width: 9px;
@@ -129,6 +135,7 @@
             .bk-step-title {
                 line-height: 12px;
                 font-size: 14px;
+                color: #63656E !important;
             }
 
             .bk-step-description {

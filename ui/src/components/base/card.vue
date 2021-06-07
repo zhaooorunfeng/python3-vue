@@ -48,7 +48,6 @@
             padding-bottom: 20px;
 
             .content-card-header-title {
-                font-size: 14px;
                 font-weight: 600;
                 color: #63656E;
                 line-height: 20px;

@@ -3,15 +3,6 @@
         <div class="logo-body">
             <div class="logo-img">
                 <img :src="'data:image/png;base64,' + defaultLogo" height="68" width="68" :alt="name">
-            </div>
-            <div style="position: relative">
-                <bk-button
-                    :theme="'primary'"
-                    :title="'上传图片'"
-                    class="mr10"
-                    style="margin-left: 40px">
-                    上传图片
-                </bk-button>
                 <bk-upload
                     :theme="'button'"
                     :accept="'image/png,image/jpeg,image/jpg,image/svg+xml'"
@@ -29,6 +20,16 @@
                     @on-error="handleOnError"
                     ext-cls="logo-upload"
                 ></bk-upload>
+            </div>
+            <div style="position: relative">
+                <bk-button
+                    :theme="'primary'"
+                    :title="'确定上传'"
+                    @click="handleSubmit"
+                    class="mr10"
+                    style="margin-left: 40px">
+                    确定上传
+                </bk-button>
             </div>
             <div>
                 <bk-button :theme="'default'" :title="'恢复默认'" class="mr10" style="margin-left: 20px"
@@ -81,37 +82,40 @@
                 default: false
             }
         },
-        data () {
+        data() {
             return {
                 currentUrl: ''
             }
         },
         watch: {
             defaultLogo: {
-                handler (val) {
+                handler(val) {
                     this.currentUrl = val
                 },
                 immediate: true
             }
         },
         methods: {
-            restoreDefault () {
+            restoreDefault() {
                 this.currentUrl = this.defaultLogo
             },
-            handleRes (response) {
+            handleSubmit() {
+                console.log('上传')
+            },
+            handleRes(response) {
                 return !!response.id
             },
-            handleOnDone (fileList) {
+            handleOnDone(fileList) {
                 this.$emit('on-done', fileList)
             },
-            handleOnProgress (e, file, fileList) {
+            handleOnProgress(e, file, fileList) {
                 this.$emit('on-progress', e, file, fileList)
             },
-            handleOnSuccess (file, fileList) {
+            handleOnSuccess(file, fileList) {
                 this.currentUrl = file.url
                 this.$emit('on-success', file, fileList)
             },
-            handleOnError (file, fileList) {
+            handleOnError(file, fileList) {
                 this.$emit('on-error', file, fileList)
                 this.$error(file.errorMsg)
             }
@@ -151,9 +155,14 @@
 
     .logo-upload {
         position: absolute !important;
-        left: 40px;
-        top: 0;
+        left: 48px;
+        top: 71px;
         opacity: 0;
+    }
+
+    /deep/ .bk-upload.button .file-wrapper {
+        width: 80px;
+        height: 80px;
     }
 
     .logo-info {
@@ -166,6 +175,7 @@
 
         span {
             color: #979BA5;
+            margin-left: 8px;
         }
     }
 </style>
