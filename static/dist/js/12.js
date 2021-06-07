@@ -1,0 +1,2 @@
+webpackJsonp([12],{SF3C:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var c={render:function(){var e=this.$createElement;return(this._self._c||e)("div",[this._v("分类列表")])},staticRenderFns:[]};var r=n("VU/8")({name:"category_list"},c,!1,function(e){n("ejAv")},"data-v-45c75bcc",null);t.default=r.exports},ejAv:function(e,t){}});
+//# sourceMappingURL=12.js.map
