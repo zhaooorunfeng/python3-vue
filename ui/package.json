@@ -10,6 +10,14 @@
         "lint": "eslint --ext .js,.vue src",
         "build": "node build/build.js"
     },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "src/**/*.{js,vue}": "eslint"
+    },
     "dependencies": {
         "@antv/data-set": "^0.11.8",
         "@antv/g2": "^4.1.16",
@@ -17,6 +25,7 @@
         "bk-magic-vue": "latest",
         "echarts": "^5.1.1",
         "jquery": "^2.2.4",
+        "lint-staged": "^11.0.0",
         "vee-validate": "^2.2.5",
         "vue": "^2.5.2",
         "vue-codemirror": "^4.0.6",
@@ -54,6 +63,8 @@
         "file-loader": "^1.1.4",
         "friendly-errors-webpack-plugin": "^1.6.1",
         "html-webpack-plugin": "^2.30.1",
+        "husky": "^4.0.0",
+        "mockjs": "^1.1.0",
         "node-notifier": "^5.1.2",
         "node-sass": "^4.7.2",
         "optimize-css-assets-webpack-plugin": "^3.2.0",
@@ -76,8 +87,7 @@
         "webpack": "^3.6.0",
         "webpack-bundle-analyzer": "^2.9.0",
         "webpack-dev-server": "^2.9.1",
-        "webpack-merge": "^4.1.0",
-        "mockjs": "^1.1.0"
+        "webpack-merge": "^4.1.0"
     },
     "engines": {
         "node": ">= 6.0.0",
