@@ -3,7 +3,7 @@
         <bk-navigation
             :header-title="nav.id"
             :side-title="nav.title"
-            :default-open="false"
+            :default-open="true"
             :need-menu="true"
             ext-cls="main-navigation"
             @toggle-click="handleToggle">
@@ -99,7 +99,6 @@
         methods: {
             confirmUserIdentity () {
                 this.nav.list = createAdminRouteConfig()
-                this.nav.name = this.$route.meta.title
             },
             handleSelect (id, item) {
                 this.nav.id = id
@@ -113,7 +112,6 @@
             },
             handleNavItemClick (item) {
                 if (this.$route.name !== item.id) {
-                    this.nav.name = item.name
                     this.$router.push({
                         name: item.id
                     })
@@ -121,7 +119,6 @@
             },
             goHome () {
                 this.$router.push('/home')
-                this.nav.name = this.$route.meta.title
             }
         }
     }

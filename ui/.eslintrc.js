@@ -29,7 +29,7 @@ module.exports = {
         // js语句结尾必须使用分号
         'semi': ['off', 'always'],
         // 三等号
-        'eqeqeq': 2,
+        'eqeqeq': 0,
         // 强制在注释中 // 或 /* 使用一致的空格
         'spaced-comment': 0,
         // 关键字后面使用一致的空格

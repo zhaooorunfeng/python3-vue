@@ -1,7 +1,7 @@
 <template>
     <div class="monitor-navigation-header">
         <div class="header-title">
-            {{nav.name}}
+            {{$route.meta.title}}
         </div>
         <bk-select class="header-select is-left"
                    v-model="header.bizId" :clearable="false" searchable>

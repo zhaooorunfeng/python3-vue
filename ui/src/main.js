@@ -36,7 +36,6 @@ Vue.prototype.$http = axios;
 Vue.prototype.$api = api;
 const headTheme = 'light'; //选择 light 或 blue
 Vue.prototype.headTheme = headTheme;
-console.log(1234)
 
 /* eslint-disable no-new */
 new Vue({
