@@ -1,4 +1,4 @@
 let a
-if(a === 123) {
+if(a === 1234) {
     console.log(8)
 }
