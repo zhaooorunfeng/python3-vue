@@ -1,10 +1,32 @@
 <template>
     <div id="categoryTable">
-        <bk-tab :active.sync="tabActive" ext-cls="custom-tab">
+        <bk-tab :active.sync="tabActive" ext-cls="custom-tab" :label-height="42">
             <bk-tab-panel v-for="(panel, index) in panels" v-bind="panel" :key="index">
-                <bk-table ref="table" :data="tableList" :pagination="pagination" ext-cls="customTable" :size="setting.size" :max-height="690">
+                <bk-table ref="table" :data="tableList" :pagination="pagination" ext-cls="customTable" :size="setting.size"
+                    :max-height="690">
                     <bk-table-column :label="item.label" :prop="item.id" v-for="(item, index) in setting.selectedFields"
                         :key="index" :show-overflow-tooltip="item.overflowTooltip" :width="item.hasOwnProperty('width') ? item.width : ''">
+                        <template slot-scope="props">
+                            <div v-if="item.id === 'name5'">
+                                <div v-if="props.row.name5 === 'success'" style="display: flex;align-items: center;">
+                                    <div class="status-color" style="background-color: #2DCB56;"></div>
+                                    <div>成功</div>
+                                </div>
+                                <div v-else-if="props.row.name5 === 'info'" style="display: flex;align-items: center;">
+                                    <div class="status-color" style="background-color: #FFD000;"></div>
+                                    <div>提醒</div>
+                                </div>
+                                <div v-else-if="props.row.name5 === 'error'" style="display: flex;align-items: center;">
+                                    <div class="status-color" style="background-color: #EA3636;"></div>
+                                    <div>致命</div>
+                                </div>
+                                <div v-else-if="props.row.name5 === 'warning'" style="display: flex;align-items: center;">
+                                    <div class="status-color" style="background-color: #FF8000;"></div>
+                                    <div>预警</div>
+                                </div>
+                            </div>
+                            <span v-else>{{props.row[item.id]}}</span>
+                        </template>
                     </bk-table-column>
                     <bk-table-column type="setting">
                         <bk-table-setting-content :fields="setting.fields" :selected="setting.selectedFields"
@@ -38,7 +60,7 @@
             }, {
                 id: 'name4',
                 label: '指标4',
-                overflowTooltip: false,
+                overflowTooltip: true,
             }, {
                 id: 'name5',
                 label: '任务状态',
@@ -46,11 +68,11 @@
             }, {
                 id: 'name6',
                 label: '指标4',
-                overflowTooltip: false,
+                overflowTooltip: true,
             }, {
                 id: 'name7',
                 label: '指标4',
-                overflowTooltip: false,
+                overflowTooltip: true,
                 width: '150px'
             }]
             return {
@@ -141,6 +163,7 @@
                 background-color: #fff;
             }
         }
+
         .customTable {
             /deep/ .bk-table-pagination-wrapper {
                 background-color: #fff;
@@ -148,6 +171,14 @@
 
             /deep/ .bk-table-empty-block {
                 background-color: #fff;
+            }
+
+            .status-color {
+                width: 4px;
+                height: 14px;
+                border-radius: 2px;
+                display: inline-block;
+                margin-right: 10px;
             }
 
             .dot-menu-trigger {
