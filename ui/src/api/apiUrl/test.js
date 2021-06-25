@@ -1,11 +1,15 @@
-// 获取登录信息！！！勿动
-import {get, post, reUrl} from '../axiosconfig/axiosconfig'
+import {
+    get,
+    post,
+    reUrl
+} from '../axiosconfig/axiosconfig'
 
-// 返回在vue模板中的调用接口
+//前端mock测试接口
 export default {
-    //----GET-------------------------------------------------------------
-    //获取登录信息！！！
-    get_category_list: function (params) {
+    get_category_list: function(params) {
         return get(reUrl + '/categorylist/mock/', params)
+    },
+    get_custom_list: function(params) {
+        return get(reUrl + '/customlist/mock/', params)
     }
 }

@@ -10,7 +10,9 @@ const DrawerForm = () => import('@/views/ui_demo/forms/drawer_form')
 const TreeForm = () => import('@/views/ui_demo/forms/tree_form')
 const CategoryListFirst = () => import('@/views/ui_demo/lists/category_list_first')
 const CategoryListSecond = () => import('@/views/ui_demo/lists/category_list_second')
-const CustomList = () => import('@/views/ui_demo/lists/custom_list')
+const CustomListFirst = () => import('@/views/ui_demo/lists/custom_list_first')
+const CustomListSecond = () => import('@/views/ui_demo/lists/custom_list_second')
+const CustomListThird = () => import('@/views/ui_demo/lists/custom_list_third')
 const BusinessNode = () => import('@/views/ui_demo/details/business_node')
 const OperationLog = () => import('@/views/ui_demo/details/operation_log')
 const ResultPage = () => import('@/views/ui_demo/results/index')
@@ -99,11 +101,27 @@ export let frameRouter = [{
         }
     },
     {
-        path: '/customList',
-        name: 'CustomList',
-        component: CustomList,
+        path: '/customListFirst',
+        name: 'CustomListFirst',
+        component: CustomListFirst,
         meta: {
-            title: '自定义内容列表',
+            title: '自定义内容列表1',
+        }
+    },
+    {
+        path: '/customListSecond',
+        name: 'CustomListSecond',
+        component: CustomListSecond,
+        meta: {
+            title: '自定义内容列表2',
+        }
+    },
+    {
+        path: '/customListThird',
+        name: 'CustomListThird',
+        component: CustomListThird,
+        meta: {
+            title: '自定义内容列表3',
         }
     },
     {
@@ -191,9 +209,19 @@ export const adminRouteConfig = [{
                 url: '/categoryListSecond',
             },
             {
-                name: '自定义内容列表',
-                id: 'CustomList',
-                url: '/customList'
+                name: '自定义内容列表1',
+                id: 'CustomListFirst',
+                url: '/customListFirst'
+            },
+            {
+                name: '自定义内容列表2',
+                id: 'CustomListSecond',
+                url: '/customListSecond'
+            },
+            {
+                name: '自定义内容列表3',
+                id: 'CustomListThird',
+                url: '/customListThird'
             }
         ]
     },
