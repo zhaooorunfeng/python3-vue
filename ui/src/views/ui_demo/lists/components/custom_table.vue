@@ -27,11 +27,9 @@
                         <span>失败</span>
                     </div>
                     <div v-else-if="props.row.name5 === 'run'">
-                        <div class="status-color"></div>
                         <span>执行中</span>
                     </div>
                     <div v-else-if="props.row.name5 === 'wait'">
-                        <div class="status-color"></div>
                         <span>等待</span>
                     </div>
                     <div v-else-if="props.row.name5 === 'pause'">
@@ -82,7 +80,6 @@
         },
         created() {
             this.$api.Test.get_custom_list().then(res => {
-                console.log(res)
                 this.tableList = res.data.list
                 this.pagination.count = res.data.count
             })
@@ -138,6 +135,16 @@
                 height: 10px;
                 border-radius: 50%;
                 margin-right: 10px;
+
+                /deep/ .custom-loading {
+                    /deep/ .bk-loading2 .rotate,
+                    .bk-spin-loading .rotate {
+                        width: 1px !important;
+                        height: 2px !important;
+                        top: 90% !important;
+                        right: 50% !important;
+                    }
+                }
             }
 
             .dot-menu-trigger {
