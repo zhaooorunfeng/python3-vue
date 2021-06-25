@@ -26,10 +26,12 @@
                         <div class="status-color" style="background-color: #EA3636;"></div>
                         <span>失败</span>
                     </div>
-                    <div v-else-if="props.row.name5 === 'run'">
+                    <div v-else-if="props.row.name5 === 'run'" style="display: flex;align-items: center;">
+                        <loading-icon1 style="margin-right: 11px;"></loading-icon1>
                         <span>执行中</span>
                     </div>
-                    <div v-else-if="props.row.name5 === 'wait'">
+                    <div v-else-if="props.row.name5 === 'wait'" style="display: flex;align-items: center;">
+                        <loading-icon2 style="margin-right: 11px;"></loading-icon2>
                         <span>等待</span>
                     </div>
                     <div v-else-if="props.row.name5 === 'pause'">
@@ -67,7 +69,13 @@
 </template>
 
 <script>
+    import loadingIcon1 from './loading_icon1.vue'
+    import loadingIcon2 from './loading_icon2.vue'
     export default {
+        components: {
+            loadingIcon1,
+            loadingIcon2
+        },
         data() {
             return {
                 tableList: [],
