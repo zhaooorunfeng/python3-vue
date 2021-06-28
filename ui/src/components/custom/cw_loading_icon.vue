@@ -43,8 +43,8 @@
         content: '';
         display: block;
         margin: 0 auto;
-        width: 2px;
-        height: 3px;
+        width: 16%;
+        height: 25%;
         /* background-color: #3A84FF; */
         background-color: var(--custom-bg);
         border-radius: 50%;
