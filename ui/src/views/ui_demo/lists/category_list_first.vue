@@ -1,5 +1,5 @@
 <template>
-    <div id="categoryListFirst">
+    <div class="category-list-first">
         <div class="header">
             <div style="float: left;">
                 <bk-button theme="primary" class="mr10">新建</bk-button>
@@ -21,7 +21,7 @@
 <script>
     import categoryTable from './components/category_table.vue'
     export default {
-        name: 'category_list_first',
+        name: 'category-list-first',
         components: {
             categoryTable
         }
@@ -29,7 +29,7 @@
 </script>
 
 <style lang="scss" scoped>
-    #categoryListFirst {
+    .category-list-first {
         .header {
             font-size: 0;
         }

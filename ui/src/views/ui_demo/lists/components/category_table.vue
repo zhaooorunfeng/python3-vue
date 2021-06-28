@@ -1,9 +1,9 @@
 <template>
-    <div id="categoryTable">
+    <div class="category-table">
         <bk-tab :active.sync="tabActive" ext-cls="custom-tab" :label-height="42">
             <bk-tab-panel v-for="(panel, index) in panels" v-bind="panel" :key="index">
                 <bk-table ref="table" :data="tableList" :pagination="pagination" ext-cls="customTable" :size="setting.size"
-                    :max-height="690">
+                    :max-height="690" :outer-border="false">
                     <bk-table-column :label="item.label" :prop="item.id" v-for="(item, index) in setting.selectedFields"
                         :key="index" :show-overflow-tooltip="item.overflowTooltip" :width="item.hasOwnProperty('width') ? item.width : ''">
                         <template slot-scope="props">
@@ -156,7 +156,7 @@
     }
 </style>
 <style lang="scss" scoped>
-    #categoryTable {
+    .category-table {
         .custom-tab {
             /deep/ .bk-tab-section {
                 padding: 20px 0 0 0;

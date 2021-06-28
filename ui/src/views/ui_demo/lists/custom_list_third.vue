@@ -1,5 +1,5 @@
 <template>
-    <div id="customListThird">
+    <div class="custom-list-third">
         <div class="tab">
             <div class="bk-button-group" style="margin-bottom: 16px;">
                 <bk-button @click="handleSelectTab(item.name)" :class="tabSelected === item.name ? 'is-selected' : ''"
@@ -13,7 +13,7 @@
                 <bk-button class="mr10">次要按钮</bk-button>
                 <bk-button class="mr10">次要按钮</bk-button>
                 <bk-button class="mr10">次要按钮</bk-button>
-                <bk-button title="toggle-lock" icon="icon-cog" class="mr10"></bk-button>
+                <bk-button title="toggle-lock" icon="icon-cog" class="mr10" style="color: #979BA5;"></bk-button>
             </div>
             <div style="float: right;">
                 <bk-input style="width: 300px;" clearable :placeholder="'请输入搜索项名'" :right-icon="'bk-icon icon-search'">
@@ -30,7 +30,7 @@
 <script>
     import customTable from './components/custom_table.vue'
     export default {
-        name: 'custom_list_third',
+        name: 'custom-list-third',
         components: {
             customTable
         },
@@ -65,7 +65,7 @@
 </script>
 
 <style lang="scss" scoped>
-    #customListThird {
+    .custom-list-third {
         .line {
             width: 100%;
             height: 1px;

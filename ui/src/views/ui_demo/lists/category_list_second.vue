@@ -1,5 +1,5 @@
 <template>
-    <div id="categoryListSecond">
+    <div class="category-list-second">
         <div class="header">
             <div style="float: left;">
                 <bk-input style="width: 420px;" clearable :placeholder="'请输入搜索项名，多条件同时搜索用｜隔开'" :right-icon="'bk-icon icon-search'">
@@ -16,7 +16,7 @@
 <script>
     import categoryTable from './components/category_table.vue'
     export default {
-        name: 'category_list_second',
+        name: 'category-list-second',
         components: {
             categoryTable
         }
@@ -24,7 +24,7 @@
 </script>
 
 <style lang="scss" scoped>
-    #categoryListSecond {
+    .category-list-second {
         .header {
             font-size: 0;
         }

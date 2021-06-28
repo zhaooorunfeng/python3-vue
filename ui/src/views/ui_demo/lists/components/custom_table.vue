@@ -1,6 +1,6 @@
 <template>
-    <div id="customTable">
-        <bk-table ref="table" :data="tableList" :pagination="pagination" ext-cls="custom-table" :max-height="690">
+    <div class="custom-table">
+        <bk-table ref="table" :data="tableList" :pagination="pagination" ext-cls="default-custom-table" :max-height="690">
             <bk-table-column label="指标1" prop="name1" :show-overflow-tooltip="true">
                 <template slot-scope="props">
                     <div style="padding: 10px 0 10px 0;">
@@ -125,8 +125,8 @@
     }
 </style>
 <style lang="scss" scoped>
-    #customTable {
-        .custom-table {
+    .custom-table {
+        .default-custom-table {
             /deep/ .bk-table-pagination-wrapper {
                 background-color: #fff;
             }
@@ -175,6 +175,7 @@
 
             .dot-menu-trigger:before {
                 content: "";
+                color: #3A84FF;
                 display: inline-block;
                 width: 3px;
                 height: 3px;

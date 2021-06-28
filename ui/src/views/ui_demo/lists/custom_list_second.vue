@@ -1,5 +1,5 @@
 <template>
-    <div id="customListSecond">
+    <div class="custom-list-second">
         <bk-tab :active.sync="tabActive" ext-cls="custom-tab" :label-height="42">
             <bk-tab-panel v-for="(panel, index) in panels" v-bind="panel" :key="index">
                 <div class="header">
@@ -17,7 +17,7 @@
 <script>
     import customTable from './components/custom_table.vue'
     export default {
-        name: 'custom_list_second',
+        name: 'custom-list-second',
         components: {
             customTable
         },
@@ -43,7 +43,7 @@
 </script>
 
 <style lang="scss" scoped>
-    #customListSecond {
+    .custom-list-second {
         .custom-tab {
             /deep/ .bk-tab-section {
                 background-color: #fff;
