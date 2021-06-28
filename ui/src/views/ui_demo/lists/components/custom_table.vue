@@ -27,11 +27,11 @@
                         <span>失败</span>
                     </div>
                     <div v-else-if="props.row.name5 === 'run'" style="display: flex;align-items: center;">
-                        <loading-icon1 style="margin-right: 11px;"></loading-icon1>
+                        <cw-loading-icon :size="`12px`" :color="`#3A84FF`" style="margin-right: 11px;"></cw-loading-icon>
                         <span>执行中</span>
                     </div>
                     <div v-else-if="props.row.name5 === 'wait'" style="display: flex;align-items: center;">
-                        <loading-icon2 style="margin-right: 11px;"></loading-icon2>
+                        <cw-loading-icon :size="`12px`" :color="`#979BA5`" style="margin-right: 11px;"></cw-loading-icon>
                         <span>等待</span>
                     </div>
                     <div v-else-if="props.row.name5 === 'pause'">
@@ -69,12 +69,10 @@
 </template>
 
 <script>
-    import loadingIcon1 from './loading_icon1.vue'
-    import loadingIcon2 from './loading_icon2.vue'
+    import cwLoadingIcon from '@/components/custom/cw_loading_icon.vue'
     export default {
         components: {
-            loadingIcon1,
-            loadingIcon2
+            cwLoadingIcon
         },
         data() {
             return {
