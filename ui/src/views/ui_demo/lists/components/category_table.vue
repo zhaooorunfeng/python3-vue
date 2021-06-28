@@ -9,19 +9,19 @@
                         <template slot-scope="props">
                             <div v-if="item.id === 'name5'">
                                 <div v-if="props.row.name5 === 'success'" style="display: flex;align-items: center;">
-                                    <div class="status-color" style="background-color: #2DCB56;"></div>
+                                    <div class="line-color success"></div>
                                     <div>成功</div>
                                 </div>
                                 <div v-else-if="props.row.name5 === 'info'" style="display: flex;align-items: center;">
-                                    <div class="status-color" style="background-color: #FFD000;"></div>
+                                    <div class="line-color info"></div>
                                     <div>提醒</div>
                                 </div>
-                                <div v-else-if="props.row.name5 === 'error'" style="display: flex;align-items: center;">
-                                    <div class="status-color" style="background-color: #EA3636;"></div>
+                                <div v-else-if="props.row.name5 === 'deadly'" style="display: flex;align-items: center;">
+                                    <div class="line-color deadly"></div>
                                     <div>致命</div>
                                 </div>
                                 <div v-else-if="props.row.name5 === 'warning'" style="display: flex;align-items: center;">
-                                    <div class="status-color" style="background-color: #FF8000;"></div>
+                                    <div class="line-color warning"></div>
                                     <div>预警</div>
                                 </div>
                             </div>
@@ -126,35 +126,6 @@
     }
 </script>
 
-<style lang="scss">
-    .dot-menu {
-        display: inline-block;
-        vertical-align: middle;
-
-        .tippy-tooltip.dot-menu-theme {
-            padding: 0;
-        }
-    }
-
-    .dot-menu-list {
-        margin: 0;
-        padding: 5px 0;
-        min-width: 50px;
-        list-style: none;
-    }
-
-    .dot-menu-list .dot-menu-item {
-        padding: 0 10px;
-        font-size: 12px;
-        line-height: 26px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: #eaf3ff;
-            color: #3a84ff;
-        }
-    }
-</style>
 <style lang="scss" scoped>
     .category-table {
         .custom-tab {
@@ -171,40 +142,6 @@
 
             /deep/ .bk-table-empty-block {
                 background-color: #fff;
-            }
-
-            .status-color {
-                width: 4px;
-                height: 14px;
-                border-radius: 2px;
-                display: inline-block;
-                margin-right: 10px;
-            }
-
-            .dot-menu-trigger {
-                display: block;
-                width: 30px;
-                height: 30px;
-                line-height: 30px;
-                border-radius: 50%;
-                text-align: center;
-                font-size: 0;
-                cursor: pointer;
-            }
-
-            .dot-menu-trigger:hover {
-                color: #3A84FF;
-                background-color: #DCDEE5;
-            }
-
-            .dot-menu-trigger:before {
-                content: "";
-                display: inline-block;
-                width: 3px;
-                height: 3px;
-                border-radius: 50%;
-                background-color: currentColor;
-                box-shadow: 0 -4px 0 currentColor, 0 4px 0 currentColor;
             }
         }
     }

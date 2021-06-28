@@ -19,11 +19,11 @@
             <bk-table-column label="节点状态" prop="name5">
                 <template slot-scope="props">
                     <div v-if="props.row.name5 === 'success'">
-                        <div class="status-color" style="background-color: #2DCB56;"></div>
+                        <div class="round-color success"></div>
                         <span>成功</span>
                     </div>
                     <div v-else-if="props.row.name5 === 'fail'">
-                        <div class="status-color" style="background-color: #EA3636;"></div>
+                        <div class="round-color fail"></div>
                         <span>失败</span>
                     </div>
                     <div v-else-if="props.row.name5 === 'run'" style="display: flex;align-items: center;">
@@ -35,15 +35,15 @@
                         <span>等待</span>
                     </div>
                     <div v-else-if="props.row.name5 === 'pause'">
-                        <div class="status-color" style="background-color: #C4C6CC;"></div>
+                        <div class="round-color pause"></div>
                         <span>暂停</span>
                     </div>
                     <div v-else-if="props.row.name5 === 'stop'">
-                        <div class="status-color" style="background-color: #FFD695;"></div>
+                        <div class="round-color stop"></div>
                         <span>终止</span>
                     </div>
                     <div v-else-if="props.row.name5 === 'error'">
-                        <div class="status-color" style="background-color: #FF8000;"></div>
+                        <div class="round-color error"></div>
                         <span>错误</span>
                     </div>
                 </template>
@@ -54,7 +54,7 @@
                     <bk-button class="mr10" theme="primary" text style="margin-top: 10px;">编辑</bk-button>
                     <bk-button class="mr10" theme="primary" text>操作</bk-button>
                     <div style="display: inline-block;position: relative;">
-                        <bk-popover ext-cls="dot-menu" placement="bottom-start" theme="dot-menu light" trigger="click"
+                        <bk-popover ext-cls="cw-dot-menu" placement="bottom-start" theme="dot-menu light" trigger="click"
                             :arrow="false" :distance="0" offset="15">
                             <span class="dot-menu-trigger"></span>
                             <ul class="dot-menu-list" slot="content">
@@ -93,35 +93,6 @@
     }
 </script>
 
-<style lang="scss">
-    .dot-menu {
-        display: inline-block;
-        vertical-align: middle;
-
-        .tippy-tooltip.dot-menu-theme {
-            padding: 0;
-        }
-    }
-
-    .dot-menu-list {
-        margin: 0;
-        padding: 5px 0;
-        min-width: 50px;
-        list-style: none;
-    }
-
-    .dot-menu-list .dot-menu-item {
-        padding: 0 10px;
-        font-size: 12px;
-        line-height: 26px;
-        cursor: pointer;
-
-        &:hover {
-            background-color: #eaf3ff;
-            color: #3a84ff;
-        }
-    }
-</style>
 <style lang="scss" scoped>
     .custom-table {
         .default-custom-table {
@@ -135,23 +106,13 @@
                 }
             }
 
-            .status-color {
-                display: inline-block;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                margin-right: 10px;
-
-                /deep/ .custom-loading {
-                    /deep/ .bk-loading2 .rotate,
-                    .bk-spin-loading .rotate {
-                        width: 1px !important;
-                        height: 2px !important;
-                        top: 90% !important;
-                        right: 50% !important;
-                    }
-                }
-            }
+            // .status-color {
+            //     display: inline-block;
+            //     width: 10px;
+            //     height: 10px;
+            //     border-radius: 50%;
+            //     margin-right: 10px;
+            // }
 
             .dot-menu-trigger {
                 position: relative;

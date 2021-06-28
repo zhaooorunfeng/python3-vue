@@ -19,7 +19,7 @@ export default ({
                     name2: '文本类型内容',
                     name3: '0.00%',
                     name4: '文本类型详情',
-                    name5: 'error',
+                    name5: 'deadly',
                     name6: '长文本类型详情长文本类型详情长文本类型详情',
                     name7: '短文本类型详情'
                 }, {
@@ -43,7 +43,7 @@ export default ({
                     name2: '文本类型内容',
                     name3: '0.00%',
                     name4: '文本类型详情',
-                    name5: 'error',
+                    name5: 'deadly',
                     name6: '长文本类型详情长文本类型详情长文本类型详情',
                     name7: '短文本类型详情'
                 }, {
@@ -91,7 +91,7 @@ export default ({
                     name2: '文本类型内容',
                     name3: '0.00%',
                     name4: '文本类型详情',
-                    name5: 'error',
+                    name5: 'deadly',
                     name6: '长文本类型详情长文本类型详情长文本类型详情',
                     name7: '短文本类型详情'
                 }, {
@@ -190,42 +190,42 @@ export default ({
                     name2: '文本类型内容',
                     name3: '20.00',
                     name4: '文本类型详情',
-                    name5: 'error',
+                    name5: 'deadly',
                     name6: '长文本类型详情长文本类型详情长文本类型详情长文本类型详情'
                 }, {
                     name1: '名称-checklist',
                     name2: '文本类型内容',
                     name3: '20.00',
                     name4: '文本类型详情',
-                    name5: 'error',
+                    name5: 'deadly',
                     name6: '长文本类型详情长文本类型详情长文本类型详情长文本类型详情'
                 }, {
                     name1: '名称-checklist',
                     name2: '文本类型内容',
                     name3: '20.00',
                     name4: '文本类型详情',
-                    name5: 'error',
+                    name5: 'deadly',
                     name6: '长文本类型详情长文本类型详情长文本类型详情长文本类型详情'
                 }, {
                     name1: '名称-checklist',
                     name2: '文本类型内容',
                     name3: '20.00',
                     name4: '文本类型详情',
-                    name5: 'error',
+                    name5: 'deadly',
                     name6: '长文本类型详情长文本类型详情长文本类型详情长文本类型详情'
                 }, {
                     name1: '名称-checklist',
                     name2: '文本类型内容',
                     name3: '20.00',
                     name4: '文本类型详情',
-                    name5: 'error',
+                    name5: 'deadly',
                     name6: '长文本类型详情长文本类型详情长文本类型详情长文本类型详情'
                 }, {
                     name1: '名称-checklist',
                     name2: '文本类型内容',
                     name3: '20.00',
                     name4: '文本类型详情',
-                    name5: 'error',
+                    name5: 'deadly',
                     name6: '长文本类型详情长文本类型详情长文本类型详情长文本类型详情'
                 }],
                 count: 269,
