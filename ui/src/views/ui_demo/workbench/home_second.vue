@@ -1,5 +1,5 @@
 <template>
-    <div id="home-second">
+    <div class="home-second">
         <bk-container :col="8" :gutter="16" ext-cls="home-container">
             <bk-row>
                 <bk-col :span="0">
@@ -246,16 +246,17 @@
 </script>
 
 <style lang="scss" scoped>
-    .home-container {
-        padding: 0 0 !important;
+    .home-second {
+        padding: 20px 24px 0 24px;
+        .home-container {
+            padding: 0 0 !important;
+            .bk-grid-row + .bk-grid-row {
+                margin-top: 16px;
+            }
 
-        .bk-grid-row + .bk-grid-row {
-            margin-top: 16px;
-        }
-
-        .font-btn {
-            font-size: 12px;
+            .font-btn {
+                font-size: 12px;
+            }
         }
     }
-
 </style>

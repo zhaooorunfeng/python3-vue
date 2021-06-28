@@ -66,6 +66,7 @@
 
 <style lang="scss" scoped>
     .custom-list-third {
+        padding: 20px 24px 0 24px;
         .line {
             width: 100%;
             height: 1px;

@@ -44,6 +44,7 @@
 
 <style lang="scss" scoped>
     .custom-list-second {
+        padding: 20px 24px 0 24px;
         .custom-tab {
             /deep/ .bk-tab-section {
                 background-color: #fff;

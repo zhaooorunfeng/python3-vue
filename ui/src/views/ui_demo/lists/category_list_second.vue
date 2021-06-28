@@ -25,6 +25,7 @@
 
 <style lang="scss" scoped>
     .category-list-second {
+        padding: 20px 24px 0 24px;
         .header {
             font-size: 0;
         }

@@ -30,6 +30,7 @@
 
 <style lang="scss" scoped>
     .category-list-first {
+        padding: 20px 24px 0 24px;
         .header {
             font-size: 0;
         }
