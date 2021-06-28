@@ -1,12 +1,14 @@
 /**
- * feature：新功能
- * update：更新某功能
- * fixbug：修补某功能的bug
- * refactor：重构某个功能
- * optimize: 优化构建工具或运行时性能
- * style：仅样式改动
- * docs：仅文档新增/改动
- * chore：构建过程或辅助工具的变动
+ * 官方文档https://commitlint.js.org/#/
+ * feature：新特性
+ * bugfix：线上功能bug
+ * minor：不重要的修改（换行，拼写错误等）
+ * optimization: 功能优化
+ * sprintfix：未上线代码修改 （功能模块未上线部分bug）
+ * refactor：功能重构
+ * test：增加测试代码
+ * docs：编写文档
+ * merge：分支合并及冲突解决
  */
 module.exports = {
     extends: [
@@ -14,7 +16,7 @@ module.exports = {
     ],
     rules: {
         'type-enum': [2, 'always', [
-            'feature', 'update', 'fixbug', 'refactor', 'optimize', 'style', 'docs', 'chore'
+            'feature', 'bugfix', 'minor', 'optimization', 'sprintfix', 'refactor', 'test', 'docs'， 'merge'
         ]],
         'type-case': [0],
         'type-empty': [2, 'never'],
