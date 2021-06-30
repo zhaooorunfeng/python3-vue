@@ -3,7 +3,7 @@ import {
     bkButton, bkCard, bkUpload, bkAlert, bkCheckbox, bkCheckboxGroup, bkCollapse, bkCollapseItem, bkContainer, bkCol, bkRow, bkDatePicker,
     bkDialog, bkDropdownMenu, bkException, bkForm, bkFormItem, bkInput, bkInfoBox, bkLoading, bkMessage,
     bkNavigation, bkNavigationMenu, bkNavigationMenuItem, bkNotify, bkOption, bkOptionGroup, bkPagination,
-    bkPopover, bkProcess, bkProgress, bkRadio, bkRadioGroup, bkSearchSelect, bkSelect, bkTableSettingContent,
+    bkPopover, bkProcess, bkProgress, bkRadio, bkRadioGroup, bkSearchSelect, bkSelect, bkTableSettingContent, bkBigTree,
     bkSideslider, bkSlider, bkSteps, bkSwitcher, bkTab, bkTabPanel, bkTable, bkTableColumn, bkTagInput, bkTimePicker,
     bkTimeline, bkClickoutside, bkTooltips, bkOverflowTips, bkCascade, bkIcon, bkDivider, bkPopconfirm, bkRadioButton, bkTag,
 } from 'bk-magic-vue'
@@ -65,7 +65,7 @@ Vue.use(bkTimeline)
 // Vue.use(bkTransfer)
 // Vue.use(bkTree)
 // Vue.use(bkUpload)
-// Vue.use(bkBigTree)
+Vue.use(bkBigTree)
 Vue.use(bkCascade)
 // Vue.use(bkVirtualScroll)
 Vue.use(bkIcon)
