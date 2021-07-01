@@ -247,7 +247,7 @@
 
 <style lang="scss" scoped>
     .home-second {
-        padding: 20px 24px 0 24px;
+        padding: 20px 24px 20px 24px;
         .home-container {
             padding: 0 0 !important;
             .bk-grid-row + .bk-grid-row {

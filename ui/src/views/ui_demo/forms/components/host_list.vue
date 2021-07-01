@@ -19,6 +19,7 @@
     export default {
         data() {
             return {
+                basicLoading: false,
                 tableList: [],
                 pagination: {
                     current: 1,
@@ -28,6 +29,7 @@
             }
         },
         created() {
+            this.basicLoading = true
             this.$api.Test.get_linux_host_list().then(res => {
                 this.tableList = res.data.list
                 this.pagination.count = res.data.count

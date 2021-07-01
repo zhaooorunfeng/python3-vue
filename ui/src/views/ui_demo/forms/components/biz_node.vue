@@ -29,7 +29,6 @@
         },
         created() {
             this.$api.Test.get_linux_biznode_tree().then(res => {
-                console.log(res)
                 this.treeList = res.data.list
             })
         }
@@ -43,7 +42,7 @@
             align-items: center;
         }
         .content {
-            max-height: 270px;
+            max-height: 320px;
             margin-top: 10px;
             overflow: scroll;
         }

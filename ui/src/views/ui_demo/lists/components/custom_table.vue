@@ -46,6 +46,10 @@
                         <div class="round-color error"></div>
                         <span>错误</span>
                     </div>
+                    <div v-else-if="props.row.name5 === 'deadly'">
+                        <div class="round-color deadly"></div>
+                        <span>致命</span>
+                    </div>
                 </template>
             </bk-table-column>
             <bk-table-column label="指标4" prop="name6" :show-overflow-tooltip="true"></bk-table-column>
