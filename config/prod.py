@@ -24,16 +24,9 @@ else:
 RUN_MODE = "PRODUCT"
 
 # 只对正式环境日志级别进行配置，可以在这里修改
-LOG_LEVEL = "ERROR"
-
-# V2
-# import logging
-# logging.getLogger('root').setLevel('INFO')
-# V3
-# import logging
-# logging.getLogger('app').setLevel('INFO')
-
-
+# from blueapps.conf.log import set_log_level # noqa
+# LOG_LEVEL = "ERROR"
+# LOGGING = set_log_level(locals())
 # 正式环境数据库可以在这里修改，默认通过环境变量（DB_NAME、DB_USERNAME、DB_PASSWORD、DB_HOST、DB_PORT）获取
 
 DATABASES.update(  # noqa

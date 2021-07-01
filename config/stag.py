@@ -13,7 +13,8 @@ specific language governing permissions and limitations under the License.
 
 import os
 
-from config import RUN_VER, BK_PAAS_DOMAIN
+from config import RUN_VER
+from config.default import FRONTEND_BACKEND_SEPARATION
 
 if RUN_VER == "open":
     from blueapps.patch.settings_open_saas import *  # noqa
@@ -23,16 +24,20 @@ else:
 # 预发布环境
 RUN_MODE = "STAGING"
 
-# 正式环境的日志级别可以在这里配置
-# V2
-# import logging
-# logging.getLogger('root').setLevel('INFO')
-# V3
-# import logging
-# logging.getLogger('app').setLevel('INFO')
+# 只对预发布环境日志级别进行配置，可以在这里修改
+# from blueapps.conf.log import set_log_level # noqa
+# LOG_LEVEL = "ERROR"
+# LOGGING = set_log_level(locals())
 
+# 预发布环境数据库可以在这里配置
 
-# 预发布环境数据库可以在这里配置，默认通过环境变量（DB_NAME、DB_USERNAME、DB_PASSWORD、DB_HOST、DB_PORT）获取
+# 前后端开发模式下支持跨域配置
+if FRONTEND_BACKEND_SEPARATION:
+    INSTALLED_APPS += ("corsheaders",)  # noqa
+    # 该跨域中间件需要放在前面
+    MIDDLEWARE = ("corsheaders.middleware.CorsMiddleware",) + MIDDLEWARE  # noqa
+    CORS_ORIGIN_ALLOW_ALL = True
+    CORS_ALLOW_CREDENTIALS = True
 
 DATABASES.update(  # noqa
     {
@@ -46,11 +51,3 @@ DATABASES.update(  # noqa
         },
     }
 )
-
-# 白名单, 域名请按照前段实际配置修改
-CORS_ORIGIN_WHITELIST = [
-    "http://appdev.%s:8080" % BK_PAAS_DOMAIN,
-    "http://dev.%s:8080" % BK_PAAS_DOMAIN,
-]
-# 允许跨域使用 cookie
-CORS_ALLOW_CREDENTIALS = True
