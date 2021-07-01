@@ -36,3 +36,9 @@ requirements.txt 包检查等功能。
 
 GitLab CI 是 GitLab 内置的进行持续集成的工具，只需要在仓库根目录下创建 .gitlab-ci.yml 文件，并配置 GitLab Runner；
 每次提交的时候，gitlab 将自动识别到 .gitlab-ci.yml 文件，并且使用 Gitlab Runner 执行该脚本。
+
+## 版本更新说明
+
+### Celery4 迁移指南
+开发框架Celery版本已由3.1.25升级到了4.4.0, 具体详情查看官方指南
+https://bk.tencent.com/docs/document/6.0/130/7028
