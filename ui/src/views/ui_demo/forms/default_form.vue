@@ -72,7 +72,7 @@
                 <bk-button>取消</bk-button>
             </div>
             <bk-dialog v-model="visible" theme="primary" :mask-close="false" title="选择目标" :show-footer="true" :position="{top: 80}"
-                width="600" header-position="left" ext-cls="custom-dialog1" :render-directive="'if'">
+                width="600" header-position="left" ext-cls="default-form-dialog" :render-directive="'if'">
                 <target-dialog></target-dialog>
             </bk-dialog>
         </div>
@@ -226,11 +226,11 @@
     }
 </style>
 <style>
-    .custom-dialog1>.bk-dialog>.bk-dialog-content>.bk-dialog-header {
+    .default-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-header {
         padding: 0 24px 2px 24px;
     }
 
-    .custom-dialog1>.bk-dialog>.bk-dialog-content>.bk-dialog-body {
+    .default-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body {
         padding: 0 24px 0px 24px;
         height: 470px;
     }

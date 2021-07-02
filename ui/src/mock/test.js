@@ -497,4 +497,82 @@ export default ({
             }
         }
     })
+    Mock.mock(window.siteUrl + '/treeform/treelist/mock/', 'get', () => {
+        return {
+            data: {
+                list: [{
+                    id: 'Mozambique',
+                    label: 'Mozambique',
+                    child: [{
+                        id: 'New Tomas',
+                        label: 'New Tomas',
+                        child: [{
+                            id: 'North Andreane',
+                            label: 'North Andreane',
+                            child: [{
+                                id: 'South Wilmer',
+                                label: 'South Wilmer',
+                                child: [{
+                                    id: 'aaa',
+                                    label: 'aaa'
+                                }]
+                            }, {
+                                id: 'Beierstad',
+                                label: 'Beierstad',
+                                child: [{
+                                    id: 'Charlie Alvarez',
+                                    label: 'Charlie Alvarez'
+                                }, {
+                                    id: 'Richard Rodgers',
+                                    label: 'Richard Rodgers'
+                                }, {
+                                    id: 'Gene Massey',
+                                    label: 'Gene Massey'
+                                }, {
+                                    id: 'Harvey Fitzgerald',
+                                    label: 'Harvey Fitzgerald'
+                                }, ]
+                            }]
+                        }]
+                    }, {
+                        id: 'Lake Marietta',
+                        label: 'Lake Marietta',
+                        child: [{
+                            id: 'bbb',
+                            label: 'bbb'
+                        }]
+                    }]
+                }, {
+                    id: 'Lebanon',
+                    label: 'Lebanon',
+                    child: [{
+                        id: 'ccc',
+                        label: 'ccc'
+                    }]
+                }, {
+                    id: 'Venezuela',
+                    label: 'Venezuela',
+                    child: [{
+                        id: 'ddd',
+                        label: 'ddd'
+                    }]
+                }, {
+                    id: 'Bulgaria',
+                    label: 'Bulgaria',
+                    child: [{
+                        id: 'eee',
+                        label: 'eee'
+                    }]
+                }, {
+                    id: 'Equatorial Guinea',
+                    label: 'Equatorial Guinea',
+                    child: [{
+                        id: 'fff',
+                        label: 'fff'
+                    }]
+                }],
+                code: 200
+            }
+        }
+    })
 }

@@ -20,5 +20,8 @@ export default {
     },
     get_linux_biznode_tree: function(params) {
         return get(reUrl + '/linus/biznode/treelist/mock/', params)
+    },
+    get_tree_form_treelist: function(params) {
+        return get(reUrl + '/treeform/treelist/mock/', params)
     }
 }

@@ -2,7 +2,7 @@
     <div class="tree-form">
         <bk-button @click="visible = true" theme="primary">树选择-选择结果</bk-button>
         <bk-dialog v-model="visible" theme="primary" :mask-close="false" :show-footer="true" :position="{top: 80}"
-            width="827" header-position="left" ext-cls="custom-dialog2" :close-icon="false">
+            width="827" header-position="left" ext-cls="tree-form-dialog" :close-icon="false">
             <div class="content">
                 <div class="left-content">
                     <div class="title" style="font-size: 14px;color: #313238;font-weight: 500;">
@@ -10,20 +10,25 @@
                     </div>
                     <bk-input style="width: 476px;margin-top: 17px;" clearable :placeholder="'请输入拓扑节点'" :right-icon="'bk-icon icon-search'">
                     </bk-input>
+                    <bk-big-tree ref="topoTree" :data="treeList" :options="defaultProps"
+                        :display-matched-node-descendants="true" :ext-cls="'custom-tree'" :expand-on-click="false"
+                        :default-expand-all="false" :show-checkbox="true" style="max-height: 350px;margin-top: 12px;" :show-link-line="true">
+                    </bk-big-tree>
                 </div>
                 <div class="right-content">
                     <div class="title" style="font-size: 14px;color: #313238;font-weight: 500;">
                         结果预览
                     </div>
-                    <div class="select-header" style="margin-top: 12px;">
-                        <div style="float: left;font-size: 12px;">
-                            已选<span style="color: #3A84FF;">4</span>个模块
+                    <div class="select-header" style="margin-top: 12px;font-size: 12px;">
+                        <div style="float: left;">
+                            已选<span style="color: #3A84FF;"> 4 </span>个模块
                         </div>
-                        <div style="float: right;font-size: 12px;color: #3A84FF;">清空</div>
+                        <div style="float: right;color: #3A84FF;margin-right: 4px;">清空</div>
                     </div>
                     <div style="clear: both;"></div>
-                    <div style="margin-top: 6px;" class="select-result">
-                        <div v-for="(item, index) in resultList" :key="index" style="height: 48px;display: flex;align-items: center;padding: 5px 5px 5px 12px" @mouseenter="handleIsShowClose(item)" @mouseleave="handleIsShowClose(item)">
+                    <div style="margin-top: 6px;max-height: 407px;overflow: scroll;" class="select-result">
+                        <div v-for="(item, index) in resultList" :key="index" style="height: 48px;display: flex;align-items: center;padding: 5px 5px 5px 12px"
+                            @mouseenter="handleIsShowClose(item)" @mouseleave="handleIsShowClose(item)">
                             <div class="left-result" style="font-size: 12px;flex: 1;">
                                 <span style="color: #63656E;">{{item.name1}}</span><br>
                                 <span style="color: #979BA5;">{{item.name2}}</span>
@@ -45,9 +50,26 @@
         data() {
             return {
                 visible: false,
-                a: false,
+                defaultProps: {
+                    idKey: 'id',
+                    nameKey: 'label',
+                    childrenKey: 'child'
+                },
+                treeList: [],
                 resultList: [{
                     name1: 'South Wendellmouth1',
+                    name2: '一级名称/二级名称/三级名称',
+                    closeShow: false
+                }, {
+                    name1: 'South Wendellmouth2',
+                    name2: '一级名称/二级名称/三级名称',
+                    closeShow: false
+                }, {
+                    name1: 'South Wendellmouth2',
+                    name2: '一级名称/二级名称/三级名称',
+                    closeShow: false
+                }, {
+                    name1: 'South Wendellmouth2',
                     name2: '一级名称/二级名称/三级名称',
                     closeShow: false
                 }, {
@@ -57,11 +79,17 @@
                 }]
             }
         },
-         methods: {
-             handleIsShowClose(item) {
-                 item.closeShow = !item.closeShow
-             }
-         }
+        methods: {
+            handleIsShowClose(item) {
+                item.closeShow = !item.closeShow
+            }
+        },
+        created() {
+            this.$api.Test.get_tree_form_treelist().then(res => {
+                console.log(res)
+                this.treeList = res.data.list
+            })
+        }
     }
 </script>
 
@@ -71,30 +99,30 @@
     }
 </style>
 <style>
-    .custom-dialog2>.bk-dialog>.bk-dialog-content>.bk-dialog-header {
+    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-header {
         padding: 0 24px 2px 24px;
     }
 
-    .custom-dialog2>.bk-dialog>.bk-dialog-content>.bk-dialog-body {
+    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body {
         padding: 0;
         height: 470px;
     }
 
-    .custom-dialog2>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content {
+    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content {
         height: 100%;
     }
 
-    .custom-dialog2>.bk-dialog>.bk-dialog-content>.bk-dialog-tool {
+    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-tool {
         display: none;
     }
 
-    .custom-dialog2>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.left-content {
+    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.left-content {
         float: left;
         width: 507px;
         padding: 20px 16px 0 16px;
     }
 
-    .custom-dialog2>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content {
+    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content {
         float: right;
         width: 320px;
         background-color: #F5F6FA;
@@ -102,20 +130,24 @@
         padding: 10px 23px 0 25px;
         height: 100%;
     }
-    .custom-dialog2>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content>.select-result>div {
+
+    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content>.select-result>div {
         background-color: #fff;
         box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
         border-radius: 0px 2px 2px 0px;
         border-bottom: 1px solid #DCDEE5;
     }
-    .custom-dialog2>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content>.select-result>div:last-of-type {
+
+    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content>.select-result>div:last-of-type {
         border-bottom: 0;
     }
-    .custom-dialog2>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content>.select-result>div:hover {
+
+    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content>.select-result>div:hover {
         background-color: #E1ECFF;
         cursor: pointer;
     }
-    .custom-dialog2>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content>.select-result>div:hover>.right-result {
+
+    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content>.select-result>div:hover>.right-result {
         color: #3A84FF;
     }
 </style>
