@@ -12,7 +12,8 @@
                     </bk-input>
                     <bk-big-tree ref="topoTree" :data="treeList" :options="defaultProps"
                         :display-matched-node-descendants="true" :ext-cls="'custom-tree'" :expand-on-click="false"
-                        :default-expand-all="false" :show-checkbox="true" style="max-height: 350px;margin-top: 12px;" :show-link-line="true">
+                        :default-expand-all="false" :show-checkbox="true" style="max-height: 350px;margin-top: 12px;"
+                        :show-link-line="true">
                     </bk-big-tree>
                 </div>
                 <div class="right-content">
@@ -98,56 +99,46 @@
         padding: 20px 24px;
     }
 </style>
-<style>
-    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-header {
-        padding: 0 24px 2px 24px;
-    }
-
-    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body {
-        padding: 0;
-        height: 470px;
-    }
-
-    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content {
-        height: 100%;
-    }
-
-    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-tool {
-        display: none;
-    }
-
-    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.left-content {
-        float: left;
-        width: 507px;
-        padding: 20px 16px 0 16px;
-    }
-
-    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content {
-        float: right;
-        width: 320px;
-        background-color: #F5F6FA;
-        border: 1px solid #DCDEE5;
-        padding: 10px 23px 0 25px;
-        height: 100%;
-    }
-
-    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content>.select-result>div {
-        background-color: #fff;
-        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
-        border-radius: 0px 2px 2px 0px;
-        border-bottom: 1px solid #DCDEE5;
-    }
-
-    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content>.select-result>div:last-of-type {
-        border-bottom: 0;
-    }
-
-    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content>.select-result>div:hover {
-        background-color: #E1ECFF;
-        cursor: pointer;
-    }
-
-    .tree-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body>.content>.right-content>.select-result>div:hover>.right-result {
-        color: #3A84FF;
+<style lang="scss">
+    .tree-form-dialog{
+        .bk-dialog-tool {
+            display: none;
+        }
+        .bk-dialog-body {
+            padding: 0;
+            height: 470px;
+            .content {
+                height: 100%;
+                .left-content {
+                    float: left;
+                    width: 507px;
+                    padding: 20px 16px 0 16px;
+                }
+                .right-content {
+                    float: right;
+                    width: 320px;
+                    background-color: #F5F6FA;
+                    border: 1px solid #DCDEE5;
+                    padding: 10px 23px 0 25px;
+                    height: 100%;
+                    .select-result>div {
+                        background-color: #fff;
+                        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+                        border-radius: 0px 2px 2px 0px;
+                        border-bottom: 1px solid #DCDEE5;
+                    }
+                    .select-result>div:last-of-type {
+                        border-bottom: 0;
+                    }
+                    .select-result>div:hover {
+                        background-color: #E1ECFF;
+                        cursor: pointer;
+                    }
+                    .select-result>div:hover>.right-result {
+                        color: #3A84FF;
+                    }
+                }
+            }
+        }
     }
 </style>
