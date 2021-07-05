@@ -29,7 +29,7 @@
                 </bk-navigation-menu>
             </template>
             <!--            容器-->
-            <Container :nav-toggle="this.nav.toggle"></Container>
+            <Container :nav-toggle="nav.toggle"></Container>
         </bk-navigation>
     </div>
 </template>
@@ -42,7 +42,7 @@
     } from '../../router/frameRouter'
 
     export default {
-        name: 'leftNavigation',
+        name: 'left-navigation',
         components: {
             Header,
             Container
@@ -61,13 +61,13 @@
                 },
                 header: {
                     selectList: [{
-                            name: '作业平台',
-                            id: 1
-                        },
-                        {
-                            name: '配置平台',
-                            id: 2
-                        }
+                                     name: '作业平台',
+                                     id: 1
+                                 },
+                                 {
+                                     name: '配置平台',
+                                     id: 2
+                                 }
                     ],
                     bizId: 1
                 },
@@ -85,7 +85,6 @@
             },
             handleSelect(id, item) {
                 this.nav.id = id
-                let a = 1
             },
             handleToggle(v) {
                 this.nav.toggle = v

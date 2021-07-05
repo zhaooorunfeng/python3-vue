@@ -4,11 +4,11 @@
             {{$route.meta.title}}
         </div>
         <bk-select class="header-select is-left"
-                   v-model="header.bizId" :clearable="false" searchable>
+            v-model="header.bizId" :clearable="false" searchable>
             <bk-option v-for="option in header.selectList"
-                       :key="option.id"
-                       :id="option.id"
-                       :name="option.name">
+                :key="option.id"
+                :id="option.id"
+                :name="option.name">
             </bk-option>
         </bk-select>
         <div class="header-mind is-left">

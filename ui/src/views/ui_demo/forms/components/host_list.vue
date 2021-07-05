@@ -25,7 +25,7 @@
                     current: 1,
                     count: 1,
                     limit: 10
-                },
+                }
             }
         },
         created() {

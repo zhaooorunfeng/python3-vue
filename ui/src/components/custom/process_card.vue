@@ -1,7 +1,7 @@
 <template>
     <div class="process-card">
         <div class="single-process" v-for="(process,index) in data" :key="index">
-            <div class="num-process" :style="{background: process.background, color: process.color}">{{index+1}}</div>
+            <div class="num-process" :style="{ background: process.background, color: process.color }">{{index + 1}}</div>
             <div class="content-process">{{process.info}}</div>
         </div>
     </div>
@@ -9,7 +9,7 @@
 
 <script>
     export default {
-        name: 'process_card',
+        name: 'process-card',
         props: {
             data: {
                 type: Array,

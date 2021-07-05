@@ -26,16 +26,16 @@
                 tabActive: 0,
                 panels: [{
                     name: 0,
-                    label: '全部',
+                    label: '全部'
                 }, {
                     name: 1,
-                    label: '任务一',
+                    label: '任务一'
                 }, {
                     name: 2,
-                    label: '任务二',
+                    label: '任务二'
                 }, {
                     name: 3,
-                    label: '任务三',
+                    label: '任务三'
                 }]
             }
         }

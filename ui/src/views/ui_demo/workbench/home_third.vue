@@ -86,7 +86,7 @@
     import ProcessCard from '@/components/custom/process_card'
 
     export default {
-        name: 'home_third',
+        name: 'home-third',
         components: {
             ProcessCard,
             Card,
@@ -99,287 +99,284 @@
             return {
                 btnDays: '7',
                 cardList1: [{
-                        'num': 2014,
-                        'name': '作业名称',
-                        'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
-                        'info': '作业名称解释，tooltips位置视情况调试',
-                        'color': 'rgba(58, 132, 255, 0.8)',
-                        'background': 'rgba(58, 132, 255, 0.3)'
-                    },
-                    {
-                        'num': 2046,
-                        'name': '业务名称',
-                        'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
-                        'info': '',
-                        'color': 'rgba(58, 132, 255, 0.8)',
-                        'background': 'rgba(58, 132, 255, 0.3)'
-                    },
-                    {
-                        'num': 1024,
-                        'name': '实例名称',
-                        'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
-                        'info': '',
-                        'color': 'rgba(58, 132, 255, 0.8)',
-                        'background': 'rgba(58, 132, 255, 0.3)'
-                    }
+                                'num': 2014,
+                                'name': '作业名称',
+                                'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
+                                'info': '作业名称解释，tooltips位置视情况调试',
+                                'color': 'rgba(58, 132, 255, 0.8)',
+                                'background': 'rgba(58, 132, 255, 0.3)'
+                            },
+                            {
+                                'num': 2046,
+                                'name': '业务名称',
+                                'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
+                                'info': '',
+                                'color': 'rgba(58, 132, 255, 0.8)',
+                                'background': 'rgba(58, 132, 255, 0.3)'
+                            },
+                            {
+                                'num': 1024,
+                                'name': '实例名称',
+                                'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
+                                'info': '',
+                                'color': 'rgba(58, 132, 255, 0.8)',
+                                'background': 'rgba(58, 132, 255, 0.3)'
+                            }
                 ],
                 cardList2: [{
-                        'num': 2046,
-                        'name': '业务名称',
-                        'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
-                        'info': '',
-                        'color': 'rgba(58, 132, 255, 0.8)',
-                        'background': 'rgba(58, 132, 255, 0.3)'
-                    },
-                    {
-                        'num': 1024,
-                        'name': '实例名称',
-                        'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
-                        'info': '试',
-                        'color': 'rgba(58, 132, 255, 0.8)',
-                        'background': 'rgba(58, 132, 255, 0.3)'
-                    }
+                                'num': 2046,
+                                'name': '业务名称',
+                                'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
+                                'info': '',
+                                'color': 'rgba(58, 132, 255, 0.8)',
+                                'background': 'rgba(58, 132, 255, 0.3)'
+                            },
+                            {
+                                'num': 1024,
+                                'name': '实例名称',
+                                'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
+                                'info': '试',
+                                'color': 'rgba(58, 132, 255, 0.8)',
+                                'background': 'rgba(58, 132, 255, 0.3)'
+                            }
                 ],
                 lineData: {
                     data: [],
                     dimension: 'month',
                     metric: 'value',
                     legend: 'name',
-                    isArea: true,
+                    isArea: true
                 },
                 tendData: {
                     '7': [{
-                            name: '作业一',
-                            month: '1st',
-                            value: 1300
-                        },
-                        {
-                            name: '作业一',
-                            month: '2nd',
-                            value: 200
-                        },
-                        {
-                            name: '作业一',
-                            month: '3rd',
-                            value: 600
-                        },
-                        {
-                            name: '作业一',
-                            month: '4th',
-                            value: 500
-                        },
-                        {
-                            name: '作业一',
-                            month: '5th',
-                            value: 400
-                        },
-                        {
-                            name: '作业二',
-                            month: '1st',
-                            value: 800
-                        },
-                        {
-                            name: '作业二',
-                            month: '2nd',
-                            value: 600
-                        },
-                        {
-                            name: '作业二',
-                            month: '3rd',
-                            value: 1100
-                        },
-                        {
-                            name: '作业二',
-                            month: '4th',
-                            value: 300
-                        },
-                        {
-                            name: '作业二',
-                            month: '5th',
-                            value: 1000
-                        },
+                              name: '作业一',
+                              month: '1st',
+                              value: 1300
+                          },
+                          {
+                              name: '作业一',
+                              month: '2nd',
+                              value: 200
+                          },
+                          {
+                              name: '作业一',
+                              month: '3rd',
+                              value: 600
+                          },
+                          {
+                              name: '作业一',
+                              month: '4th',
+                              value: 500
+                          },
+                          {
+                              name: '作业一',
+                              month: '5th',
+                              value: 400
+                          },
+                          {
+                              name: '作业二',
+                              month: '1st',
+                              value: 800
+                          },
+                          {
+                              name: '作业二',
+                              month: '2nd',
+                              value: 600
+                          },
+                          {
+                              name: '作业二',
+                              month: '3rd',
+                              value: 1100
+                          },
+                          {
+                              name: '作业二',
+                              month: '4th',
+                              value: 300
+                          },
+                          {
+                              name: '作业二',
+                              month: '5th',
+                              value: 1000
+                          }
                     ],
                     '15': [{
-                            name: '作业一',
-                            month: '6th',
-                            value: 300
-                        },
-                        {
-                            name: '作业一',
-                            month: '9th',
-                            value: 1200
-                        },
-                        {
-                            name: '作业一',
-                            month: '13th',
-                            value: 600
-                        },
-                        {
-                            name: '作业一',
-                            month: '14th',
-                            value: 500
-                        },
-                        {
-                            name: '作业一',
-                            month: '15th',
-                            value: 400
-                        },
-                        {
-                            name: '作业二',
-                            month: '6th',
-                            value: 200
-                        },
-                        {
-                            name: '作业二',
-                            month: '9th',
-                            value: 1600
-                        },
-                        {
-                            name: '作业二',
-                            month: '13th',
-                            value: 1100
-                        },
-                        {
-                            name: '作业二',
-                            month: '14th',
-                            value: 700
-                        },
-                        {
-                            name: '作业二',
-                            month: '15th',
-                            value: 1000
-                        },
+                               name: '作业一',
+                               month: '6th',
+                               value: 300
+                           },
+                           {
+                               name: '作业一',
+                               month: '9th',
+                               value: 1200
+                           },
+                           {
+                               name: '作业一',
+                               month: '13th',
+                               value: 600
+                           },
+                           {
+                               name: '作业一',
+                               month: '14th',
+                               value: 500
+                           },
+                           {
+                               name: '作业一',
+                               month: '15th',
+                               value: 400
+                           },
+                           {
+                               name: '作业二',
+                               month: '6th',
+                               value: 200
+                           },
+                           {
+                               name: '作业二',
+                               month: '9th',
+                               value: 1600
+                           },
+                           {
+                               name: '作业二',
+                               month: '13th',
+                               value: 1100
+                           },
+                           {
+                               name: '作业二',
+                               month: '14th',
+                               value: 700
+                           },
+                           {
+                               name: '作业二',
+                               month: '15th',
+                               value: 1000
+                           }
                     ],
                     '30': [{
-                            name: '作业一',
-                            month: '17th',
-                            value: 1300
-                        },
-                        {
-                            name: '作业一',
-                            month: '20th',
-                            value: 200
-                        },
-                        {
-                            name: '作业一',
-                            month: '23th',
-                            value: 800
-                        },
-                        {
-                            name: '作业一',
-                            month: '27th',
-                            value: 500
-                        },
-                        {
-                            name: '作业一',
-                            month: '29th',
-                            value: 1400
-                        },
-                        {
-                            name: '作业二',
-                            month: '17th',
-                            value: 800
-                        },
-                        {
-                            name: '作业二',
-                            month: '20th',
-                            value: 600
-                        },
-                        {
-                            name: '作业二',
-                            month: '23th',
-                            value: 400
-                        },
-                        {
-                            name: '作业二',
-                            month: '27th',
-                            value: 1300
-                        },
-                        {
-                            name: '作业二',
-                            month: '29th',
-                            value: 1000
-                        },
+                               name: '作业一',
+                               month: '17th',
+                               value: 1300
+                           },
+                           {
+                               name: '作业一',
+                               month: '20th',
+                               value: 200
+                           },
+                           {
+                               name: '作业一',
+                               month: '23th',
+                               value: 800
+                           },
+                           {
+                               name: '作业一',
+                               month: '27th',
+                               value: 500
+                           },
+                           {
+                               name: '作业一',
+                               month: '29th',
+                               value: 1400
+                           },
+                           {
+                               name: '作业二',
+                               month: '17th',
+                               value: 800
+                           },
+                           {
+                               name: '作业二',
+                               month: '20th',
+                               value: 600
+                           },
+                           {
+                               name: '作业二',
+                               month: '23th',
+                               value: 400
+                           },
+                           {
+                               name: '作业二',
+                               month: '27th',
+                               value: 1300
+                           },
+                           {
+                               name: '作业二',
+                               month: '29th',
+                               value: 1000
+                           }
                     ]
                 },
                 pieData: {
                     data: [{
-                            value: 50,
-                            type: '类型1',
-                            name: '类型1-1'
-                        },
-                        {
-                            value: 30,
-                            type: '类型1',
-                            name: '类型1-2'
-                        },
-                        {
-                            value: 10,
-                            type: '类型2',
-                            name: '类型2-1'
-                        },
-                        {
-                            value: 8,
-                            type: '类型2',
-                            name: '类型2-2'
-                        },
-                        {
-                            value: 2,
-                            type: '类型3',
-                            name: '类型3-1'
-                        },
+                               value: 50,
+                               type: '类型1',
+                               name: '类型1-1'
+                           },
+                           {
+                               value: 30,
+                               type: '类型1',
+                               name: '类型1-2'
+                           },
+                           {
+                               value: 10,
+                               type: '类型2',
+                               name: '类型2-1'
+                           },
+                           {
+                               value: 8,
+                               type: '类型2',
+                               name: '类型2-2'
+                           },
+                           {
+                               value: 2,
+                               type: '类型3',
+                               name: '类型3-1'
+                           }
                     ],
                     dimension: 'name',
                     metric: 'value',
                     legend: 'type'
                 },
                 processData: [{
-                        info: '最重要的配置前提提示信息，卡片内只放主要信息。。',
-                        color: '#EA3636',
-                        background: '#FFDDDD'
-                    },
-                    {
-                        info: '次重要配置前提提示信息，字数控制在1-2行。',
-                        color: '#FF9C01',
-                        background: '#FFE8C3'
-                    },
-                    {
-                        info: '次要的配置提示信息，或操作指引步骤。。',
-                        color: '#3A84FF',
-                        background: '#E1ECFF'
-                    },
-                    {
-                        info: '其他信息。点击“查看详情”展开抽屉，显示具体配置或操作信息详情。',
-                        color: '#979BA5',
-                        background: '#F0F1F5'
-                    }
+                                  info: '最重要的配置前提提示信息，卡片内只放主要信息。。',
+                                  color: '#EA3636',
+                                  background: '#FFDDDD'
+                              },
+                              {
+                                  info: '次重要配置前提提示信息，字数控制在1-2行。',
+                                  color: '#FF9C01',
+                                  background: '#FFE8C3'
+                              },
+                              {
+                                  info: '次要的配置提示信息，或操作指引步骤。。',
+                                  color: '#3A84FF',
+                                  background: '#E1ECFF'
+                              },
+                              {
+                                  info: '其他信息。点击“查看详情”展开抽屉，显示具体配置或操作信息详情。',
+                                  color: '#979BA5',
+                                  background: '#F0F1F5'
+                              }
                 ],
                 jobInfo: [{
-                        'num': 2046,
-                        'name': '成功',
-                        'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
-                        'info': '',
-                        'color': '#2DCB56'
-                    },
-                    {
-                        'num': 1024,
-                        'name': '异常',
-                        'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
-                        'info': '',
-                        'color': '#FF8000'
-                    },
-                    {
-                        'num': 4068,
-                        'name': '进行中',
-                        'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
-                        'info': '',
-                        'color': '#3A84FF'
-                    }
+                              'num': 2046,
+                              'name': '成功',
+                              'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
+                              'info': '',
+                              'color': '#2DCB56'
+                          },
+                          {
+                              'num': 1024,
+                              'name': '异常',
+                              'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
+                              'info': '',
+                              'color': '#FF8000'
+                          },
+                          {
+                              'num': 4068,
+                              'name': '进行中',
+                              'icon': 'iconfont icon-mianxingtubiao-zuoyejiankongdaping',
+                              'info': '',
+                              'color': '#3A84FF'
+                          }
                 ]
             }
-        },
-        created() {
-            this.lineData.data.splice(0, this.lineData.data.length, ...this.tendData[this.btnDays])
         },
         watch: {
             btnDays: {
@@ -388,6 +385,9 @@
                 },
                 immediate: true
             }
+        },
+        created() {
+            this.lineData.data.splice(0, this.lineData.data.length, ...this.tendData[this.btnDays])
         },
         methods: {
             handleMoreInfo() {

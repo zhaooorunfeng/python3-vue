@@ -3,3 +3,10 @@
 /dist/
 /*.js
 /node_modules/
+/src/api/
+/src/assets/
+/src/controller/
+/src/directive/
+/src/router/
+/src/store/
+/static/

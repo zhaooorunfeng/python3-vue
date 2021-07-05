@@ -3,37 +3,18 @@
         <div class="logo-body">
             <div class="logo-img">
                 <img :src="'data:image/png;base64,' + defaultLogo" height="68" width="68" :alt="name">
-                <bk-upload
-                    :theme="'button'"
-                    :accept="'image/png,image/jpeg,image/jpg,image/svg+xml'"
-                    :with-credentials="withCredentials"
-                    :multiple="false"
-                    :url="url"
-                    :size="size"
-                    :header="header"
-                    :name="name"
-                    :delay-time="delayTime"
-                    :handle-res-code="handleRes"
-                    @on-done="handleOnDone"
-                    @on-progress="handleOnProgress"
-                    @on-success="handleOnSuccess"
-                    @on-error="handleOnError"
-                    ext-cls="logo-upload"
-                ></bk-upload>
+                <bk-upload :theme="'button'" :accept="'image/png,image/jpeg,image/jpg,image/svg+xml'" :with-credentials="withCredentials"
+                    :multiple="false" :url="url" :size="size" :header="header" :name="name" :delay-time="delayTime"
+                    :handle-res-code="handleRes" @on-done="handleOnDone" @on-progress="handleOnProgress" @on-success="handleOnSuccess"
+                    @on-error="handleOnError" ext-cls="logo-upload"></bk-upload>
             </div>
             <div style="position: relative">
-                <bk-button
-                    :theme="'primary'"
-                    :title="'确定上传'"
-                    @click="handleSubmit"
-                    class="mr10"
-                    style="margin-left: 40px">
+                <bk-button :theme="'primary'" :title="'确定上传'" @click="handleSubmit" class="mr10" style="margin-left: 40px">
                     确定上传
                 </bk-button>
             </div>
             <div>
-                <bk-button :theme="'default'" :title="'恢复默认'" class="mr10" style="margin-left: 20px"
-                           @click="restoreDefault">
+                <bk-button :theme="'default'" :title="'恢复默认'" class="mr10" style="margin-left: 20px" @click="restoreDefault">
                     恢复默认
                 </bk-button>
             </div>
@@ -46,7 +27,6 @@
 </template>
 
 <script>
-
     export default {
         name: 'logo-setting',
         props: {
@@ -62,7 +42,9 @@
             header: {
                 type: [Array, Object],
                 // type 为数组时才需要 defaultVals 配置
-                default: () => ([[], {}])
+                default: () => ([
+                    [], {}
+                ])
             },
             name: {
                 type: String,
@@ -70,8 +52,10 @@
             },
             // Number, Object 限制上传文件体积 { maxFileSize: 1, maxImgSize: 1 }
             size: {
-                type: Number | Object,
-                default: 5
+                type: Number || Object,
+                default: () => {
+                    return 5
+                }
             },
             delayTime: {
                 type: Number,

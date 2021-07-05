@@ -1,10 +1,10 @@
 <template>
-    <div :id="tendId" :style="{height: height+ 'px'}"></div>
+    <div :id="tendId" :style="{ height: height + 'px' }"></div>
 </template>
 
 <script>
     export default {
-        name: 'job_tend',
+        name: 'job-tend',
         props: {
             tendData: {
                 type: Object,
@@ -24,9 +24,6 @@
                 chart: null
             }
         },
-        mounted() {
-            this.initChart()
-        },
         computed: {
             tendId() {
                 return 'tend' + this._uid
@@ -38,7 +35,7 @@
                     if (this.chart) {
                         setTimeout(() => {
                             this.chart.resize()
-                        }, 200);
+                        }, 200)
                     }
                 },
                 immediate: true
@@ -54,16 +51,19 @@
                 deep: true
             }
         },
+        mounted() {
+            this.initChart()
+        },
         methods: {
             initChart() {
-                const chartDom = document.getElementById(this.tendId);
-                const myChart = this.$echarts.init(chartDom);
+                const chartDom = document.getElementById(this.tendId)
+                const myChart = this.$echarts.init(chartDom)
                 this.chart = myChart
 
                 //  数据格式化，json转二维数组
                 const that = this
-                let data = [[that.tendData.dimension]];
-                this.tendData.data.barData.forEach(function (item) {
+                const data = [[that.tendData.dimension]]
+                this.tendData.data.barData.forEach(function(item) {
                     let colIndex = data[0].indexOf(item[that.tendData.legend])
                     if (colIndex < 1) {
                         data[0].push(item[that.tendData.legend])
@@ -82,15 +82,13 @@
                     }
                     data[rowIndex][colIndex] = item[that.tendData.metric]
                 })
-                let lineData = []
-                this.tendData.data.lineData.forEach(function (item) {
+                const lineData = []
+                this.tendData.data.lineData.forEach(function(item) {
                     lineData.push(item[that.tendData.line])
                 })
 
-
                 //  配置设置
-                let option;
-                option = {
+                const option = {
                     dataset: [
                         {
                             source: data
@@ -178,14 +176,14 @@
                             data: lineData,
                             itemStyle: {
                                 color: '#FFCD7E'
-                            },
+                            }
                         }
                     ]
-                };
+                }
                 window.addEventListener('resize', () => {
                     myChart.resize()
                 })
-                option && myChart.setOption(option);
+                option && myChart.setOption(option)
             }
         }
     }

@@ -69,7 +69,7 @@
     import JobTend from './charts/job_tend'
 
     export default {
-        name: 'home_second',
+        name: 'home-second',
         components: {
             Card,
             DisplayCard,
@@ -121,7 +121,7 @@
                         {name: '指标7', value: 180},
                         {name: '指标8', value: 165},
                         {name: '指标9', value: 150},
-                        {name: '指标10', value: 88},
+                        {name: '指标10', value: 88}
                     ],
                     dimension: 'name',
                     metric: 'value'
@@ -159,7 +159,7 @@
                             {name: '作业三', month: '2nd', value: 100},
                             {name: '作业三', month: '3rd', value: 300},
                             {name: '作业三', month: '4th', value: 600},
-                            {name: '作业三', month: '5th', value: 700},
+                            {name: '作业三', month: '5th', value: 700}
                         ],
                         lineData: [
                             {limit: 300, month: '1st'},
@@ -224,10 +224,6 @@
                 }
             }
         },
-        created() {
-            this.tendData.data = this.data[this.btnDays]
-            // this.tendData.data.splice(0, this.tendData.data.length, ...this.data[this.btnDays])
-        },
         watch: {
             btnDays: {
                 handler(val) {
@@ -236,6 +232,10 @@
                 },
                 immediate: true
             }
+        },
+        created() {
+            this.tendData.data = this.data[this.btnDays]
+            // this.tendData.data.splice(0, this.tendData.data.length, ...this.data[this.btnDays])
         },
         methods: {
             handleMoreInfo() {

@@ -54,7 +54,7 @@
             </bk-table-column>
             <bk-table-column label="指标4" prop="name6" :show-overflow-tooltip="true"></bk-table-column>
             <bk-table-column label="操作" width="150">
-                <template slot-scope="props">
+                <template>
                     <bk-button class="mr10" theme="primary" text style="margin-top: 10px;">编辑</bk-button>
                     <bk-button class="mr10" theme="primary" text>操作</bk-button>
                     <div style="display: inline-block;position: relative;">
@@ -85,7 +85,7 @@
                     current: 1,
                     count: 1,
                     limit: 20
-                },
+                }
             }
         },
         created() {

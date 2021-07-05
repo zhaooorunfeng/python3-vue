@@ -39,7 +39,7 @@
     import SysTab from './components/sys_tab'
 
     export default {
-        name: 'system_settings',
+        name: 'system-settings',
         components: {
             Card,
             LogoSetting,

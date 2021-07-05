@@ -1,5 +1,5 @@
 <template>
-    <div class="cw-fading-circle" :style="{'--custom-bg': color, height: size, width: size}">
+    <div class="cw-fading-circle" :style="{ '--custom-bg': color, height: size, width: size }">
         <div class="cw-circle1 cw-circle"></div>
         <div class="cw-circle2 cw-circle"></div>
         <div class="cw-circle3 cw-circle"></div>

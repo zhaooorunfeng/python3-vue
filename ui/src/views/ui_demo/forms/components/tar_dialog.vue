@@ -21,16 +21,16 @@
                 tabActive: 'Linux',
                 panels: [{
                     name: 'Linux',
-                    label: 'Linux',
+                    label: 'Linux'
                 }, {
                     name: 'Windows',
-                    label: 'Windows',
+                    label: 'Windows'
                 }, {
                     name: 'AIX',
-                    label: 'AIX',
+                    label: 'AIX'
                 }]
             }
-        },
+        }
     }
 </script>
 

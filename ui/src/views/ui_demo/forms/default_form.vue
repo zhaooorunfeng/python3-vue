@@ -41,7 +41,7 @@
                                 :disabled="executTimeDisabled('cycle')"></bk-date-picker>
                             <div style="margin-right: 6px;">每</div>
                             <bk-input clearable type="number" style="width: 120px;" class="mr10" :disabled="executTimeDisabled('cycle')"></bk-input>
-                            <bk-select style="width: 104px;" :style="{backgroundColor: executTimeDisabled('cycle') ? '#fafbfd' : '#fff'}"
+                            <bk-select style="width: 104px;" :style="{ backgroundColor: executTimeDisabled('cycle') ? '#fafbfd' : '#fff' }"
                                 searchable class="mr10" :disabled="executTimeDisabled('cycle')">
                                 <bk-option v-for="option in timeTypeList" :key="option.id" :id="option.id" :name="option.name">
                                 </bk-option>
@@ -71,7 +71,7 @@
                 <bk-button style="margin: 0 10px 0 106px;" theme="primary">保存</bk-button>
                 <bk-button>取消</bk-button>
             </div>
-            <bk-dialog v-model="visible" theme="primary" :mask-close="false" title="选择目标" :show-footer="true" :position="{top: 80}"
+            <bk-dialog v-model="visible" theme="primary" :mask-close="false" title="选择目标" :show-footer="true" :position="{ top: 80 }"
                 width="600" header-position="left" ext-cls="default-form-dialog" :render-directive="'if'">
                 <target-dialog></target-dialog>
             </bk-dialog>
@@ -83,7 +83,7 @@
     import targetDialog from './components/tar_dialog.vue'
     import cwAlert from '@/components/custom/cw_alert.vue'
     export default {
-        name: 'default_form',
+        name: 'default-form',
         components: {
             cwAlert,
             targetDialog
@@ -91,7 +91,7 @@
         data() {
             return {
                 visible: false,
-                overScreenFlag: false, //判断内容是否超出一屏
+                overScreenFlag: false, // 判断内容是否超出一屏
                 form: {
                     name1: '',
                     name2: '',
@@ -154,9 +154,15 @@
                         required: true,
                         message: '不能为空',
                         trigger: 'change'
-                    }],
+                    }]
                 }
             }
+        },
+        created() {
+            this.$api.Test.get_default_form_list().then(res => {
+                this.tableList = res.data.list
+                this.overScreen()
+            })
         },
         methods: {
             executTimeDisabled(str) {
@@ -165,23 +171,17 @@
                 }
                 return true
             },
-            //判断内容是否超过一屏
+            // 判断内容是否超过一屏
             overScreen() {
                 this.$nextTick(() => {
                     if (((document.getElementsByClassName('default-form')[0].offsetHeight) - (document.documentElement
-                            .clientHeight - 52)) > 0) {
+                        .clientHeight - 52)) > 0) {
                         this.overScreenFlag = true
                     } else {
                         this.overScreenFlag = false
                     }
                 })
             }
-        },
-        created() {
-            this.$api.Test.get_default_form_list().then(res => {
-                this.tableList = res.data.list
-                this.overScreen()
-            })
         }
     }
 </script>

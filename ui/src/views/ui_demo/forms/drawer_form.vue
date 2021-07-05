@@ -4,7 +4,7 @@
         <bk-button theme="primary" style="margin-top: 20px;" @click="handleOpenDrawer('long', '自定义内容抽屉')">内容可自定义</bk-button>
         <bk-sideslider :is-show.sync="visible" :quick-close="true" :title="title" :width="540">
             <div slot="content">
-                <side-form :formType="formType"></side-form>
+                <side-form :form-type="formType"></side-form>
             </div>
             <div slot="footer" v-if="formType === 'long'">
                 <div class="sidelider-footer">
@@ -19,7 +19,7 @@
 <script>
     import sideForm from './components/side_form.vue'
     export default {
-        name: 'drawer_form',
+        name: 'drawer-form',
         components: {
             sideForm
         },

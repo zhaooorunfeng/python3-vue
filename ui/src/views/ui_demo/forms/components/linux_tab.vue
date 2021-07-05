@@ -39,7 +39,7 @@
                 }],
                 radioValue: '业务节点'
             }
-        },
+        }
     }
 </script>
 

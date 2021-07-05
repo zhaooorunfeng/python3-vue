@@ -1,7 +1,7 @@
 <template>
     <div class="tree-form">
         <bk-button @click="visible = true" theme="primary">树选择-选择结果</bk-button>
-        <bk-dialog v-model="visible" theme="primary" :mask-close="false" :show-footer="true" :position="{top: 80}"
+        <bk-dialog v-model="visible" theme="primary" :mask-close="false" :show-footer="true" :position="{ top: 80 }"
             width="827" header-position="left" ext-cls="tree-form-dialog" :close-icon="false">
             <div class="content">
                 <div class="left-content">
@@ -47,7 +47,7 @@
 
 <script>
     export default {
-        name: 'tree_form',
+        name: 'tree-form',
         data() {
             return {
                 visible: false,
@@ -80,16 +80,16 @@
                 }]
             }
         },
-        methods: {
-            handleIsShowClose(item) {
-                item.closeShow = !item.closeShow
-            }
-        },
         created() {
             this.$api.Test.get_tree_form_treelist().then(res => {
                 console.log(res)
                 this.treeList = res.data.list
             })
+        },
+        methods: {
+            handleIsShowClose(item) {
+                item.closeShow = !item.closeShow
+            }
         }
     }
 </script>

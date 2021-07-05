@@ -1,11 +1,11 @@
 <template>
     <div class="category-table">
         <bk-tab :active.sync="tabActive" ext-cls="custom-tab" :label-height="42">
-            <bk-tab-panel v-for="(panel, index) in panels" v-bind="panel" :key="index">
+            <bk-tab-panel v-for="(panel, index1) in panels" v-bind="panel" :key="index1">
                 <bk-table ref="table" :data="tableList" :pagination="pagination" ext-cls="customTable" :size="setting.size"
                     :max-height="690" :outer-border="false">
-                    <bk-table-column :label="item.label" :prop="item.id" v-for="(item, index) in setting.selectedFields"
-                        :key="index" :show-overflow-tooltip="item.overflowTooltip" :width="item.hasOwnProperty('width') ? item.width : ''">
+                    <bk-table-column :label="item.label" :prop="item.id" v-for="(item, index2) in setting.selectedFields"
+                        :key="index2" :show-overflow-tooltip="item.overflowTooltip" :width="item.hasOwnProperty('width') ? item.width : ''">
                         <template slot-scope="props">
                             <div v-if="item.id === 'name5'">
                                 <div v-if="props.row.name5 === 'success'" style="display: flex;align-items: center;">
@@ -60,15 +60,15 @@
             }, {
                 id: 'name4',
                 label: '指标4',
-                overflowTooltip: true,
+                overflowTooltip: true
             }, {
                 id: 'name5',
                 label: '任务状态',
-                overflowTooltip: false,
+                overflowTooltip: false
             }, {
                 id: 'name6',
                 label: '指标4',
-                overflowTooltip: true,
+                overflowTooltip: true
             }, {
                 id: 'name7',
                 label: '指标4',
@@ -78,9 +78,9 @@
             return {
                 tableList: [],
                 setting: {
-                    size: 'small', //表格大小
-                    fields: fields, //表格所有列
-                    selectedFields: fields.slice(0, 8), //表格当前显示列
+                    size: 'small', // 表格大小
+                    fields: fields, // 表格所有列
+                    selectedFields: fields.slice(0, 8) // 表格当前显示列
                 },
                 tabActive: 0,
                 pagination: {
@@ -89,39 +89,39 @@
                     limit: 20
                 },
                 panels: [{
-                        name: 0,
-                        label: '全部',
-                    },
-                    {
-                        name: 1,
-                        label: '任务一',
-                    },
-                    {
-                        name: 2,
-                        label: '任务二',
-                    },
-                    {
-                        name: 3,
-                        label: '任务三',
-                    }
-                ],
+                             name: 0,
+                             label: '全部'
+                         },
+                         {
+                             name: 1,
+                             label: '任务一'
+                         },
+                         {
+                             name: 2,
+                             label: '任务二'
+                         },
+                         {
+                             name: 3,
+                             label: '任务三'
+                         }
+                ]
             }
-        },
-        methods: {
-            //处理表格字段显隐
-            handleSettingChange({
-                fields,
-                size
-            }) {
-                this.setting.size = size
-                this.setting.selectedFields = fields
-            },
         },
         created() {
             this.$api.Test.get_category_list().then(res => {
                 this.tableList = res.data.list
                 this.pagination.count = res.data.count
             })
+        },
+        methods: {
+            // 处理表格字段显隐
+            handleSettingChange({
+                fields,
+                size
+            }) {
+                this.setting.size = size
+                this.setting.selectedFields = fields
+            }
         }
     }
 </script>

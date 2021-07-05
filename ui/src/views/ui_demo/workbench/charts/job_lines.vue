@@ -1,11 +1,11 @@
 <template>
-    <div :id="lineId" :style="{height: height+ 'px'}"></div>
+    <div :id="lineId" :style="{ height: height + 'px' }"></div>
 </template>
 
 <script>
 
     export default {
-        name: 'job_lines',
+        name: 'job-lines',
         props: {
             lineData: {
                 type: Object,
@@ -25,9 +25,6 @@
                 chart: null
             }
         },
-        mounted() {
-            this.initChart()
-        },
         computed: {
             lineId() {
                 return 'line' + this._uid
@@ -39,7 +36,7 @@
                     if (this.chart) {
                         setTimeout(() => {
                             this.chart.resize()
-                        }, 200);
+                        }, 200)
                     }
                 },
                 immediate: true
@@ -56,16 +53,19 @@
             }
 
         },
+        mounted() {
+            this.initChart()
+        },
         methods: {
             initChart() {
-                const chartDom = document.getElementById(this.lineId);
-                const myChart = this.$echarts.init(chartDom);
+                const chartDom = document.getElementById(this.lineId)
+                const myChart = this.$echarts.init(chartDom)
                 this.chart = myChart
 
                 //  数据格式化，json转二维数组
                 const that = this
-                let data = [[that.lineData.dimension]];
-                this.lineData.data.forEach(function (item) {
+                const data = [[that.lineData.dimension]]
+                this.lineData.data.forEach(function(item) {
                     let colIndex = data[0].indexOf(item[that.lineData.legend])
                     if (colIndex < 1) {
                         data[0].push(item[that.lineData.legend])
@@ -86,8 +86,7 @@
                 })
 
                 //  配置设置
-                let option;
-                option = {
+                const option = {
                     dataset: {
                         source: data
                     },
@@ -144,18 +143,18 @@
                             type: 'line',
                             itemStyle: {
                                 color: '#97BAF6'
-                            },
+                            }
                         },
                         {
                             type: 'line',
                             itemStyle: {
                                 color: '#FFCD7E'
-                            },
+                            }
                         }
                     ]
-                };
+                }
                 if (this.lineData.isArea) {
-                    option.series.forEach(function (item) {
+                    option.series.forEach(function(item) {
                         item['areaStyle'] = {
                             opacity: 0.3
                         }
@@ -164,7 +163,7 @@
                 window.addEventListener('resize', () => {
                     myChart.resize()
                 })
-                option && myChart.setOption(option);
+                option && myChart.setOption(option)
             }
         }
     }

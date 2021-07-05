@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: 'business_node'
+        name: 'business-node'
     }
 </script>
 

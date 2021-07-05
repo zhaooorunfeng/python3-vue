@@ -2,7 +2,7 @@ import Mock from 'mockjs'
 export default ({
     mock
 }) => {
-    if (!mock) return;
+    if (!mock) return
     Mock.mock(window.siteUrl + '/categorylist/mock/', 'get', () => {
         return {
             data: {
@@ -484,14 +484,14 @@ export default ({
                     child: [{
                         id: '1-3-1',
                         label: '二级 2-1'
-                    }],
+                    }]
                 }, {
                     id: '1-4',
                     label: '一级 1-4',
                     child: [{
                         id: '1-4-1',
                         label: '二级 2-1'
-                    }],
+                    }]
                 }],
                 code: 200
             }
@@ -531,7 +531,7 @@ export default ({
                                 }, {
                                     id: 'Harvey Fitzgerald',
                                     label: 'Harvey Fitzgerald'
-                                }, ]
+                                }]
                             }]
                         }]
                     }, {

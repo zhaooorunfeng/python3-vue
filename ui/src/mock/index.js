@@ -1,5 +1,4 @@
 import test from './test.js'
-
 /**
  * 模拟数据mock
  *
@@ -8,7 +7,5 @@ import test from './test.js'
 
 const options = {
     mock: true
-};
-
-
+}
 test(options)
