@@ -54,19 +54,19 @@
             }
         },
         computed: {
-            bodyClass: () => {
+            bodyClass() {
                 return {
                     'show-vertical': this.showVertical
                 }
             },
-            cardClass: () => {
+            cardClass() {
                 return {
                     'card-body': true,
                     'horizontal-body': this.displayDirection === 'horizontal',
                     'vertical-body': this.displayDirection === 'vertical'
                 }
             },
-            shapeClass: () => {
+            shapeClass() {
                 return {
                     'card-icon-hexagon': this.shape === 'hexagon',
                     'card-icon-circle': this.shape === 'circle'
@@ -207,9 +207,9 @@
         0% {
             transform: scale(0);
         }
-
         100% {
             transform: scale(1.2);
         }
     }
+
 </style>
