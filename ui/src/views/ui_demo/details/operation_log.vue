@@ -3,8 +3,8 @@
         <div class="header">
             <div class="search-item">
                 <span style="display: inline-block;width: 60px;">操作类型</span>
-                <bk-select class="header-select" :clearable="true" style="background-color: #fff;width: 140px;" v-model="searchForm.type"
-                    placeholder="请选择">
+                <bk-select class="header-select" :clearable="true" style="background-color: #fff;width: 140px;"
+                    v-model="searchForm.type" placeholder="请选择">
                     <bk-option v-for="(item, index) in operatTypeList" :key="index" :id="item.value" :name="item.name">
                     </bk-option>
                 </bk-select>
@@ -16,8 +16,8 @@
                 </bk-input>
             </div>
             <div class="search-item">
-                <bk-date-picker v-model="searchForm.eta" :placeholder="'选择日期时间'" :type="'datetime'" format="yyyy-MM-dd HH:mm:ss"
-                    style="width: 260px;" :transfer="true"></bk-date-picker>
+                <bk-date-picker v-model="searchForm.eta" :placeholder="'选择日期时间'" :type="'datetime'"
+                    format="yyyy-MM-dd HH:mm:ss" style="width: 260px;" :transfer="true"></bk-date-picker>
             </div>
             <div class="search-item">
                 <bk-button>重置</bk-button>
