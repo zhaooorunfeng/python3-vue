@@ -13,7 +13,8 @@
 
 <style lang="scss" scoped>
     #main-container {
-        min-height: calc(100vh - 92px);
+        height: calc(100vh - 52px);
+        // min-height: calc(100vh - 92px);
         // margin-bottom: 20px;
         /*内容容器样式*/
         /*background: #FFFFFF;*/

@@ -5,7 +5,7 @@ import {
     bkNavigation, bkNavigationMenu, bkNavigationMenuItem, bkNotify, bkOption, bkOptionGroup, bkPagination,
     bkPopover, bkProcess, bkProgress, bkRadio, bkRadioGroup, bkSearchSelect, bkSelect, bkTableSettingContent, bkBigTree,
     bkSideslider, bkSlider, bkSteps, bkSwitcher, bkTab, bkTabPanel, bkTable, bkTableColumn, bkTagInput, bkTimePicker,
-    bkTimeline, bkClickoutside, bkTooltips, bkOverflowTips, bkCascade, bkIcon, bkDivider, bkPopconfirm, bkRadioButton, bkTag,
+    bkTimeline, bkClickoutside, bkTooltips, bkOverflowTips, bkCascade, bkIcon, bkDivider, bkPopconfirm, bkRadioButton, bkTag, bkResizeLayout
 } from 'bk-magic-vue'
 
 // bkDiff 组件体积较大且不是很常用，因此注释掉。如果需要，打开注释即可
@@ -35,6 +35,7 @@ Vue.use(bkException)
 Vue.use(bkForm)
 Vue.use(bkFormItem)
 Vue.use(bkInput)
+Vue.use(bkResizeLayout)
 // Vue.use(bkMemberSelector)
 Vue.use(bkNavigation)
 Vue.use(bkNavigationMenu)
