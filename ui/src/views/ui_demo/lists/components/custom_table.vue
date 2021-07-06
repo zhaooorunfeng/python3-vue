@@ -89,7 +89,7 @@
             }
         },
         created() {
-            this.$api.Test.get_custom_list().then(res => {
+            this.$api.Test.getCustomList().then(res => {
                 this.tableList = res.data.list
                 this.pagination.count = res.data.count
             })

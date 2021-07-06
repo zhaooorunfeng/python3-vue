@@ -6,22 +6,28 @@ import {
 
 //前端mock测试接口
 export default {
-    get_category_list: function(params) {
+    getCategoryList: function(params) {
         return get(reUrl + '/categorylist/mock/', params)
     },
-    get_custom_list: function(params) {
+    getCustomList: function(params) {
         return get(reUrl + '/customlist/mock/', params)
     },
-    get_default_form_list: function(params) {
+    getDefaultFormList: function(params) {
         return get(reUrl + '/defaultform/tablelist/mock/', params)
     },
-    get_linux_host_list: function(params) {
+    getLinuxHostList: function(params) {
         return get(reUrl + '/linux/hostlist/tablelist/mock/', params)
     },
-    get_linux_biznode_tree: function(params) {
+    getLinuxBiznodeTree: function(params) {
         return get(reUrl + '/linus/biznode/treelist/mock/', params)
     },
-    get_tree_form_treelist: function(params) {
+    getTreeFormTreelist: function(params) {
         return get(reUrl + '/treeform/treelist/mock/', params)
+    },
+    getTreeFormTreelist: function(params) {
+        return get(reUrl + '/treeform/treelist/mock/', params)
+    },
+    getLogList: function(params) {
+        return get(reUrl + '/loglist/mock/', params)
     }
 }

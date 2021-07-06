@@ -159,7 +159,7 @@
             }
         },
         created() {
-            this.$api.Test.get_default_form_list().then(res => {
+            this.$api.Test.getDefaultFormList().then(res => {
                 this.tableList = res.data.list
                 this.overScreen()
             })

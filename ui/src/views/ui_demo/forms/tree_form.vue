@@ -81,7 +81,7 @@
             }
         },
         created() {
-            this.$api.Test.get_tree_form_treelist().then(res => {
+            this.$api.Test.getTreeFormTreelist().then(res => {
                 console.log(res)
                 this.treeList = res.data.list
             })

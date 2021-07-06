@@ -108,7 +108,7 @@
             }
         },
         created() {
-            this.$api.Test.get_category_list().then(res => {
+            this.$api.Test.getCategoryList().then(res => {
                 this.tableList = res.data.list
                 this.pagination.count = res.data.count
             })

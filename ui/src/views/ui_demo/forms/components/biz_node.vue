@@ -28,7 +28,7 @@
             }
         },
         created() {
-            this.$api.Test.get_linux_biznode_tree().then(res => {
+            this.$api.Test.getLinuxBiznodeTree().then(res => {
                 this.treeList = res.data.list
             })
         }
