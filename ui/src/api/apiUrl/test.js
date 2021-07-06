@@ -1,10 +1,9 @@
 import {
     get,
-    post,
     reUrl
 } from '../axiosconfig/axiosconfig'
 
-//前端mock测试接口
+// 前端mock测试接口
 export default {
     getCategoryList: function(params) {
         return get(reUrl + '/categorylist/mock/', params)
@@ -20,9 +19,6 @@ export default {
     },
     getLinuxBiznodeTree: function(params) {
         return get(reUrl + '/linus/biznode/treelist/mock/', params)
-    },
-    getTreeFormTreelist: function(params) {
-        return get(reUrl + '/treeform/treelist/mock/', params)
     },
     getTreeFormTreelist: function(params) {
         return get(reUrl + '/treeform/treelist/mock/', params)
