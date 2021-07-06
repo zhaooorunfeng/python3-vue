@@ -24,8 +24,8 @@
                             </bk-option>
                         </bk-select>
                     </bk-form-item>
-                    <bk-form-item style="margin-top: 30px;">
-                        <bk-button theme="primary" style="margin-right: 12px;">保存</bk-button>
+                    <bk-form-item style="margin-top: 30px;font-size: 0;">
+                        <bk-button theme="primary" style="margin-right: 8px;">保存</bk-button>
                         <bk-button>取消</bk-button>
                     </bk-form-item>
                 </bk-form>

@@ -52,7 +52,7 @@
                 </bk-form-item>
                 <bk-form-item label="作业目标" :error-display-type="'normal'" :required="true" :property="'name5'">
                     <bk-button theme="primary" @click="visible = true">选择目标</bk-button>
-                    <bk-table :data="tableList" style="margin-top: 14px;" v-if="tableList.length">
+                    <bk-table :data="tableList" style="margin: 10px 0 0 0;" v-if="tableList.length">
                         <bk-table-column label="指标1" prop="name1" :show-overflow-tooltip="true"></bk-table-column>
                         <bk-table-column label="指标2" prop="name2" :show-overflow-tooltip="true"></bk-table-column>
                         <bk-table-column label="指标3" prop="name3" :show-overflow-tooltip="true"></bk-table-column>
@@ -60,13 +60,14 @@
                         <bk-table-column label="指标5" prop="name5" :show-overflow-tooltip="true"></bk-table-column>
                     </bk-table>
                 </bk-form-item>
-                <bk-form-item>
+                <bk-form-item v-if="!overScreenFlag">
                     <div style="font-size: 0;">
                         <bk-button style="margin-right: 10px;" theme="primary">保存</bk-button>
                         <bk-button>取消</bk-button>
                     </div>
                 </bk-form-item>
             </bk-form>
+            <div style="height: 72px;" v-if="overScreenFlag"></div>
             <div class="footer" v-if="overScreenFlag">
                 <bk-button style="margin: 0 10px 0 106px;" theme="primary">保存</bk-button>
                 <bk-button>取消</bk-button>

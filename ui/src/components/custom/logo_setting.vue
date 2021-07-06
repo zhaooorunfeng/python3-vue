@@ -9,12 +9,12 @@
                     @on-error="handleOnError" ext-cls="logo-upload"></bk-upload>
             </div>
             <div style="position: relative">
-                <bk-button :theme="'primary'" :title="'确定上传'" @click="handleSubmit" class="mr10" style="margin-left: 40px">
+                <bk-button :theme="'primary'" :title="'确定上传'" @click="handleSubmit" style="margin: 0 8px 0 40px;">
                     确定上传
                 </bk-button>
             </div>
             <div>
-                <bk-button :theme="'default'" :title="'恢复默认'" class="mr10" style="margin-left: 20px" @click="restoreDefault">
+                <bk-button :theme="'default'" :title="'恢复默认'" @click="restoreDefault">
                     恢复默认
                 </bk-button>
             </div>

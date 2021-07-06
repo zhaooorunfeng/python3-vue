@@ -8,7 +8,8 @@
                     <div class="title" style="font-size: 14px;color: #313238;font-weight: 500;">
                         转移到其他业务模块
                     </div>
-                    <bk-input style="width: 476px;margin-top: 17px;" clearable :placeholder="'请输入拓扑节点'" :right-icon="'bk-icon icon-search'">
+                    <bk-input style="width: 476px;margin-top: 17px;" clearable :placeholder="'请输入拓扑节点'"
+                        :right-icon="'bk-icon icon-search'">
                     </bk-input>
                     <bk-big-tree ref="topoTree" :data="treeList" :options="defaultProps"
                         :display-matched-node-descendants="true" :ext-cls="'custom-tree'" :expand-on-click="false"
@@ -22,13 +23,16 @@
                     </div>
                     <div class="select-header" style="margin-top: 12px;font-size: 12px;">
                         <div style="float: left;">
-                            已选<span style="color: #3A84FF;"> 4 </span>个模块
+                            已选<span style="color: #3A84FF;"> {{resultList.length}} </span>个模块
                         </div>
-                        <div style="float: right;color: #3A84FF;margin-right: 4px;">清空</div>
+                        <div style="float: right;color: #3A84FF;margin-right: 4px;cursor: pointer;"
+                            @click="handleEmpty">清空</div>
                     </div>
                     <div style="clear: both;"></div>
-                    <div style="margin-top: 6px;max-height: 407px;overflow: scroll;" class="select-result">
-                        <div v-for="(item, index) in resultList" :key="index" style="height: 48px;display: flex;align-items: center;padding: 5px 5px 5px 12px"
+                    <div style="margin-top: 6px;max-height: 407px;overflow: scroll;" class="select-result"
+                        v-if="resultList.length">
+                        <div v-for="(item, index) in resultList" :key="index"
+                            style="height: 48px;display: flex;align-items: center;padding: 5px 5px 5px 12px"
                             @mouseenter="handleIsShowClose(item)" @mouseleave="handleIsShowClose(item)">
                             <div class="left-result" style="font-size: 12px;flex: 1;">
                                 <span style="color: #63656E;">{{item.name1}}</span><br>
@@ -38,6 +42,9 @@
                                 <span class="iconfont icon-changyongtubiao-chahao"></span>
                             </div>
                         </div>
+                    </div>
+                    <div v-else style="position: relative;transform: translateY(-80%);top: 50%;">
+                        <bk-exception style="height: 100%;width: 100%;" type="empty" scene="part"> </bk-exception>
                     </div>
                 </div>
             </div>
@@ -87,6 +94,9 @@
             })
         },
         methods: {
+            handleEmpty() {
+                this.resultList = []
+            },
             handleIsShowClose(item) {
                 item.closeShow = !item.closeShow
             }
@@ -100,40 +110,51 @@
     }
 </style>
 <style lang="scss">
-    .tree-form-dialog{
+    .tree-form-dialog {
         .bk-dialog-tool {
             display: none;
         }
+
         .bk-dialog-body {
             padding: 0;
             height: 470px;
+
             .content {
                 height: 100%;
+
                 .left-content {
                     float: left;
                     width: 507px;
                     padding: 20px 16px 0 16px;
                 }
+
                 .right-content {
+                    position: relative;
                     float: right;
                     width: 320px;
                     background-color: #F5F6FA;
-                    border: 1px solid #DCDEE5;
+                    border-left: 1px solid #DCDEE5;
+                    box-sizing: border-box;
+                    // border: 1px solid #DCDEE5;
                     padding: 10px 23px 0 25px;
                     height: 100%;
+
                     .select-result>div {
                         background-color: #fff;
                         box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
                         border-radius: 0px 2px 2px 0px;
                         border-bottom: 1px solid #DCDEE5;
                     }
+
                     .select-result>div:last-of-type {
                         border-bottom: 0;
                     }
+
                     .select-result>div:hover {
                         background-color: #E1ECFF;
                         cursor: pointer;
                     }
+
                     .select-result>div:hover>.right-result {
                         color: #3A84FF;
                     }

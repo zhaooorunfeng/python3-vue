@@ -143,6 +143,11 @@
             /deep/ .bk-table-empty-block {
                 background-color: #fff;
             }
+            /deep/ {
+                .bk-table-column-setting {
+                    border-top: 1px solid #dfe0e5;
+                }
+            }
         }
     }
 </style>
