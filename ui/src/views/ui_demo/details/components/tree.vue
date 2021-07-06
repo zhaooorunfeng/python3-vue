@@ -7,7 +7,7 @@
             </bk-select>
         </div>
         <div class="tree">
-            <div>
+            <div style="padding: 10px 16px;">
                 <bk-input clearable :placeholder="'请输入关键字'" :right-icon="'bk-icon icon-search'">
                 </bk-input>
             </div>
@@ -50,9 +50,12 @@
         }
 
         .tree {
-            padding: 10px 16px;
             .custom-tree {
                 margin-top: 10px;
+                /deep/ .bk-big-tree-node{
+                    padding-left: calc(var(--level)*30px + 16px);
+                    // margin-left: 16px;
+                }
             }
         }
     }
