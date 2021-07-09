@@ -1,8 +1,9 @@
 'use strict'
 const path = require('path')
 const config = require('../config')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const packageConfig = require('../package.json')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const DllReferencePlugin = require('webpack/lib/DllReferencePlugin')
 
 exports.assetsPath = function (_path) {
     const assetsSubDirectory = process.env.NODE_ENV === 'production'
@@ -44,12 +45,14 @@ exports.cssLoaders = function (options) {
 
         // Extract CSS when that option is specified
         // (which is the case during production build)
-        if (options.extract) {
-            return ExtractTextPlugin.extract({
-                use: loaders,
-                fallback: 'vue-style-loader',
-                publicPath: '../../../'
-            })
+        if (process.env.NODE_ENV === 'production') {
+            const extractLoader = {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                    publicPath: '../../../'
+                }
+            }
+            return [extractLoader].concat(loaders)
         } else {
             return ['vue-style-loader'].concat(loaders)
         }
@@ -105,4 +108,24 @@ exports.createNotifierCallback = () => {
             icon: path.join(__dirname, 'logo.png')
         })
     }
+}
+
+
+exports.getDllManifest = () => {
+    let plugins = []
+    Object.keys({
+        vendors: ['vue/dist/vue.esm.js', 'vuex', 'vue-router', 'axios'],
+        bkMagicVue: ["bk-magic-vue/dist/bk-magic-vue.min.js"],
+        jquery: ['jquery'],
+        echarts: ['echarts'],
+        antv: ['@antv/g2', '@antv/data-set']
+    }).forEach((name) => {
+        plugins.push(
+            new DllReferencePlugin({
+                context: path.resolve(__dirname, config.build.assetsRoot, 'static'),
+                manifest: require(path.resolve(__dirname, config.build.assetsRoot, 'static/dll/[name].manifest.json').replace(/\[name\]/gi, name))
+            })
+        )
+    })
+    return plugins
 }
