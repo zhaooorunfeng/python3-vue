@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: 'chart_index'
+        name: 'chart-index'
     }
 </script>
 

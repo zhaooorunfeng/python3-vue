@@ -1,10 +1,10 @@
 <template>
-    <div :id="barId" :style="{height: height+ 'px'}"></div>
+    <div :id="barId" :style="{ height: height + 'px' }"></div>
 </template>
 
 <script>
     export default {
-        name: 'job_bars',
+        name: 'job-bars',
         props: {
             barData: {
                 type: Object,
@@ -24,9 +24,6 @@
                 chart: null
             }
         },
-        mounted() {
-            this.initChart()
-        },
         computed: {
             barId() {
                 return 'bar' + this._uid
@@ -38,30 +35,32 @@
                     if (this.chart) {
                         setTimeout(() => {
                             this.chart.resize()
-                        }, 200);
+                        }, 200)
                     }
                 },
                 immediate: true
             }
         },
+        mounted() {
+            this.initChart()
+        },
         methods: {
             initChart() {
-                const chartDom = document.getElementById(this.barId);
-                const myChart = this.$echarts.init(chartDom);
+                const chartDom = document.getElementById(this.barId)
+                const myChart = this.$echarts.init(chartDom)
                 this.chart = myChart
 
                 //  数据格式化
                 const that = this
-                let axisData = []
-                let seriesData = []
-                this.barData.data.forEach(function (item) {
+                const axisData = []
+                const seriesData = []
+                this.barData.data.forEach(function(item) {
                     axisData.push(item[that.barData.dimension])
                     seriesData.push(item[that.barData.metric])
                 })
 
                 //  配置设置
-                let option;
-                option = {
+                const option = {
                     tooltip: {
                         trigger: 'axis',
                         axisPointer: {
@@ -120,11 +119,11 @@
                             data: seriesData
                         }
                     ]
-                };
+                }
                 window.addEventListener('resize', () => {
                     myChart.resize()
                 })
-                option && myChart.setOption(option);
+                option && myChart.setOption(option)
             }
         }
     }

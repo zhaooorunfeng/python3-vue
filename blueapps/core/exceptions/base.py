@@ -40,12 +40,7 @@ class BlueException(Exception):
         return self.data
 
     def response_data(self):
-        return {
-            "result": False,
-            "code": self.ERROR_CODE,
-            "message": self.message,
-            "data": self.render_data()
-        }
+        return {"result": False, "code": self.ERROR_CODE, "message": self.message, "data": self.render_data()}
 
 
 class ClientBlueException(BlueException):
@@ -114,14 +109,14 @@ class MethodError(ClientBlueException):
 class RioVerifyError(ClientBlueException):
 
     MESSAGE = _("登陆请求经智能网关检测失败")
-    ERROR_CODE = "40502"
-    STATUS_CODE = 405
+    ERROR_CODE = "40101"
+    STATUS_CODE = 401
 
 
 class BkJwtVerifyError(ClientBlueException):
 
     MESSAGE = _("登陆请求经JWT检测失败")
-    ERROR_CODE = "40503"
+    ERROR_CODE = "40102"
     STATUS_CODE = 401
 
 

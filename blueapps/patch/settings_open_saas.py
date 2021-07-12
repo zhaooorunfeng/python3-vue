@@ -13,10 +13,9 @@ specific language governing permissions and limitations under the License.
 
 import os
 
-from config import default
-
 from blueapps.conf import get_settings_from_module
 from blueapps.patch.log import get_paas_v2_logging_config_dict
+from config import default
 
 locals().update(get_settings_from_module(default))
 
@@ -109,3 +108,6 @@ STATIC_ROOT = None
 LANGUAGE_SESSION_KEY = "blueking_language"
 LANGUAGE_COOKIE_NAME = "blueking_language"
 IS_DISPLAY_LANGUAGE_CHANGE = "none"
+
+# CSRF Config
+CSRF_COOKIE_NAME = "csrftoken"

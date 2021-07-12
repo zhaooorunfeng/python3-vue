@@ -15,7 +15,7 @@
     import SysSetting from './sys_setting'
 
     export default {
-        name: 'sys_tab',
+        name: 'sys-tab',
         components: {
             SysSetting
         },

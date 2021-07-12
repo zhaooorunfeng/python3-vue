@@ -1,5 +1,5 @@
 <template>
-    <div class="stats-card" :style="{height: `${height}px`}">
+    <div class="stats-card" :style="{ height: `${height}px` }">
         <div class="card-body" v-for="(card,index) in cards" :key="index">
             <div class="card-icon" v-if="showIcon">
                 <div class="card-icon-background">
@@ -23,7 +23,7 @@
 
 <script>
     export default {
-        name: 'display_card',
+        name: 'display-card',
         props: {
             // card
             displayInfo: {
@@ -46,11 +46,11 @@
         },
         data() {
             return {
-                cards: [],
+                cards: []
             }
         },
         computed: {
-            objClass: function () {
+            objClass: function() {
                 return {
                     'no-icon': !this.showIcon
                 }
@@ -88,7 +88,6 @@
     .card-body:nth-child(1) {
         border-left: none;
     }
-
 
     .card-text {
         height: 100%;
@@ -149,5 +148,4 @@
     .no-icon {
         margin: 0 auto !important;
     }
-
 </style>

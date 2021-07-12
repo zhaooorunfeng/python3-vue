@@ -10,8 +10,8 @@ Unless required by applicable law or agreed to in writing, software distributed 
 an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
 specific language governing permissions and limitations under the License.
 """
-
-from config import BK_PAAS_DOMAIN, RUN_VER
+from config import RUN_VER
+from config.default import FRONTEND_BACKEND_SEPARATION
 
 if RUN_VER == "open":
     from blueapps.patch.settings_open_saas import *  # noqa
@@ -20,6 +20,11 @@ else:
 
 # 本地开发环境
 RUN_MODE = "DEVELOP"
+
+# 自定义本地环境日志级别
+# from blueapps.conf.log import set_log_level # noqa
+# LOG_LEVEL = "DEBUG"
+# LOGGING = set_log_level(locals())
 
 # APP本地静态资源目录
 STATIC_URL = "/static/"
@@ -50,17 +55,17 @@ DATABASES = {
     },
 }
 
+# 前后端开发模式下支持跨域配置
+if FRONTEND_BACKEND_SEPARATION:
+    INSTALLED_APPS += ("corsheaders",)  # noqa
+    # 该跨域中间件需要放在前面
+    MIDDLEWARE = ("corsheaders.middleware.CorsMiddleware",) + MIDDLEWARE  # noqa
+    CORS_ORIGIN_ALLOW_ALL = True
+    CORS_ALLOW_CREDENTIALS = True
+
 # 多人开发时，无法共享的本地配置可以放到新建的 local_settings.py 文件中
 # 并且把 local_settings.py 加入版本管理忽略文件中
 try:
     from local_settings import *  # noqa
 except ImportError:
     pass
-
-# 白名单, 域名请按照前段实际配置修改
-CORS_ORIGIN_WHITELIST = [
-    "http://appdev.%s:8080" % BK_PAAS_DOMAIN,
-    "http://dev.%s:8080" % BK_PAAS_DOMAIN,
-]
-# 允许跨域使用 cookie
-CORS_ALLOW_CREDENTIALS = True
