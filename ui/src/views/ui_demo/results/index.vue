@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: 'result_index'
+        name: 'result-index'
     }
 </script>
 

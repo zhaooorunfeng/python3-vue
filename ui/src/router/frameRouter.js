@@ -8,8 +8,11 @@ const SystemSettings = () => import('@/views/ui_demo/workbench/system_settings')
 const DefaultForm = () => import('@/views/ui_demo/forms/default_form')
 const DrawerForm = () => import('@/views/ui_demo/forms/drawer_form')
 const TreeForm = () => import('@/views/ui_demo/forms/tree_form')
-const CategoryList = () => import('@/views/ui_demo/lists/category_list')
-const CustomList = () => import('@/views/ui_demo/lists/custom_list')
+const CategoryListFirst = () => import('@/views/ui_demo/lists/category_list_first')
+const CategoryListSecond = () => import('@/views/ui_demo/lists/category_list_second')
+const CustomListFirst = () => import('@/views/ui_demo/lists/custom_list_first')
+const CustomListSecond = () => import('@/views/ui_demo/lists/custom_list_second')
+const CustomListThird = () => import('@/views/ui_demo/lists/custom_list_third')
 const BusinessNode = () => import('@/views/ui_demo/details/business_node')
 const OperationLog = () => import('@/views/ui_demo/details/operation_log')
 const ResultPage = () => import('@/views/ui_demo/results/index')
@@ -17,8 +20,7 @@ const ExceptionPage = () => import('@/views/ui_demo/exceptions/index')
 const ChartPages = () => import('@/views/ui_demo/charts/index')
 
 
-export let frameRouter = [
-    {
+export let frameRouter = [{
         path: '/',
         name: 'HomeFirst',
         component: HomeFirst,
@@ -83,19 +85,43 @@ export let frameRouter = [
         }
     },
     {
-        path: '/categoryList',
-        name: 'CategoryList',
-        component: CategoryList,
+        path: '/categoryListFirst',
+        name: 'CategoryListFirst',
+        component: CategoryListFirst,
         meta: {
-            title: '分类列表',
+            title: '分类列表1',
         }
     },
     {
-        path: '/customList',
-        name: 'CustomList',
-        component: CustomList,
+        path: '/categoryListSecond',
+        name: 'CategoryListSecond',
+        component: CategoryListSecond,
         meta: {
-            title: '自定义内容列表',
+            title: '分类列表2',
+        }
+    },
+    {
+        path: '/customListFirst',
+        name: 'CustomListFirst',
+        component: CustomListFirst,
+        meta: {
+            title: '自定义内容列表1',
+        }
+    },
+    {
+        path: '/customListSecond',
+        name: 'CustomListSecond',
+        component: CustomListSecond,
+        meta: {
+            title: '自定义内容列表2',
+        }
+    },
+    {
+        path: '/customListThird',
+        name: 'CustomListThird',
+        component: CustomListThird,
+        meta: {
+            title: '自定义内容列表3',
         }
     },
     {
@@ -141,13 +167,11 @@ export let frameRouter = [
 ]
 
 // 导航栏
-export const adminRouteConfig = [
-    {
+export const adminRouteConfig = [{
         name: '工作台',
         icon: 'iconfont icon-mianxingtubiao-shezhi',
         id: 'workbench',
-        children: [
-            {
+        children: [{
                 name: '首页1',
                 id: 'HomeFirst',
                 active: true,
@@ -174,16 +198,30 @@ export const adminRouteConfig = [
         name: '列表类',
         icon: 'iconfont icon-mianxingtubiao-riqi',
         id: 'list',
-        children: [
-            {
-                name: '分类列表',
-                id: 'CategoryList',
-                url: '/categoryList'
+        children: [{
+                name: '分类列表1',
+                id: 'CategoryListFirst',
+                url: '/categoryListFirst',
             },
             {
-                name: '自定义内容列表',
-                id: 'CustomList',
-                url: '/customList'
+                name: '分类列表2',
+                id: 'CategoryListSecond',
+                url: '/categoryListSecond',
+            },
+            {
+                name: '自定义内容列表1',
+                id: 'CustomListFirst',
+                url: '/customListFirst'
+            },
+            {
+                name: '自定义内容列表2',
+                id: 'CustomListSecond',
+                url: '/customListSecond'
+            },
+            {
+                name: '自定义内容列表3',
+                id: 'CustomListThird',
+                url: '/customListThird'
             }
         ]
     },
@@ -191,8 +229,7 @@ export const adminRouteConfig = [
         name: '表单类',
         icon: 'iconfont icon-mianxingtubiao-danju',
         id: 'form',
-        children: [
-            {
+        children: [{
                 name: '表单-默认',
                 id: 'DefaultForm',
                 url: '/defaultForm'
@@ -213,8 +250,7 @@ export const adminRouteConfig = [
         name: '详情类',
         icon: 'iconfont icon-iconfontgengduo',
         id: 'details',
-        children: [
-            {
+        children: [{
                 name: '操作日志',
                 id: 'OperationLog',
                 url: '/operationLog'
@@ -230,37 +266,31 @@ export const adminRouteConfig = [
         name: '结果类',
         icon: 'iconfont icon-mianxingtubiao-yanzhonggaojing',
         id: 'result',
-        children: [
-            {
-                name: '结果页',
-                id: 'ResultPage',
-                url: '/resultPage'
-            }
-        ]
+        children: [{
+            name: '结果页',
+            id: 'ResultPage',
+            url: '/resultPage'
+        }]
     },
     {
         name: '异常类',
         icon: 'iconfont icon-mianxingtubiao-tishi',
         id: 'exception',
-        children: [
-            {
-                name: '异常页',
-                id: 'ExceptionPage',
-                url: '/exceptionPage'
-            }
-        ]
+        children: [{
+            name: '异常页',
+            id: 'ExceptionPage',
+            url: '/exceptionPage'
+        }]
     },
     {
         name: '图表类',
         icon: 'iconfont icon-tubiaohei',
         id: 'chart',
-        children: [
-            {
-                name: '图表页',
-                id: 'ChartPages',
-                url: '/chartPage'
-            }
-        ]
+        children: [{
+            name: '图表页',
+            id: 'ChartPages',
+            url: '/chartPage'
+        }]
     }
 ]
 

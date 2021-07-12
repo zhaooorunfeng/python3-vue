@@ -1,5 +1,5 @@
 <template>
-    <div id='app'>
+    <div id="app">
         <left-navigation></left-navigation>
     </div>
 </template>
@@ -8,16 +8,16 @@
     import leftNavigation from '@/components/base/left_navigation'
 
     export default {
-        name: 'App',
+        name: 'app',
         components: {
             leftNavigation
         },
-        mounted () {
-        },
-        created () {
-        },
-        data () {
+        data() {
             return {}
+        },
+        mounted() {
+        },
+        created() {
         },
         methods: {}
     }
@@ -50,4 +50,3 @@
         background-color: rgba(255, 255, 255, .07)
     }
 </style>
-

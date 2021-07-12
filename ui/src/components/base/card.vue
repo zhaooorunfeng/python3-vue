@@ -1,6 +1,6 @@
 <template>
-    <div class="content-card" :class="{'showBorder' : showBorder}" :style="{'background': backgroundColor}">
-        <div class="content-card-header" :class="{'noHeader': !showHeader}">
+    <div class="content-card" :class="{ 'showBorder': showBorder }" :style="{ 'background': backgroundColor }">
+        <div class="content-card-header" :class="{ 'noHeader': !showHeader }">
             <div class="content-card-header-title">{{ title }}</div>
             <div class="content-card-header-custom">
                 <slot name="header"></slot>

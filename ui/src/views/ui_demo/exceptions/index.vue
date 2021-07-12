@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: 'exception_index'
+        name: 'exception-index'
     }
 </script>
 
