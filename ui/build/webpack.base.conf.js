@@ -4,6 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 var webpack = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -45,7 +46,8 @@ module.exports = {
             jQuery: "jquery",
             jquery: "jquery",
             "window.jQuery": "jquery"
-        })
+        }),
+        new VueLoaderPlugin(),
     ],
     module: {
         rules: [
@@ -57,8 +59,11 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                loader: 'babel-loader',
-                include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+                include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
+                use: [
+                    "thread-loader",
+                    "babel-loader"
+                ]
             },
             {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -83,7 +88,7 @@ module.exports = {
                     limit: 10000,
                     name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
                 }
-            }
+            },
         ]
     },
     node: {
