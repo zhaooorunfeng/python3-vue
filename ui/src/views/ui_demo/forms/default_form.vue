@@ -214,7 +214,7 @@
             .footer {
                 position: fixed;
                 width: 100%;
-                background-color: red;
+                background-color: #fff;
                 bottom: 0px;
                 height: 52px;
                 line-height: 52px;
