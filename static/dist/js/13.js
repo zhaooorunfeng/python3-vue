@@ -1,2 +1,0 @@
-webpackJsonp([13],{Lprb:function(e,t){},P7Lw:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r={render:function(){var e=this.$createElement;return(this._self._c||e)("div",[this._v("自定义内容列表")])},staticRenderFns:[]};var s=n("VU/8")({name:"custom_list"},r,!1,function(e){n("Lprb")},"data-v-33fbb160",null);t.default=s.exports}});
-//# sourceMappingURL=13.js.map
