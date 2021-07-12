@@ -270,7 +270,6 @@
         padding: 20px 24px 20px 24px;
         .home-container {
             padding: 0 0 !important;
-
             .bk-grid-row + .bk-grid-row {
                 margin-top: 16px;
             }

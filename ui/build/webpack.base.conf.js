@@ -4,8 +4,8 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 var webpack = require('webpack')
+const StyleLintPlugin = require('stylelint-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
@@ -41,13 +41,16 @@ module.exports = {
         }
     },
     plugins: [
+        new StyleLintPlugin({
+            files: ['src/**/*.{vue,htm,html,css,sss,less,scss,sass}']
+        }),
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
             jquery: "jquery",
             "window.jQuery": "jquery"
         }),
-        new VueLoaderPlugin(),
+        new VueLoaderPlugin()
     ],
     module: {
         rules: [
