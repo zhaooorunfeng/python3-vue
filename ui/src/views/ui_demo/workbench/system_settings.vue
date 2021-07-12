@@ -1,5 +1,5 @@
 <template>
-    <div id="system-settings">
+    <div class="system-settings">
         <bk-container flex :col="8" :gutter="16" ext-cls="home-container">
             <bk-row>
                 <bk-col :span="0">
@@ -39,7 +39,7 @@
     import SysTab from './components/sys_tab'
 
     export default {
-        name: 'system_settings',
+        name: 'system-settings',
         components: {
             Card,
             LogoSetting,
@@ -50,15 +50,18 @@
 </script>
 
 <style lang="scss" scoped>
-    .home-container {
-        padding: 0 0 !important;
+    .system-settings {
+        padding: 20px 24px 20px 24px;
+        .home-container {
+            padding: 0 0 !important;
 
-        .bk-grid-row + .bk-grid-row {
-            margin-top: 16px;
-        }
+            .bk-grid-row + .bk-grid-row {
+                margin-top: 16px;
+            }
 
-        .font-btn {
-            font-size: 12px;
+            .font-btn {
+                font-size: 12px;
+            }
         }
     }
 </style>

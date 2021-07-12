@@ -97,7 +97,7 @@
     import JobLine from './charts/job_lines'
 
     export default {
-        name: 'home_first',
+        name: 'home-first',
         components: {
             Card,
             StatsCard,
@@ -131,13 +131,13 @@
                         ip: '192.168.0.1',
                         source: 'QQ',
                         status: '创建中',
-                        create_time: '2018-05-25 15:02:24',
+                        create_time: '2018-05-25 15:02:24'
                     },
                     {
                         ip: '192.168.0.1',
                         source: 'QQ',
                         status: '创建中',
-                        create_time: '2018-05-25 15:02:24',
+                        create_time: '2018-05-25 15:02:24'
                     },
                     {
                         ip: '192.168.0.2',
@@ -198,7 +198,7 @@
                         {name: '指标2', value: 520},
                         {name: '指标3', value: 461},
                         {name: '指标4', value: 175},
-                        {name: '指标5', value: 88},
+                        {name: '指标5', value: 88}
                     ],
                     dimension: 'name',
                     metric: 'value',
@@ -246,9 +246,6 @@
                 }
             }
         },
-        created() {
-            this.lineData.data.splice(0, this.lineData.data.length, ...this.tendData[this.btnGroupSelected])
-        },
         watch: {
             btnGroupSelected: {
                 handler(val) {
@@ -256,6 +253,9 @@
                 },
                 immediate: true
             }
+        },
+        created() {
+            this.lineData.data.splice(0, this.lineData.data.length, ...this.tendData[this.btnGroupSelected])
         },
         methods: {
             handleMoreInfo() {
@@ -266,16 +266,18 @@
 </script>
 
 <style lang="scss" scoped>
-    .home-container {
-        padding: 0 0 !important;
+    #home-first {
+        padding: 20px 24px 20px 24px;
+        .home-container {
+            padding: 0 0 !important;
 
-        .bk-grid-row + .bk-grid-row {
-            margin-top: 16px;
-        }
+            .bk-grid-row + .bk-grid-row {
+                margin-top: 16px;
+            }
 
-        .font-btn {
-            font-size: 12px;
+            .font-btn {
+                font-size: 12px;
+            }
         }
     }
-
 </style>
