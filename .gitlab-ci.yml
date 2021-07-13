@@ -66,6 +66,7 @@ webpack:
     - cd ../
     - pwd
     - date >> .ci_commit
+    - git add -f -A static/dll .ci_commit
     - git add -f -A static/dist .ci_commit
     - git config --global user.name ci
     - git config --global user.email ci@email.com
