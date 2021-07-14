@@ -6,6 +6,7 @@ const vueLoaderConfig = require('./vue-loader.conf')
 var webpack = require('webpack')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
@@ -29,9 +30,9 @@ module.exports = {
     output: {
         path: config.build.assetsRoot,
         filename: '[name].js',
-        publicPath: process.env.NODE_ENV === 'production'
-            ? config.build.assetsPublicPath
-            : config.dev.assetsPublicPath
+        publicPath: process.env.NODE_ENV === 'production' ?
+            config.build.assetsPublicPath :
+            config.dev.assetsPublicPath
     },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
@@ -42,7 +43,13 @@ module.exports = {
     },
     plugins: [
         new StyleLintPlugin({
-            files: ['src/**/*.{vue,htm,html,css,sss,less,scss,sass}']
+            files: ['src/**/*.{vue,htm,html,css,sss,less,scss,sass}'],
+            // context: 'src',
+            // configFile: path.resolve(__dirname, '../.stylelintrc.js'),
+            // files: ['**/*.{vue,htm,html,css,sss,less,scss,sass}'],
+            // failOnError: false,
+            // quiet: true,
+            // fix: false
         }),
         new webpack.ProvidePlugin({
             $: "jquery",

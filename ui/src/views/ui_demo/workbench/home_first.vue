@@ -276,6 +276,7 @@
 
             .font-btn {
                 font-size: 12px;
+                font-size: 12px;
             }
         }
     }
