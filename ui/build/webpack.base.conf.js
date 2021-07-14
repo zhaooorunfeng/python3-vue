@@ -44,12 +44,8 @@ module.exports = {
     plugins: [
         new StyleLintPlugin({
             files: ['src/**/*.{vue,htm,html,css,sss,less,scss,sass}'],
-            // context: 'src',
-            // configFile: path.resolve(__dirname, '../.stylelintrc.js'),
-            // files: ['**/*.{vue,htm,html,css,sss,less,scss,sass}'],
-            // failOnError: false,
-            // quiet: true,
-            // fix: false
+            // extensions: ['css', 'scss', 'sass', 'vue'],
+            exclude: [path.resolve(__dirname, '../node_modules/**'), path.resolve(__dirname, '../src/**')]
         }),
         new webpack.ProvidePlugin({
             $: "jquery",
