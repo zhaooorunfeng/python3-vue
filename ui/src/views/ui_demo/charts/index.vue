@@ -7,7 +7,3 @@
         name: 'chart-index'
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

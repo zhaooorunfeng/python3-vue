@@ -99,8 +99,8 @@
                 background: #2dcb56;
             }
 
-            .bk-step.done:after {
-                background-image: linear-gradient(#D8D8D8 100%, transparent 0)
+            .bk-step.done::after {
+                background-image: linear-gradient(#D8D8D8 100%, transparent 0);
             }
         }
 
@@ -110,12 +110,12 @@
                 margin-bottom: 0;
             }
 
-            .bk-step:after {
+            .bk-step::after {
                 left: 4px !important;
                 top: 10px !important;
             }
 
-            .bk-step:nth-last-child(1):after {
+            .bk-step:nth-last-child(1)::after {
                 display: none;
             }
         }
@@ -142,7 +142,6 @@
                 margin-top: 10px;
                 color: #979BA5 !important;
             }
-
         }
     }
 

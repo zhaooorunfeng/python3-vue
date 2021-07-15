@@ -32,7 +32,7 @@
                     <div style="margin-top: 6px;max-height: 407px;overflow: scroll;" class="select-result"
                         v-if="resultList.length">
                         <div v-for="(item, index) in resultList" :key="index"
-                            style="height: 48px;display: flex;align-items: center;padding: 5px 5px 5px 12px"
+                            style="height: 48px;display: flex;align-items: center;padding: 5px 5px 5px 12px;"
                             @mouseenter="handleIsShowClose(item)" @mouseleave="handleIsShowClose(item)">
                             <div class="left-result" style="font-size: 12px;flex: 1;">
                                 <span style="color: #63656E;">{{item.name1}}</span><br>
@@ -139,23 +139,23 @@
                     padding: 10px 23px 0 25px;
                     height: 100%;
 
-                    .select-result>div {
+                    .select-result > div {
                         background-color: #fff;
-                        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
-                        border-radius: 0px 2px 2px 0px;
+                        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+                        border-radius: 0 2px 2px 0;
                         border-bottom: 1px solid #DCDEE5;
                     }
 
-                    .select-result>div:last-of-type {
+                    .select-result > div:last-of-type {
                         border-bottom: 0;
                     }
 
-                    .select-result>div:hover {
+                    .select-result > div:hover {
                         background-color: #E1ECFF;
                         cursor: pointer;
                     }
 
-                    .select-result>div:hover>.right-result {
+                    .select-result > div:hover > .right-result {
                         color: #3A84FF;
                     }
                 }

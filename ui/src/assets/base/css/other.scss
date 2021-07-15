@@ -30,7 +30,7 @@
 }
 
 .focusing {
-    border: 0px !important;
+    border: 0 !important;
 }
 
 .is-dark {
@@ -39,11 +39,11 @@
     border: 1px solid #f7f7f7 !important;
 }
 
-.el-tooltip__popper[x-placement^=right] .popper__arrow {
+.el-tooltip__popper[x-placement^="right"] .popper__arrow {
     border-right-color: #f7f7f7;
 }
 
-.el-tooltip__popper[x-placement^=right] .popper__arrow:after {
+.el-tooltip__popper[x-placement^="right"] .popper__arrow::after {
     border-right-color: #f7f7f7;
 }
 

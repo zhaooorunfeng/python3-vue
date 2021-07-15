@@ -4,7 +4,7 @@
             <bk-row>
                 <bk-col :span="0">
                     <Card
-                        style="padding: 0 0"
+                        style="padding: 0 0;"
                         :show-border="false"
                         :background-color="'inherit'"
                         :show-header="false">
@@ -41,7 +41,7 @@
                             </div>
                         </template>
                         <template slot="content">
-                            <job-line :line-data="lineData" v-bind="$attrs" style="margin-top: -8px"></job-line>
+                            <job-line :line-data="lineData" v-bind="$attrs" style="margin-top: -8px;"></job-line>
                         </template>
                     </Card>
                 </bk-col>
@@ -58,7 +58,7 @@
                             </bk-button>
                         </template>
                         <template slot="content">
-                            <flow :step-list="stepList" :cur-step="4" style="height: 254px"></flow>
+                            <flow :step-list="stepList" :cur-step="4" style="height: 254px;"></flow>
                         </template>
                     </Card>
                 </bk-col>
@@ -275,7 +275,6 @@
             }
 
             .font-btn {
-                font-size: 12px;
                 font-size: 12px;
             }
         }

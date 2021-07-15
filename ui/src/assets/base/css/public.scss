@@ -8,10 +8,10 @@
 }
 
 .dot-menu-list {
-        margin: 0;
-        padding: 5px 0;
-        min-width: 50px;
-        list-style: none;
+    margin: 0;
+    padding: 5px 0;
+    min-width: 50px;
+    list-style: none;
 }
 
 .dot-menu-list .dot-menu-item {
@@ -20,10 +20,10 @@
     line-height: 26px;
     cursor: pointer;
 
-     &:hover {
+    &:hover {
         background-color: #eaf3ff;
         color: #3a84ff;
-     }
+    }
 }
 
 .round-color {

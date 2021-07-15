@@ -39,8 +39,8 @@
         top: 0;
     }
 
-    .cw-fading-circle .cw-circle:before {
-        content: '';
+    .cw-fading-circle .cw-circle::before {
+        content: "";
         display: block;
         margin: 0 auto;
         width: 16%;
@@ -100,42 +100,42 @@
         transform: rotate(315deg);
     }
 
-    .cw-fading-circle .cw-circle1:before {
+    .cw-fading-circle .cw-circle1::before {
         -webkit-animation-delay: .13s;
         animation-delay: .13s;
     }
 
-    .cw-fading-circle .cw-circle2:before {
+    .cw-fading-circle .cw-circle2::before {
         -webkit-animation-delay: .26s;
         animation-delay: .26s;
     }
 
-    .cw-fading-circle .cw-circle3:before {
+    .cw-fading-circle .cw-circle3::before {
         -webkit-animation-delay: .39s;
         animation-delay: .39s;
     }
 
-    .cw-fading-circle .cw-circle4:before {
+    .cw-fading-circle .cw-circle4::before {
         -webkit-animation-delay: .52s;
         animation-delay: .52s;
     }
 
-    .cw-fading-circle .cw-circle5:before {
+    .cw-fading-circle .cw-circle5::before {
         -webkit-animation-delay: .65s;
         animation-delay: .65s;
     }
 
-    .cw-fading-circle .cw-circle6:before {
+    .cw-fading-circle .cw-circle6::before {
         -webkit-animation-delay: .78s;
         animation-delay: .78s;
     }
 
-    .cw-fading-circle .cw-circle7:before {
+    .cw-fading-circle .cw-circle7::before {
         -webkit-animation-delay: .91s;
         animation-delay: .91s;
     }
 
-    .cw-fading-circle .cw-circle8:before {
+    .cw-fading-circle .cw-circle8::before {
         -webkit-animation-delay: .1.04s;
         animation-delay: 1.04s;
     }

@@ -48,7 +48,7 @@
             width: 540px;
             height: 52px;
             background: #FFFFFF;
-            box-shadow: 0px -1px 6px 0px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 -1px 6px 0 rgba(0, 0, 0, 0.1);
             line-height: 52px;
             font-size: 0;
         }

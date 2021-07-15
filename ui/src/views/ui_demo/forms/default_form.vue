@@ -208,17 +208,16 @@
                     align-items: center;
                     font-size: 14px;
                 }
-
             }
 
             .footer {
                 position: fixed;
                 width: 100%;
-                bottom: 0px;
+                bottom: 0;
                 height: 52px;
                 line-height: 52px;
                 background: #FFFFFF;
-                box-shadow: 0px -2px 6px 0px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 -2px 6px 0 rgba(0, 0, 0, 0.1);
                 font-size: 0;
                 z-index: 999;
             }
@@ -226,12 +225,12 @@
     }
 </style>
 <style>
-    .default-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-header {
+    .default-form-dialog > .bk-dialog > .bk-dialog-content > .bk-dialog-header {
         padding: 0 24px 2px 24px;
     }
 
-    .default-form-dialog>.bk-dialog>.bk-dialog-content>.bk-dialog-body {
-        padding: 0 24px 0px 24px;
+    .default-form-dialog > .bk-dialog > .bk-dialog-content > .bk-dialog-body {
+        padding: 0 24px 0 24px;
         height: 470px;
     }
 </style>

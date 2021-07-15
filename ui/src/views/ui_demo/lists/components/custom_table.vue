@@ -136,7 +136,7 @@
                 background-color: #DCDEE5;
             }
 
-            .dot-menu-trigger:before {
+            .dot-menu-trigger::before {
                 content: "";
                 color: #3A84FF;
                 display: inline-block;

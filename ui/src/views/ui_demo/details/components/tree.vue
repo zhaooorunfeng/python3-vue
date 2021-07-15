@@ -52,8 +52,8 @@
         .tree {
             .custom-tree {
                 margin-top: 10px;
-                /deep/ .bk-big-tree-node{
-                    padding-left: calc(var(--level)*30px + 16px);
+                /deep/ .bk-big-tree-node {
+                    padding-left: calc(var(--level) * 30px + 16px);
                     // margin-left: 16px;
                 }
             }

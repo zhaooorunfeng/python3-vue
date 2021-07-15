@@ -46,7 +46,7 @@
         .box {
             height: 42px;
             background: #F0F8FF;
-            box-shadow: 0px 2px 4px 0px #E1E8F4;
+            box-shadow: 0 2px 4px 0 #E1E8F4;
             border-radius: 2px;
             border: 1px solid #C5DAFF;
             padding: 11px 8px 11px 11px;
