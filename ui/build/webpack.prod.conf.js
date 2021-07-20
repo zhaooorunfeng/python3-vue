@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserPlugin = require("terser-webpack-plugin")
+const ReplaceTemplateStaticUrlPlugin = require("./replace-template-static-url-plugin")
 
 const webpackConfig = merge(baseWebpackConfig, {
     mode: 'production',
@@ -145,6 +146,8 @@ const webpackConfig = merge(baseWebpackConfig, {
                 ignore: ['.*']
             }
         ]),
+
+        new ReplaceTemplateStaticUrlPlugin()
     ]
 })
 
