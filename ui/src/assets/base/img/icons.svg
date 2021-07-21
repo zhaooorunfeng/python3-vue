@@ -1,22 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 24.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 827.16 101" style="enable-background:new 0 0 827.16 101;" xml:space="preserve">
+	 viewBox="0 0 827.16 101" style="enable-background: new 0 0 827.16 101;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:none;stroke:#DCDDDD;stroke-miterlimit:10;}
-	.st1{fill:none;stroke:#DCDDDD;stroke-miterlimit:10;stroke-dasharray:4.014,4.014;}
-	.st2{fill:none;stroke:#DCDDDD;stroke-miterlimit:10;stroke-dasharray:4.0288,4.0288;}
-	.st3{fill:none;stroke:#DCDDDD;stroke-miterlimit:10;stroke-dasharray:2.0249,2.0249;}
-	.st4{fill:none;stroke:#DCDDDD;stroke-miterlimit:10;stroke-dasharray:2.0391,2.0391;}
-	.st5{fill:none;stroke:#DCDDDD;stroke-miterlimit:10;stroke-dasharray:2.0548,2.0548;}
-	.st6{fill:none;stroke:#707070;stroke-width:3;stroke-miterlimit:10;}
-	.st7{fill:none;stroke:#DCDDDD;stroke-miterlimit:10;stroke-dasharray:4,4;}
-	.st8{fill:none;stroke:#ED3F3F;stroke-miterlimit:10;}
-	.st9{fill:#ED3F3F;}
-	.st10{font-family:'PingFangSC-Semibold-GBpc-EUC-H';}
-	.st11{font-size:18px;}
-	.st12{fill:#666666;}
-	.st13{fill:none;stroke:#666666;stroke-width:3;stroke-miterlimit:10;}
+    .st0 {
+        fill: none;
+        stroke: #DCDDDD;
+        stroke-miterlimit: 10;
+    }
+    .st1 {
+        fill: none;
+        stroke: #DCDDDD;
+        stroke-miterlimit: 10;
+        stroke-dasharray: 4.014,4.014;
+    }
+    .st2 {
+        fill: none;
+        stroke: #DCDDDD;
+        stroke-miterlimit: 10;
+        stroke-dasharray: 4.0288,4.0288;
+    }
+    .st3 {
+        fill: none;
+        stroke: #DCDDDD;
+        stroke-miterlimit: 10;
+        stroke-dasharray: 2.0249,2.0249;
+    }
+    .st4 {
+        fill: none;
+        stroke: #DCDDDD;
+        stroke-miterlimit: 10;
+        stroke-dasharray: 2.0391,2.0391;
+    }
+    .st5 {
+        fill: none;
+        stroke: #DCDDDD;
+        stroke-miterlimit: 10;
+        stroke-dasharray: 2.0548,2.0548;
+    }
+    .st6 {
+        fill: none;
+        stroke: #707070;
+        stroke-width: 3;
+        stroke-miterlimit: 10;
+    }
+    .st7 {
+        fill: none;
+        stroke: #DCDDDD;
+        stroke-miterlimit: 10;
+        stroke-dasharray: 4,4;
+    }
+    .st8 {
+        fill: none;
+        stroke: #ED3F3F;
+        stroke-miterlimit: 10;
+    }
+    .st9 {
+        fill: #ED3F3F;
+    }
+    .st10 {
+        font-family: "PingFangSC-Semibold-GBpc-EUC-H";
+    }
+    .st11 {
+        font-size: 18px;
+    }
+    .st12 {
+        fill: #666666;
+    }
+    .st13 {
+        fill: none;
+        stroke: #666666;
+        stroke-width: 3;
+        stroke-miterlimit: 10;
+    }
 </style>
 <g>
 	<rect id="XMLID_1514_" x="72.22" y="0.5" class="st0" width="100" height="100"/>

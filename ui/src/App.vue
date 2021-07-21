@@ -30,23 +30,23 @@
     }
 
     ::-webkit-scrollbar-thumb:window-inactive {
-        background: rgba(255, 0, 0, .4)
+        background: rgba(255, 0, 0, .4);
     }
 
     ::-webkit-scrollbar {
         width: 6px;
         height: 6px;
-        background-color: rgba(255, 255, 255, .07)
+        background-color: rgba(255, 255, 255, .07);
     }
 
     ::-webkit-scrollbar-thumb {
         -webkit-border-radius: 10px;
         border-radius: 10px;
         background: rgba(11, 54, 106, .52);
-        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .5)
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .5);
     }
 
     ::-webkit-scrollbar-thumb:window-inactive {
-        background-color: rgba(255, 255, 255, .07)
+        background-color: rgba(255, 255, 255, .07);
     }
 </style>

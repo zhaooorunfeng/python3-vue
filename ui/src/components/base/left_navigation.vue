@@ -119,7 +119,7 @@
             max-width: calc(100% - 60px) !important;
 
             .container-content {
-                padding: 0px;
+                padding: 0;
             }
         }
 
@@ -168,7 +168,7 @@
             -ms-flex-align: center;
             align-items: center;
             padding: 0 20px;
-            list-style: none
+            list-style: none;
         }
 
         .nav-item:hover {

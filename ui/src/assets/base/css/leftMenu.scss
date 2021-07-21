@@ -83,7 +83,7 @@
     background-color: #217FC3 !important;
 }
 
-.ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu):after {
+.ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu)::after {
     background: none !important;
 }
 
@@ -128,6 +128,6 @@
     height: 48px;
     line-height: 48px;
 }
-.el-submenu .el-menu-item{
-    height: 48px!important;
+.el-submenu .el-menu-item {
+    height: 48px !important;
 }

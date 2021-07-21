@@ -3,7 +3,7 @@
         <bk-form :label-width="150" :model="formData">
             <bk-form-item label="系统配置第一项" :property="'first'">
                 <bk-input v-model="formData.first"
-                    style="max-width: 1056px; width: 97%"
+                    style="max-width: 1056px; width: 97%;"
                     :input-style="{ background: '#FAFBFD' }"></bk-input>
                 <bk-popover placement="bottom-start" content="这里是提示文字">
                     <i class="sys-popover-icon iconfont icon-xianxingtubiao-tishi"></i>
@@ -11,7 +11,7 @@
             </bk-form-item>
             <bk-form-item label="系统配置第二项" :property="'second'">
                 <bk-input v-model="formData.second"
-                    style="max-width: 1056px; width: 97%"
+                    style="max-width: 1056px; width: 97%;"
                     :input-style="{ 'background': '#FAFBFD' }"></bk-input>
                 <bk-popover placement="bottom-start" content="这里是提示文字">
                     <i class="sys-popover-icon iconfont icon-xianxingtubiao-tishi"></i>
@@ -22,7 +22,7 @@
             </bk-form-item>
             <bk-form-item label="系统配置第N项" :property="'nth'">
                 <bk-input v-model="formData.nth"
-                    style="max-width: 1056px; width: 97%"
+                    style="max-width: 1056px; width: 97%;"
                     :input-style="{ 'background': '#FAFBFD' }"></bk-input>
                 <bk-popover placement="bottom-start" content="这里是提示文字">
                     <i class="sys-popover-icon iconfont icon-xianxingtubiao-tishi"></i>

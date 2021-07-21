@@ -78,7 +78,7 @@
             align-items: center;
             margin-right: 40px;
             color: #96A2B9;
-            min-width: 56px
+            min-width: 56px;
         }
 
         .header-nav-item.item-active {
@@ -110,7 +110,7 @@
             background: #252F43;
             color: #D3D9E4;
             -webkit-box-shadow: none;
-            box-shadow: none
+            box-shadow: none;
         }
 
         .header-select.is-left {
@@ -133,7 +133,7 @@
             -webkit-box-pack: center;
             -ms-flex-pack: center;
             justify-content: center;
-            margin-right: 8px
+            margin-right: 8px;
         }
 
         .header-mind.is-left {
@@ -142,7 +142,7 @@
 
         .header-mind.is-left:hover {
             color: #3A84FF;
-            background: #F0F1F5
+            background: #F0F1F5;
         }
 
         .header-mind:hover {
@@ -168,7 +168,7 @@
             -webkit-box-pack: center;
             -ms-flex-pack: center;
             justify-content: center;
-            margin-right: 8px
+            margin-right: 8px;
         }
 
         .header-help.is-left {
@@ -177,7 +177,7 @@
 
         .header-help.is-left:hover {
             color: #3A84FF;
-            background: #F0F1F5
+            background: #F0F1F5;
         }
 
         .header-help:hover {
@@ -213,7 +213,7 @@
         }
 
         .header-user.is-left:hover {
-            color: #3A84FF
+            color: #3A84FF;
         }
 
         .header-user:hover {

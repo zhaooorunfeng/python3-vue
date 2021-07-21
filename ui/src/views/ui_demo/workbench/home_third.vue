@@ -3,7 +3,7 @@
         <bk-container flex :col="12" :gutter="16" ext-cls="home-container">
             <bk-row>
                 <bk-col :span="6">
-                    <Card style="padding: 0 0" :show-border="false" :background-color="'inherit'" :show-header="false">
+                    <Card style="padding: 0 0;" :show-border="false" :background-color="'inherit'" :show-header="false">
                         <template slot="content">
                             <stats-card :card-list="cardList1" :display-direction="'vertical'" :shape="'hexagon'"
                                 @card-click="cardClick"></stats-card>
@@ -13,12 +13,12 @@
                 <bk-col :span="3">
                     <Card style="padding: 0 0;" :show-border="false" :background-color="'inherit'" :show-header="false">
                         <template slot="content">
-                            <stats-card style="height: 230px" :card-list="cardList2" :show-vertical="true" :shape="'hexagon'"></stats-card>
+                            <stats-card style="height: 230px;" :card-list="cardList2" :show-vertical="true" :shape="'hexagon'"></stats-card>
                         </template>
                     </Card>
                 </bk-col>
                 <bk-col :span="3">
-                    <Card :title="'操作步骤指引'" style="height: 230px">
+                    <Card :title="'操作步骤指引'" style="height: 230px;">
                         <template slot="header">
                             <bk-button :text="true" title="primary" ext-cls="font-btn" @click="handleMoreInfo">查看详情
                             </bk-button>
@@ -38,14 +38,14 @@
                     </Card>
                 </bk-col>
                 <bk-col :span="6">
-                    <Card :show-header="false" style="padding: 16px 0">
+                    <Card :show-header="false" style="padding: 16px 0;">
                         <template slot="content">
                             <bk-exception type="empty" scene="part" ext-cls="job-exception">
                                 <span>暂无作业数据，请去</span>
                                 <bk-button :text="true" ext-cls="job-btn" @click="handleAddJob">作业模块添加
                                 </bk-button>
                             </bk-exception>
-                            <display-card :card-list="jobInfo" :show-icon="false" :height="78" style="padding-top: 13px;border-top: 1px solid #DCDEE5">
+                            <display-card :card-list="jobInfo" :show-icon="false" :height="78" style="padding-top: 13px;border-top: 1px solid #DCDEE5;">
                             </display-card>
                         </template>
                     </Card>
@@ -410,7 +410,7 @@
         .home-container {
             padding: 0 0 !important;
 
-            .bk-grid-row+.bk-grid-row {
+            .bk-grid-row + .bk-grid-row {
                 margin-top: 16px;
             }
 

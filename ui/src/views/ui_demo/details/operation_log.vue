@@ -10,7 +10,7 @@
                 </bk-select>
             </div>
             <div class="search-item">
-                <span style="display: inline-block;width: 60x;">操作者</span>
+                <span style="display: inline-block;width: 60px;">操作者</span>
                 <bk-input style="width: 240px;" clearable :placeholder="'请输入操作者'" :right-icon="'bk-icon icon-search'"
                     v-model="searchForm.operator">
                 </bk-input>

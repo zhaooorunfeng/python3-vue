@@ -1,13 +1,13 @@
 //顶部导航栏样式
-$head-menu-color: if($head-theme=='light', #fff, $base-color);
-$background-color: if($head-theme=='light', $base-color, $base-color-blue);
-$color: if($head-theme=='light', #fff, #fff);
-$focus-color: if($head-theme=='light', #909399, #fff);
-$background-color-hover: if($head-theme=='light', #fff, $base-color-blue);
-$color-hover: if($head-theme=='light', $base-color, #fff);
-$font-display: if($head-theme=='light', $font-second, #fff);
-$menu-hover: if($head-theme=='light', $base-color, #fff);
-$header-font: if($head-theme=='light', $font-second, #D7EBFF);
+$head-menu-color: if($head-theme=="light", #fff, $base-color);
+$background-color: if($head-theme=="light", $base-color, $base-color-blue);
+$color: if($head-theme=="light", #fff, #fff);
+$focus-color: if($head-theme=="light", #909399, #fff);
+$background-color-hover: if($head-theme=="light", #fff, $base-color-blue);
+$color-hover: if($head-theme=="light", $base-color, #fff);
+$font-display: if($head-theme=="light", $font-second, #fff);
+$menu-hover: if($head-theme=="light", $base-color, #fff);
+$header-font: if($head-theme=="light", $font-second, #D7EBFF);
 
 .el-menu {
     background-color: $head-menu-color;
@@ -63,7 +63,7 @@ li.el-submenu div.el-submenu__title {
     background-color: #EFF2F5;
 }
 
-.el-dropdown-menu__item--divided:before, .el-menu, .el-menu--horizontal > .el-menu-item:not(.is-disabled):focus, .el-menu--horizontal > .el-menu-item:not(.is-disabled):hover, .el-menu--horizontal > .el-submenu .el-submenu__title:hover {
+.el-dropdown-menu__item--divided::before, .el-menu, .el-menu--horizontal > .el-menu-item:not(.is-disabled):focus, .el-menu--horizontal > .el-menu-item:not(.is-disabled):hover, .el-menu--horizontal > .el-submenu .el-submenu__title:hover {
     color: $menu-hover;
     background-color: $head-menu-color;
 }

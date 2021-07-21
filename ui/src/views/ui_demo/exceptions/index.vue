@@ -7,7 +7,3 @@
         name: 'exception-index'
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

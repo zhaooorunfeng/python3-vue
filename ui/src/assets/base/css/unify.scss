@@ -189,7 +189,7 @@
 
 .ivu-btn-icon-only {
     text-align: center;
-    padding: 5px 0!important;
+    padding: 5px 0 !important;
 }
 
 .ivu-dropdown-item:hover {
@@ -429,8 +429,8 @@
         border-radius: 0 10px 10px 0;
     }
 
-    .el-step.is-simple:after {
-        content: '';
+    .el-step.is-simple::after {
+        content: "";
         display: block;
         border-top: 16px solid transparent;
         border-bottom: 16px solid transparent;
@@ -441,8 +441,8 @@
         z-index: 10;
     }
 
-    .el-step.is-simple:before {
-        content: '';
+    .el-step.is-simple::before {
+        content: "";
         display: block;
         border-top: 16px solid $base-color;
         border-bottom: 16px solid $base-color;
@@ -452,11 +452,11 @@
         top: 0;
     }
 
-    .el-step.is-simple:first-child:before {
+    .el-step.is-simple:first-child::before {
         display: none;
     }
 
-    .el-step.is-simple:last-child:after {
+    .el-step.is-simple:last-child::after {
         display: none;
     }
 
@@ -473,12 +473,12 @@
     }
 }
 
-.cw-step-pro:before {
+.cw-step-pro::before {
     border-top: 16px solid $cancel-color !important;
     border-bottom: 16px solid $cancel-color !important;
 }
 
-.cw-step-pro:after {
+.cw-step-pro::after {
     border-left: 15px solid $cancel-color !important;
 }
 
@@ -490,12 +490,12 @@
     background-color: $success-color !important;
 }
 
-.cw-step-process:before {
+.cw-step-process::before {
     border-top: 16px solid $success-color !important;
     border-bottom: 16px solid $success-color !important;
 }
 
-.cw-step-process:after {
+.cw-step-process::after {
     border-left: 15px solid $success-color !important;
 }
 
@@ -519,7 +519,6 @@
 
 .left-second > .el-menu-item {
     padding-left: 40px !important;
-
 }
 
 //穿梭框
@@ -528,12 +527,11 @@
     padding-right: 10px;
 }
 
-
 .ivu-radio-checked .ivu-radio-inner {
     border-color: $base-color;
 }
 
-.ivu-radio-inner:after {
+.ivu-radio-inner::after {
     background-color: $base-color;
 }
 
@@ -542,7 +540,7 @@
 }
 
 .ivu-slider-bar {
-    background: $base-color
+    background: $base-color;
 }
 
 .ivu-btn-dashed.disabled:active, .ivu-btn-dashed.disabled:focus, .ivu-btn-dashed.disabled:hover {
