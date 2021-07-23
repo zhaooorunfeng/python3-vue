@@ -3,9 +3,4 @@
 /dist/
 /*.js
 /node_modules/
-/src/assets/
-/src/controller/
-/src/directive/
-/src/router/
-/src/store/
-/static/
+/src/assets/base/

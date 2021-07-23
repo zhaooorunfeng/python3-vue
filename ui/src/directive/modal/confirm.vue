@@ -15,14 +15,14 @@
          * @param promiseStatus 构造promise函数，释放两个出口
          */
         name: 'confirm',
-        data () {
+        data() {
             return {
             }
         },
-        mounted () {
+        mounted() {
         },
         methods: {
-        },
+        }
     }
 </script>
 
