@@ -1,4 +1,5 @@
 import Mock from 'mockjs'
+Mock.XHR.prototype.withCredentials = true // 改配置用于阻止mock忽略cookie
 export default ({
     mock
 }) => {
