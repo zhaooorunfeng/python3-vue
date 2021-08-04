@@ -51,8 +51,6 @@
         -ms-flex: 1;
         flex: 1;
         height: 100%;
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
         -webkit-box-align: center;
         -ms-flex-align: center;
@@ -60,8 +58,6 @@
         font-size: 14px;
 
         .header-nav {
-            display: -webkit-box;
-            display: -ms-flexbox;
             display: flex;
             padding: 0;
             margin: 0;
@@ -70,8 +66,6 @@
         .header-nav-item {
             list-style: none;
             height: 50px;
-            display: -webkit-box;
-            display: -ms-flexbox;
             display: flex;
             -webkit-box-align: center;
             -ms-flex-align: center;
@@ -93,8 +87,6 @@
         .header-title {
             color: #63656E;
             font-size: 16px;
-            display: -webkit-box;
-            display: -ms-flexbox;
             display: flex;
             -webkit-box-align: center;
             -ms-flex-align: center;
@@ -124,8 +116,6 @@
             position: relative;
             height: 32px;
             width: 32px;
-            display: -webkit-box;
-            display: -ms-flexbox;
             display: flex;
             -webkit-box-align: center;
             -ms-flex-align: center;
@@ -146,7 +136,6 @@
         }
 
         .header-mind:hover {
-            background: -webkit-gradient(linear, right top, left top, from(rgba(37, 48, 71, 1)), to(rgba(38, 50, 71, 1)));
             background: linear-gradient(270deg, rgba(37, 48, 71, 1) 0%, rgba(38, 50, 71, 1) 100%);
             border-radius: 100%;
             cursor: pointer;
@@ -159,8 +148,6 @@
             position: relative;
             height: 32px;
             width: 32px;
-            display: -webkit-box;
-            display: -ms-flexbox;
             display: flex;
             -webkit-box-align: center;
             -ms-flex-align: center;
@@ -181,7 +168,6 @@
         }
 
         .header-help:hover {
-            background: -webkit-gradient(linear, right top, left top, from(rgba(37, 48, 71, 1)), to(rgba(38, 50, 71, 1)));
             background: linear-gradient(270deg, rgba(37, 48, 71, 1) 0%, rgba(38, 50, 71, 1) 100%);
             border-radius: 100%;
             cursor: pointer;
@@ -190,8 +176,6 @@
 
         .header-user {
             height: 100%;
-            display: -webkit-box;
-            display: -ms-flexbox;
             display: flex;
             -webkit-box-align: center;
             -ms-flex-align: center;

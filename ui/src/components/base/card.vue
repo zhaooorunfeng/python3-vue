@@ -1,6 +1,6 @@
 <template>
-    <div class="content-card" :class="{ 'showBorder': showBorder }" :style="{ 'background': backgroundColor }">
-        <div class="content-card-header" :class="{ 'noHeader': !showHeader }">
+    <div class="content-card" :class="{ 'show-border': showBorder }" :style="{ 'background': backgroundColor }">
+        <div class="content-card-header" :class="{ 'no-header': !showHeader }">
             <div class="content-card-header-title">{{ title }}</div>
             <div class="content-card-header-custom">
                 <slot name="header"></slot>
@@ -55,13 +55,13 @@
         }
     }
 
-    .showBorder {
+    .show-border {
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
         border-radius: 2px;
         padding: 16px 20px;
     }
 
-    .noHeader {
+    .no-header {
         display: none !important;
     }
 </style>
