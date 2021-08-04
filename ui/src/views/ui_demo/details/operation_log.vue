@@ -25,7 +25,7 @@
         </div>
         <div style="clear: both;"></div>
         <div class="content">
-            <bk-table ref="table" :data="tableList" :pagination="pagination" ext-cls="customTable" :max-height="690">
+            <bk-table ref="table" :data="tableList" :pagination="pagination" ext-cls="custom-table" :max-height="690">
                 <bk-table-column label="操作者" prop="name1" :show-overflow-tooltip="true" width="250"></bk-table-column>
                 <bk-table-column label="操作对象" prop="name2" :show-overflow-tooltip="true"></bk-table-column>
                 <bk-table-column label="操作类型" prop="name3" :show-overflow-tooltip="true" width="120"></bk-table-column>
@@ -93,7 +93,7 @@
         }
 
         .content {
-            .customTable {
+            .custom-table {
                 /deep/ .bk-table-pagination-wrapper {
                     background-color: #fff;
                 }

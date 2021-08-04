@@ -136,7 +136,6 @@
     }
 
     .cw-fading-circle .cw-circle8::before {
-        -webkit-animation-delay: .1.04s;
         animation-delay: 1.04s;
     }
 

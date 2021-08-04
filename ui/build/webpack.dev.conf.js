@@ -61,10 +61,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             chunks: ['app']
         }),
         new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            jquery: "jquery",
-            "window.jQuery": "jquery"
+            $: 'jquery',
+            jQuery: 'jquery',
+            jquery: 'jquery',
+            'window.jQuery': 'jquery'
         }),
         // copy custom static assets
         new CopyWebpackPlugin([

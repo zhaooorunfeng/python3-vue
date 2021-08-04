@@ -2,17 +2,17 @@
     <div class="monitor-navigation">
         <bk-navigation :header-title="nav.id" :side-title="nav.title" :default-open="true" :need-menu="true" ext-cls="main-navigation"
             @toggle-click="handleToggle">
-            <!--            导航头部图标-->
+            <!--导航头部图标-->
             <template slot="side-icon">
                 <div class="monitor-logo" @click="goHome">
                     <img :src="'data:image/png;base64,' + nav.logo" height="32" width="32" :alt="'logo图片'">
                 </div>
             </template>
-            <!--            头部-->
+            <!--头部-->
             <template slot="header">
                 <Header :nav="nav" :header="header" :user="user"></Header>
             </template>
-            <!--            左侧导航栏-->
+            <!--左侧导航栏-->
             <template slot="menu">
                 <bk-navigation-menu ref="menu" @select="handleSelect" :default-active="$route.meta.hasOwnProperty('fatherName') ? $route.meta.fatherName : $route.name"
                     :before-nav-change="beforeNavChange" :toggle-active="true">
@@ -142,8 +142,6 @@
 
     .monitor-navigation-nav {
         width: 150px;
-        display: -webkit-box;
-        display: -ms-flexbox;
         display: flex;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
@@ -161,8 +159,6 @@
             -webkit-box-flex: 0;
             -ms-flex: 0 0 32px;
             flex: 0 0 32px;
-            display: -webkit-box;
-            display: -ms-flexbox;
             display: flex;
             -webkit-box-align: center;
             -ms-flex-align: center;
