@@ -2,7 +2,7 @@
     <div class="category-table">
         <bk-tab :active.sync="tabActive" ext-cls="custom-tab" :label-height="42">
             <bk-tab-panel v-for="(panel, index1) in panels" v-bind="panel" :key="index1">
-                <bk-table ref="table" :data="tableList" :pagination="pagination" ext-cls="customTable" :size="setting.size"
+                <bk-table ref="table" :data="tableList" :pagination="pagination" ext-cls="custom-table" :size="setting.size"
                     :max-height="690" :outer-border="false">
                     <bk-table-column :label="item.label" :prop="item.id" v-for="(item, index2) in setting.selectedFields"
                         :key="index2" :show-overflow-tooltip="item.overflowTooltip" :width="item.hasOwnProperty('width') ? item.width : ''">
@@ -135,7 +135,7 @@
             }
         }
 
-        .customTable {
+        .custom-table {
             /deep/ .bk-table-pagination-wrapper {
                 background-color: #fff;
             }

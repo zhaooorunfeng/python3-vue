@@ -43,14 +43,14 @@ module.exports = {
     },
     plugins: [
         new StyleLintPlugin({
-            files: ['src/views/**/*.{vue,htm,html,css,sss,less,scss,sass}'],
+            files: ['src/**/*.{vue,htm,html,css,sss,less,scss,sass}'],
             exclude: [path.resolve(__dirname, '../node_modules/**')]
         }),
         new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            jquery: "jquery",
-            "window.jQuery": "jquery"
+            $: 'jquery',
+            jQuery: 'jquery',
+            jquery: 'jquery',
+            'window.jQuery': 'jquery'
         }),
         new VueLoaderPlugin()
     ],
@@ -66,8 +66,8 @@ module.exports = {
                 test: /\.js$/,
                 include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')],
                 use: [
-                    "thread-loader",
-                    "babel-loader"
+                    'thread-loader',
+                    'babel-loader'
                 ]
             },
             {

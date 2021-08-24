@@ -1,5 +1,5 @@
 <template>
-    <div class="cw_alert">
+    <div class="cw-alert">
         <div :class="type" class="box">
             <slot name="icon" v-if="showIcon">
                 <div class="left-icon">
@@ -42,7 +42,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .cw_alert {
+    .cw-alert {
         .box {
             height: 42px;
             background: #F0F8FF;

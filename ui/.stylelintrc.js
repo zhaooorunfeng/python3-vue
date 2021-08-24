@@ -3,6 +3,8 @@ module.exports = {
         "stylelint-scss"
     ],
     "rules": {
+        // 类命名要求小写，中横线连接
+        'selector-class-pattern': '^.[a-z-0-9]+$',
         // http://stylelint.cn/user-guide/rules/
         // 要求在 at 规则之后有一个一个空格
         "at-rule-name-space-after": "always",
