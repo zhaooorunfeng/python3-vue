@@ -170,21 +170,25 @@ export const adminRouteConfig = [{
     children: [{
         name: '首页1',
         id: 'HomeFirst',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         active: true,
         url: '/home'
     },
     {
         name: '首页2',
         id: 'HomeSecond',
+        icon: 'iconfont icon-mianxingtubiao-riqi',
         url: '/homeSecond'
     },
     {
         name: '首页3',
         id: 'HomeThird',
+        icon: 'iconfont icon-mianxingtubiao-danju',
         url: '/homeThird'
     },
     {
         name: '系统设置页',
+        icon: 'iconfont icon-iconfontgengduo',
         id: 'SystemSettings',
         url: '/systemSettings'
     }
@@ -197,26 +201,31 @@ export const adminRouteConfig = [{
     children: [{
         name: '分类列表1',
         id: 'CategoryListFirst',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         url: '/categoryListFirst'
     },
     {
         name: '分类列表2',
         id: 'CategoryListSecond',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         url: '/categoryListSecond'
     },
     {
         name: '自定义内容列表1',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         id: 'CustomListFirst',
         url: '/customListFirst'
     },
     {
         name: '自定义内容列表2',
         id: 'CustomListSecond',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         url: '/customListSecond'
     },
     {
         name: '自定义内容列表3',
         id: 'CustomListThird',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         url: '/customListThird'
     }
     ]
@@ -228,16 +237,19 @@ export const adminRouteConfig = [{
     children: [{
         name: '表单-默认',
         id: 'DefaultForm',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         url: '/defaultForm'
     },
     {
         name: '表单-抽屉',
         id: 'DrawerForm',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         url: '/drawerForm'
     },
     {
         name: '表单-树',
         id: 'TreeForm',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         url: '/treeForm'
     }
     ]
@@ -249,11 +261,13 @@ export const adminRouteConfig = [{
     children: [{
         name: '操作日志',
         id: 'OperationLog',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         url: '/operationLog'
     },
     {
         name: '业务树-节点详情',
         id: 'BusinessNode',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         url: '/businessNode'
     }
     ]
@@ -265,6 +279,7 @@ export const adminRouteConfig = [{
     children: [{
         name: '结果页',
         id: 'ResultPage',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         url: '/resultPage'
     }]
 },
@@ -275,6 +290,7 @@ export const adminRouteConfig = [{
     children: [{
         name: '异常页',
         id: 'ExceptionPage',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         url: '/exceptionPage'
     }]
 },
@@ -284,6 +300,7 @@ export const adminRouteConfig = [{
     id: 'chart',
     children: [{
         name: '图表页',
+        icon: 'iconfont icon-mianxingtubiao-shezhi',
         id: 'ChartPages',
         url: '/chartPage'
     }]
