@@ -76,7 +76,7 @@
                     name: 'Troytu'
                 },
                 // 不同布局模式，修改此处，可选值：top-bottom、left-right
-                curNavType: 'top-bottom'
+                curNavType: 'left-right'
             }
         },
         created() {
