@@ -240,80 +240,72 @@
         }
     }
     .monitor-navigation-nav {
-        width:150px;
-        display:-webkit-box;
-        display:-ms-flexbox;
-        display:flex;
-        -webkit-box-orient:vertical;
-        -webkit-box-direction:normal;
-        -ms-flex-direction:column;
-        flex-direction:column;
-        background:#FFFFFF;
-        border:1px solid #E2E2E2;
-        -webkit-box-shadow:0px 3px 4px 0px rgba(64,112,203,0.06);
-        box-shadow:0px 3px 4px 0px rgba(64,112,203,0.06);
-        padding:6px 0;
-        margin:0;
-        color:#63656E;
+        width: 150px;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        background: #FFFFFF;
+        border: 1px solid #E2E2E2;
+        -webkit-box-shadow: 0 3px 4px 0 rgba(64, 112, 203, 0.06);
+        box-shadow: 0 3px 4px 0 rgba(64, 112, 203, 0.06);
+        padding: 6px 0;
+        margin: 0;
+        color: #63656E;
     }
     .monitor-navigation-nav .nav-item {
-        -webkit-box-flex:0;
-        -ms-flex:0 0 32px;
-        flex:0 0 32px;
-        display:-webkit-box;
-        display:-ms-flexbox;
-        display:flex;
-        -webkit-box-align:center;
-        -ms-flex-align:center;
-        align-items:center;
-        padding:0 20px;
-        list-style:none
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 32px;
+        flex: 0 0 32px;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 0 20px;
+        list-style: none;
     }
     .monitor-navigation-nav .nav-item:hover {
-        color:#3A84FF;
-        cursor:pointer;
-        background-color:#F0F1F5;
+        color: #3A84FF;
+        cursor: pointer;
+        background-color: #F0F1F5;
     }
     .monitor-navigation-nav .nav-item {
-        -webkit-box-flex:0;
-        -ms-flex:0 0 32px;
-        flex:0 0 32px;
-        display:-webkit-box;
-        display:-ms-flexbox;
-        display:flex;
-        -webkit-box-align:center;
-        -ms-flex-align:center;
-        align-items:center;
-        padding:0 20px;
-        list-style:none
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 32px;
+        flex: 0 0 32px;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 0 20px;
+        list-style: none;
     }
     .monitor-navigation-nav .nav-item:hover {
-        color:#3A84FF;
-        cursor:pointer;
-        background-color:#F0F1F5;
+        color: #3A84FF;
+        cursor: pointer;
+        background-color: #F0F1F5;
     }
     .monitor-navigation-admin .nav-item {
-        -webkit-box-flex:0;
-        -ms-flex:0 0 32px;
-        flex:0 0 32px;
-        display:-webkit-box;
-        display:-ms-flexbox;
-        display:flex;
-        -webkit-box-align:center;
-        -ms-flex-align:center;
-        align-items:center;
-        padding:0 20px;
-        list-style:none
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 32px;
+        flex: 0 0 32px;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding: 0 20px;
+        list-style: none;
     }
     .monitor-navigation-admin .nav-item:hover {
-        color:#3A84FF;
-        cursor:pointer;
-        background-color:#F0F1F5;
+        color: #3A84FF;
+        cursor: pointer;
+        background-color: #F0F1F5;
     }
     .tippy-popper .tippy-tooltip.navigation-message-theme {
-        padding:0;
-        border-radius:0;
-        -webkit-box-shadow:none;
-        box-shadow:none;
+        padding: 0;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
     }
 </style>
