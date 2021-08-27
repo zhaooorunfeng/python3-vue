@@ -93,6 +93,7 @@
             },
             handleSelect(id, item) {
                 this.nav.id = id
+                this.handleNavItemClick(item)
             },
             handleToggle(v) {
                 this.nav.toggle = v
