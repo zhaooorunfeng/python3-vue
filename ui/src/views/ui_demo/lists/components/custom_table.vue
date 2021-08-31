@@ -16,7 +16,12 @@
                 </template>
             </bk-table-column>
             <bk-table-column label="指标4" prop="name4"></bk-table-column>
-            <bk-table-column label="节点状态" prop="name5">
+            <bk-table-column
+                label="节点状态"
+                prop="name5"
+                :filters="statusFilters"
+                :filter-method="statusFilterMethod"
+                :filter-multiple="true">
                 <template slot-scope="props">
                     <div v-if="props.row.name5 === 'success'">
                         <div class="round-color success"></div>
@@ -80,6 +85,10 @@
         },
         data() {
             return {
+                statusFilters: [
+                    { text: '成功', value: '成功' },
+                    { text: '失败', value: '失败' }
+                ],
                 tableList: [],
                 pagination: {
                     current: 1,
@@ -93,6 +102,13 @@
                 this.tableList = res.data.list
                 this.pagination.count = res.data.count
             })
+        },
+        methods: {
+            statusFilterMethod(value, row, column) {
+                console.log(value, row, column)
+                const property = column.property
+                return row[property] === value
+            }
         }
     }
 </script>
