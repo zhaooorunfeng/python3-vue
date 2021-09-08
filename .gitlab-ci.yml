@@ -46,10 +46,6 @@ webpack:
   stage: webpack
   tags:
     - canway-tag
-  cache:
-    untracked: true
-    paths:
-      - ./ui/node_modules
   script:
     # pull newest code
     - echo "start build"
@@ -57,7 +53,7 @@ webpack:
     - git clone http://$GIT_USERNAME:$GIT_PASSWORD@$CI_SERVER_HOST/$CI_PROJECT_PATH.git
     - cd $CI_PROJECT_NAME && git checkout $CI_COMMIT_REF_NAME
     # loads node_modules cache
-    - mv /home/gitlab-runner/cache/$CI_PROJECT_PATH/node_modules ./ui/ || echo "cache/node_modules does not exist"
+    - mv /home/gitlab-runner/cache/$CI_PROJECT_PATH/node_modules ./ui/ || mkdir -p /home/gitlab-runner/cache/$CI_PROJECT_PATH/ && echo "make cache dir"
     - cd  ./ui/ && ls -al
     # build
     - npm install
@@ -75,7 +71,7 @@ webpack:
     - git push http://$GIT_USERNAME:$GIT_PASSWORD@$CI_SERVER_HOST/$CI_PROJECT_PATH.git $CI_COMMIT_REF_NAME
     # cache npm node_modules
     - pwd
-    - rm -rf /home/gitlab-runner/cache/$CI_PROJECT_PATH/node_modules && mv ./ui/node_modules /home/gitlab-runner/cache/$CI_PROJECT_PATH/
+    - rm -rf /home/gitlab-runner/cache/$CI_PROJECT_PATH/node_modules && mv -f ./ui/node_modules /home/gitlab-runner/cache/$CI_PROJECT_PATH/
     - echo "end build"
   only:
     - release
