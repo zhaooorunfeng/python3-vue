@@ -46,10 +46,6 @@ webpack:
   stage: webpack
   tags:
     - canway-tag
-  cache:
-    untracked: true
-    paths:
-      - ./ui/node_modules
   script:
     # pull newest code
     - echo "start build"
@@ -75,6 +71,7 @@ webpack:
     - git push http://$GIT_USERNAME:$GIT_PASSWORD@$CI_SERVER_HOST/$CI_PROJECT_PATH.git $CI_COMMIT_REF_NAME
     # cache npm node_modules
     - pwd
+    - mkdir -p /home/gitlab-runner/cache/$CI_PROJECT_PATH/
     - rm -rf /home/gitlab-runner/cache/$CI_PROJECT_PATH/node_modules && mv ./ui/node_modules /home/gitlab-runner/cache/$CI_PROJECT_PATH/
     - echo "end build"
   only:
