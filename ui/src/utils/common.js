@@ -135,12 +135,3 @@ Vue.prototype.formatDate = function(nowday) {
         ' ' + (hour < 10 ? '0' + hour : hour) + ':' + (minute < 10 ? '0' + minute : minute) + ':' +
         (second < 10 ? '0' + second : second)
 }
-
-// 暂时解决删除分页最后一页的唯一数据后，再次获取列表时因为当前页码数没有数据而返回404的问题
-Vue.prototype.rollbackPageNum = (pageNum, pageSize, totalNum) => {
-    if (totalNum === 0) {
-        return pageNum
-    } else {
-        return totalNum % pageSize === 0 ? Math.floor(totalNum / pageSize) : pageNum
-    }
-}

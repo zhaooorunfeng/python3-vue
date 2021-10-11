@@ -1,16 +1,15 @@
 import axios from 'axios'
+import { errorMessage, xhrErrorHandler } from '@/utils/xhrHandler'
 
 const getToken = () => {
     const DEFAULT_X_CSRFTOKEN = 'NOTPROVIDED'
     const { cookie } = document
-    if (cookie && typeof cookie === 'string' && cookie.length > 0) {
+    if (cookie && typeof cookie === 'string') {
         const key = window.CSRF_COOKIE_NAME || 'csrftoken'
         const values = cookie.split(';')
-        const value = values.find(item => item.trim().includes(key))
-        if (value) {
-            return decodeURIComponent(value.split('=')[1]) || DEFAULT_X_CSRFTOKEN
-        }
-        return DEFAULT_X_CSRFTOKEN
+        const value = values.find(item => item.includes(key))
+        if (!value) return DEFAULT_X_CSRFTOKEN
+        return decodeURIComponent(value.split('=')[1] || DEFAULT_X_CSRFTOKEN)
     }
     return DEFAULT_X_CSRFTOKEN
 }
@@ -34,22 +33,18 @@ service.interceptors.request.use(config => {
 // response interceptor
 service.interceptors.response.use(
     response => {
-        const { status, data } = response || {}
-        if (status !== 200) {
-            return {
-                result: false,
-                code: status,
-                message: '请求异常，请刷新重试'
-            }
+        const { data } = response || {}
+        /** Note: need to change by the data of api */
+        if (data && !data.result) {
+            errorMessage(data.message || '请求异常，请刷新重试')
+            return Promise.reject(response)
         }
-        return data
+        return Promise.resolve(data)
     },
-    error => ({
-        result: false,
-        code: 500,
-        message: '未知错误，请刷新重试',
-        error: error
-    })
+    error => {
+        xhrErrorHandler(error)
+        return Promise.reject(error)
+    }
 )
 
 // get
@@ -72,6 +67,32 @@ export const post = (url, data, opts = {}) =>
             method: 'POST',
             url,
             data,
+            ...opts
+        })
+            .then(res => resolve(res))
+            .catch(err => reject(err))
+    })
+
+// put
+export const put = (url, data, opts = {}) =>
+    new Promise((resolve, reject) => {
+        service({
+            method: 'PUT',
+            url,
+            data,
+            ...opts
+        })
+            .then(res => resolve(res))
+            .catch(err => reject(err))
+    })
+
+// delete
+export const remove = (url, params, opts = {}) =>
+    new Promise((resolve, reject) => {
+        service({
+            method: 'DELETE',
+            url,
+            params,
             ...opts
         })
             .then(res => resolve(res))
