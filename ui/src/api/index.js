@@ -1,7 +1,7 @@
-// 统一引入api模块
-import Server from './apiUrl/server'
-import User from './apiUrl/user'
-import Test from './apiUrl/test'
+import User from './http/user'
+import Server from './http/server'
+import Test from './http/test'
+
 export default {
     User,
     Server,

@@ -16,7 +16,7 @@ import * as Echarts from 'echarts'
 // 引用API文件
 import api from './api/index'
 // 公共方法
-import './controller/func/common.js'
+import './utils/common.js'
 // 统一样式引入
 import './assets/index'
 // 引入自定义方法
