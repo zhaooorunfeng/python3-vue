@@ -75,4 +75,7 @@ webpack:
     - rm -rf /home/gitlab-runner/cache/$CI_PROJECT_PATH/node_modules && mv ./ui/node_modules /home/gitlab-runner/cache/$CI_PROJECT_PATH/
     - echo "end build"
   only:
-    - release
+    refs:
+      - /^release.*$/
+    changes:
+      - ui/**/*
